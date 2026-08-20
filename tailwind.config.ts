@@ -6,13 +6,13 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          DEFAULT: "#0f2255",
-          dark: "#0a1a3a",
-          light: "#16307a",
+          DEFAULT: "#222222",
+          dark: "#181818",
+          light: "#333333",
         },
         gold: {
-          DEFAULT: "#f5b800",
-          light: "#ffc700",
+          DEFAULT: "#fdd800",
+          light: "#ffe340",
         },
       },
       maxWidth: {

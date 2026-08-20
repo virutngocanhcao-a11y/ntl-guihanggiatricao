@@ -1,7 +1,7 @@
 <svg width="260" height="180" viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-  <rect width="260" height="180" fill="#0f2255"/>
-  <rect x="100" y="55" width="60" height="60" rx="4" fill="#16307a"/>
-  <g stroke="#1c3a8f" stroke-width="4">
+  <rect width="260" height="180" fill="#222222"/>
+  <rect x="100" y="55" width="60" height="60" rx="4" fill="#333333"/>
+  <g stroke="#3d3d3d" stroke-width="4">
     <path d="M115 55V40M135 55V40M115 115v15M135 115v15"/>
     <path d="M100 70H85M100 90H85M160 70h15M160 90h15"/>
   </g>
