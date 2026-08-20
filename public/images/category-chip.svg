@@ -1,0 +1,8 @@
+<svg width="300" height="220" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="220" fill="#eef1f8"/>
+  <rect x="115" y="65" width="70" height="70" rx="4" fill="#0f2255"/>
+  <g stroke="#16307a" stroke-width="4">
+    <path d="M130 65V50M150 65V50M170 65V50M130 135v15M150 135v15M170 135v15"/>
+    <path d="M115 80H100M115 100H100M115 120H100M185 80h15M185 100h15M185 120h15"/>
+  </g>
+</svg>
