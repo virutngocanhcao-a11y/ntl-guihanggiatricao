@@ -49,74 +49,78 @@ export default function LeadForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl bg-white p-6 shadow-xl text-center">
-        <p className="text-lg font-semibold text-navy">Cảm ơn bạn đã đăng ký!</p>
-        <p className="mt-2 text-sm text-gray-600">
+      <div className="rounded-2xl bg-white p-7 md:p-8 shadow-2xl text-center">
+        <p className="text-xl font-bold text-[#222222]">Cảm ơn bạn đã đăng ký!</p>
+        <p className="mt-3 text-[15px] text-gray-600">
           Đội ngũ Nhất Tín Logistics sẽ liên hệ tư vấn trong thời gian sớm nhất.
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-4 text-sm font-medium text-gold underline underline-offset-2"
+          className="mt-6 text-sm font-bold text-[#fdd800] hover:text-[#e5c300] transition-colors"
         >
-          Gửi yêu cầu khác
+          Gửi yêu cầu khác &rarr;
         </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl bg-white p-6 shadow-xl">
-      <h3 className="text-lg font-bold text-navy">
-        Nhận tư vấn giải pháp
-        <br />
-        giao hàng giá trị cao
+    <div className="bg-white rounded-2xl p-7 md:p-8 shadow-2xl">
+      <h3 className="text-[#222222] text-xl md:text-2xl font-bold mb-6 leading-snug">
+        Nhận tư vấn giải pháp<br />giao hàng giá trị cao
       </h3>
-      <div className="mt-4 space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
           name="fullName"
           required
           placeholder="Họ tên"
-          className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-navy"
+          className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-[#222222] placeholder-gray-400 font-medium"
         />
         <input
           name="company"
           placeholder="Công ty"
-          className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-navy"
+          className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-[#222222] placeholder-gray-400 font-medium"
         />
         <input
           name="phone"
           required
           type="tel"
           placeholder="Số điện thoại"
-          className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-navy"
+          className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-[#222222] placeholder-gray-400 font-medium"
         />
-        <select
-          name="cargoType"
-          defaultValue=""
-          className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-navy"
-        >
-          <option value="" disabled>
-            Loại hàng hóa
-          </option>
-          {cargoTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
+        <div className="relative">
+          <select
+            name="cargoType"
+            defaultValue=""
+            required
+            className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-gray-500 font-medium appearance-none bg-white"
+          >
+            <option value="" disabled>
+              Loại hàng hóa
             </option>
-          ))}
-        </select>
-      </div>
+            {cargoTypes.map((type) => (
+              <option key={type} value={type} className="text-[#222222]">
+                {type}
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+            <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
 
-      {status === "error" && (
-        <p className="mt-3 text-sm text-red-600">{errorMessage}</p>
-      )}
+        {status === "error" && (
+          <p className="mt-3 text-sm font-medium text-red-600">{errorMessage}</p>
+        )}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="mt-4 w-full rounded-lg bg-gold py-3 text-sm font-bold text-navy-dark transition hover:bg-gold-light disabled:opacity-60"
-      >
-        {status === "submitting" ? "Đang gửi..." : "Nhận tư vấn →"}
-      </button>
-    </form>
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="w-full mt-2 bg-[#fdd800] text-[#222222] font-bold py-4 rounded-lg hover:bg-[#ffe340] transition-colors uppercase shadow-md shadow-[#fdd800]/20 disabled:opacity-60"
+        >
+          {status === "submitting" ? "Đang gửi..." : "Nhận tư vấn →"}
+        </button>
+      </form>
+    </div>
   );
 }

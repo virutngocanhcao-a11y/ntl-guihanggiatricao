@@ -12,7 +12,7 @@ export const defaultContent: LandingContent = {
       { icon: "shield", label: "Bảo hiểm hàng hóa" },
       { icon: "headset", label: "Tư vấn giải pháp" },
     ],
-    heroImage: "/images/hero-placeholder.svg",
+    heroImage: "/images/key-visual.jpg",
   },
   painPointsIntro: "Một đơn hàng giá trị cao không chỉ là một kiện hàng",
   painPoints: [
@@ -40,11 +40,11 @@ export const defaultContent: LandingContent = {
   bannerNote: "Hàng giá trị cao cần một quy trình giao nhận chặt chẽ hơn.",
   productCategoriesIntro: "Những mặt hàng thường cần giải pháp giao hàng giá trị cao",
   productCategories: [
-    { image: "/images/category-phone.svg", title: "Điện thoại & thiết bị di động" },
-    { image: "/images/category-laptop.svg", title: "Laptop & thiết bị CNTT" },
-    { image: "/images/category-chip.svg", title: "Linh kiện điện tử" },
-    { image: "/images/category-machine.svg", title: "Máy móc & thiết bị" },
-    { image: "/images/category-bag.svg", title: "Hàng thương mại giá trị cao khác" },
+    { image: "/images/category-phone.jpg", title: "Điện thoại & thiết bị di động" },
+    { image: "/images/category-laptop.jpg", title: "Laptop & thiết bị CNTT" },
+    { image: "/images/category-chip.jpg", title: "Linh kiện điện tử" },
+    { image: "/images/category-machine.jpg", title: "Máy móc & thiết bị" },
+    { image: "/images/category-bag.jpg", title: "Hàng thương mại giá trị cao khác" },
   ],
   processIntro: "Giải pháp giao hàng giá trị cao của Nhất Tín Logistics",
   processSteps: [
@@ -67,17 +67,17 @@ export const defaultContent: LandingContent = {
   solutionsIntro: "Giải pháp phù hợp cho từng nhóm hàng",
   solutionsByCategory: [
     {
-      image: "/images/solution-phone.svg",
+      image: "/images/category-phone.jpg",
       title: "Điện thoại / điện tử",
       bullets: ["Tránh gói chống sốc", "Niêm phong & xác nhận", "Giao nhanh, an toàn", "Bảo hiểm theo giá trị"],
     },
     {
-      image: "/images/solution-chip.svg",
+      image: "/images/category-chip.jpg",
       title: "Linh kiện / phụ tùng",
       bullets: ["Quản lý theo lô, theo mã", "Kiểm soát điểm nhận", "Vận chuyển tối ưu", "Theo dõi chi tiết"],
     },
     {
-      image: "/images/solution-machine.svg",
+      image: "/images/category-machine.jpg",
       title: "Thiết bị / máy móc",
       bullets: ["Đóng gói chuyên dụng", "Xe tải phù hợp trọng tải", "Giao lắp (nếu cần)", "Bảo hiểm toàn diện"],
     },

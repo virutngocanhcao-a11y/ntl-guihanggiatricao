@@ -11,30 +11,34 @@ export default function PainPoints({
   bannerNote: string;
 }) {
   return (
-    <section className="mx-auto max-w-content px-6 py-16">
-      <h2 className="text-center text-2xl font-bold text-navy md:text-3xl">
-        {intro}
-      </h2>
-      <div className="mx-auto mt-2 h-1 w-16 rounded bg-gold" />
+    <section className="bg-white py-16 md:py-24 relative z-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <h2 className="text-center text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
+          {intro}
+        </h2>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((item) => (
-          <div
-            key={item.title}
-            className="rounded-xl border border-gray-100 bg-white p-6 text-center shadow-sm"
-          >
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-navy/5">
-              <Icon name={item.icon} className="h-7 w-7 text-navy" />
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-gray-100 bg-white p-8 text-center shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow relative overflow-hidden"
+            >
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-50 border border-gray-100 relative">
+                <Icon name={item.icon} className="h-8 w-8 text-[#222222]" />
+                <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full bg-[#fdd800] border-2 border-white flex items-center justify-center">
+                  <Icon name="shield-check" className="h-3 w-3 text-[#222222]" />
+                </div>
+              </div>
+              <h3 className="mt-6 text-lg font-bold text-[#222222]">{item.title}</h3>
+              <p className="mt-3 text-sm text-gray-600 leading-relaxed">{item.desc}</p>
             </div>
-            <h3 className="mt-4 font-semibold text-navy">{item.title}</h3>
-            <p className="mt-2 text-sm text-gray-600">{item.desc}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="mx-auto mt-10 flex max-w-xl items-center gap-3 rounded-xl border border-gold/40 bg-gold/10 px-5 py-4">
-        <Icon name="box" className="h-6 w-6 shrink-0 text-gold" />
-        <p className="text-sm font-medium text-navy">{bannerNote}</p>
+        <div className="mx-auto mt-16 flex max-w-2xl items-center justify-center gap-4 rounded-full border-2 border-[#fdd800] bg-[#fdd800]/10 px-8 py-5">
+          <Icon name="building" className="h-7 w-7 shrink-0 text-[#fdd800]" />
+          <p className="text-base font-bold text-[#222222]">{bannerNote}</p>
+        </div>
       </div>
     </section>
   );

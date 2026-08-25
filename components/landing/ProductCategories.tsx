@@ -9,23 +9,26 @@ export default function ProductCategories({
   items: ProductCategory[];
 }) {
   return (
-    <section className="bg-gray-50 py-16">
-      <div className="mx-auto max-w-content px-6">
-        <h2 className="text-center text-2xl font-bold text-navy md:text-3xl">
+    <section className="bg-[#f8f9fa] py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <h2 className="text-center text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
           {intro}
         </h2>
-        <div className="mx-auto mt-2 h-1 w-16 rounded bg-gold" />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {items.map((item) => (
             <div
               key={item.title}
-              className="overflow-hidden rounded-xl bg-white text-center shadow-sm"
+              className="group overflow-hidden rounded-2xl bg-white border border-gray-100 text-center shadow-md shadow-gray-200/50 hover:shadow-xl transition-all hover:-translate-y-1"
             >
-              <div className="relative h-36 w-full">
-                <Image src={item.image} alt={item.title} fill className="object-cover" />
+              <div className="relative h-40 w-full p-4 bg-gray-50/50 flex items-center justify-center">
+                <div className="relative h-full w-full">
+                  <Image src={item.image} alt={item.title} fill className="object-contain" />
+                </div>
               </div>
-              <p className="px-3 py-4 text-sm font-semibold text-navy">{item.title}</p>
+              <div className="p-4 border-t border-gray-50">
+                <p className="text-[15px] font-bold text-[#222222] leading-snug">{item.title}</p>
+              </div>
             </div>
           ))}
         </div>
