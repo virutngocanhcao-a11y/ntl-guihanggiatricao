@@ -100,6 +100,21 @@ export default function AdminDashboard() {
       {saveState === "error" && <p className="px-6 pt-4 text-sm text-red-600">{saveError}</p>}
 
       <main className="mx-auto max-w-4xl space-y-6 px-6 py-6">
+        <SectionCard title="Cài đặt chung">
+          <div className="grid grid-cols-2 gap-4">
+            <ImageUploader
+              label="Logo thương hiệu"
+              value={content.global?.logoImage || ""}
+              onChange={(url) => set("global", { ...content.global, logoImage: url })}
+            />
+            <ImageUploader
+              label="Favicon (Icon tab trình duyệt)"
+              value={content.global?.faviconImage || ""}
+              onChange={(url) => set("global", { ...content.global, faviconImage: url })}
+            />
+          </div>
+        </SectionCard>
+
         <SectionCard title="Hero banner">
           <TextField
             label="Dòng tiêu đề 1"

@@ -1,6 +1,10 @@
 import { LandingContent } from "./content-schema";
 
 export const defaultContent: LandingContent = {
+  global: {
+    logoImage: "",
+    faviconImage: "",
+  },
   hero: {
     titleLine1: "GIAO HÀNG",
     titleLine2: "GIÁ TRỊ CAO",

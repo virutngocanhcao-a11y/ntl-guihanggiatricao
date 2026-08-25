@@ -59,7 +59,13 @@ export interface FooterContent {
   email: string;
 }
 
+export interface GlobalSettings {
+  logoImage: string;
+  faviconImage: string;
+}
+
 export interface LandingContent {
+  global: GlobalSettings;
   hero: HeroContent;
   painPointsIntro: string;
   painPoints: PainPoint[];

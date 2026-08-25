@@ -17,7 +17,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
+      <Header global={content.global} />
       <Hero content={content.hero} />
       <PainPoints
         intro={content.painPointsIntro}
