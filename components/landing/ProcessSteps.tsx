@@ -17,9 +17,9 @@ export default function ProcessSteps({
   steps: ProcessStep[];
 }) {
   return (
-    <section className="bg-[#222222] py-16 md:py-24 text-white" id="quy-trinh">
+    <section className="bg-white py-16 md:py-24 text-[#1a1a1a] border-b border-gray-100" id="quy-trinh">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-3xl font-extrabold md:text-4xl">
+        <h2 className="text-center text-3xl font-extrabold text-[#1a1a1a] md:text-4xl">
           {intro.split("giá trị cao").map((part, i, arr) => (
             <span key={i}>
               {part}
@@ -30,21 +30,21 @@ export default function ProcessSteps({
 
         <div className="relative mt-20">
           {/* Timeline Line */}
-          <div className="absolute top-24 left-[10%] right-[10%] h-0.5 bg-[#fdd800]/30 hidden lg:block" />
+          <div className="absolute top-36 left-[10%] right-[10%] h-1 bg-[#fdd800]/40 hidden lg:block" />
 
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5 relative z-10">
             {steps.map((step, i) => (
               <div key={step.number} className="text-center group">
-                <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#fdd800]/30 mx-auto mb-4">
-                  <Image src={stepImages[i] || stepImages[0]} alt={step.title} fill className="object-cover" sizes="80px" />
+                <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[#fdd800] mx-auto mb-5 shadow-md group-hover:scale-105 transition-transform">
+                  <Image src={stepImages[i] || stepImages[0]} alt={step.title} fill className="object-cover" sizes="96px" />
                 </div>
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#fdd800] text-xl font-extrabold text-[#222222] shadow-[0_0_0_8px_rgba(253,216,0,0.15)] group-hover:shadow-[0_0_0_12px_rgba(253,216,0,0.2)] transition-shadow">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#fdd800] text-lg font-extrabold text-[#222222] shadow-md group-hover:bg-[#ffe340] transition-colors">
                   {step.number}
                 </div>
-                <h3 className="mt-8 text-lg font-bold text-white px-2 leading-snug h-12 flex items-center justify-center">
+                <h3 className="mt-6 text-lg font-bold text-[#1a1a1a] px-2 leading-snug h-12 flex items-center justify-center">
                   {step.title}
                 </h3>
-                <p className="mt-4 text-sm text-white/70 leading-relaxed px-1">
+                <p className="mt-3 text-sm text-gray-600 leading-relaxed px-1">
                   {step.desc}
                 </p>
               </div>
