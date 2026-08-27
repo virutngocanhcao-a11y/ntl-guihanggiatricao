@@ -1,56 +1,74 @@
 import Image from "next/image";
 import Icon from "@/components/Icon";
-import LeadForm from "./LeadForm";
 import { HeroContent } from "@/lib/content-schema";
 
 export default function Hero({ content }: { content: HeroContent }) {
   return (
-    <section className="relative bg-[#222222] text-white overflow-hidden min-h-[680px] xl:h-[750px] flex items-center" id="dang-ky">
+    <section className="relative bg-[#222222] text-white overflow-hidden min-h-[640px] lg:h-[720px] xl:h-[760px] flex items-center pt-24 lg:pt-0">
       
-      {/* Background Graphic & Visual */}
-      <div className="absolute inset-0 z-0 flex justify-center lg:justify-end opacity-90 mix-blend-lighten pointer-events-none">
-        <div className="relative w-full h-full lg:w-[75%] max-w-[1200px]">
+      {/* Background Graphic & Visual - Fully visible and unblocked */}
+      <div className="absolute inset-0 z-0 flex justify-end opacity-95 mix-blend-lighten pointer-events-none">
+        <div className="relative w-full h-full lg:w-[68%] xl:w-[65%] max-w-[1300px]">
           <Image
             src={content.heroImage}
-            alt="Giao hàng giá trị cao"
+            alt="Giao hàng giá trị cao Nhất Tín Logistics"
             fill
             style={{ objectFit: "cover", objectPosition: "center right" }}
             priority
+            sizes="(max-width: 1024px) 100vw, 1300px"
           />
-          {/* Subtle gradient to fade into background naturally */}
+          {/* Subtle gradients to seamlessly merge edges into background */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#222222] via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#222222] via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#222222] via-[#222222]/40 to-transparent lg:w-1/2"></div>
         </div>
       </div>
       
-      {/* Very faint dotted pattern on the left side only to avoid clutter */}
-      <div className="absolute inset-y-0 left-0 w-1/2 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fdd800_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_right,white,transparent)]"></div>
+      {/* Very faint dotted pattern on the left side */}
+      <div className="absolute inset-y-0 left-0 w-1/3 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fdd800_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_right,white,transparent)]"></div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col lg:flex-row items-center justify-between gap-10 px-6 py-12 lg:py-0">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-6 py-12 lg:py-0">
         
-        {/* LEFT: TEXT (approx 40%) */}
-        <div className="w-full lg:w-[45%] xl:w-[40%] shrink-0">
-          <h1 className="text-4xl font-extrabold leading-[1.1] md:text-5xl lg:text-[54px] xl:text-[64px] uppercase tracking-tight">
+        {/* LEFT: TEXT & ACTION */}
+        <div className="w-full lg:w-[52%] xl:w-[48%] shrink-0">
+          <h1 className="text-4xl font-extrabold leading-[1.08] md:text-5xl lg:text-[54px] xl:text-[62px] uppercase tracking-tight">
             <span className="text-white block">{content.titleLine1}</span>
             <span className="text-[#fdd800] block mt-1 mb-1">{content.titleLine2}</span>
             <span className="text-white block whitespace-nowrap">{content.titleLine3}</span>
           </h1>
-          <p className="mt-6 max-w-[480px] text-white/80 text-[17px] leading-relaxed">
+          
+          <p className="mt-6 max-w-[500px] text-white/80 text-[16px] md:text-[18px] leading-relaxed">
             {content.subtitle}
           </p>
-          <div className="mt-8 flex flex-wrap lg:flex-nowrap items-center justify-start gap-4">
+
+          {/* 3 Badges on 1 row */}
+          <div className="mt-8 flex flex-wrap sm:flex-nowrap items-center justify-start gap-3 max-w-xl">
             {content.badges.map((badge) => (
-              <div key={badge.label} className="flex flex-1 items-center justify-center lg:justify-start gap-2.5 rounded-lg border border-white/10 bg-[#222222]/60 px-3 py-2.5 text-[13px] xl:text-sm font-semibold text-white backdrop-blur-md whitespace-nowrap h-12">
+              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-lg border border-white/10 bg-[#222222]/80 px-3.5 py-2.5 text-[13px] xl:text-sm font-semibold text-white backdrop-blur-md whitespace-nowrap h-12">
                 <Icon name={badge.icon} className="h-5 w-5 text-[#fdd800] shrink-0" />
                 {badge.label}
               </div>
             ))}
           </div>
-        </div>
-        
-        {/* RIGHT: FORM (approx 30%) */}
-        <div className="w-full max-w-[400px] lg:w-[30%] shrink-0 relative z-20">
-          <LeadForm />
+
+          {/* CTA Buttons */}
+          <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a
+              href="#dang-ky"
+              className="inline-flex items-center justify-center gap-3 rounded-xl bg-[#fdd800] px-8 py-4 text-base font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+            >
+              Nhận tư vấn giải pháp
+              <svg className="h-5 w-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+            <a
+              href="#quy-trinh"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-4 text-base font-bold text-white hover:bg-white/10 transition-colors backdrop-blur-sm"
+            >
+              Xem quy trình 5 bước &rarr;
+            </a>
+          </div>
+
         </div>
 
       </div>

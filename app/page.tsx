@@ -1,6 +1,7 @@
 import { getContent } from "@/lib/get-content";
 import Header from "@/components/landing/Header";
 import Hero from "@/components/landing/Hero";
+import ConsultationSection from "@/components/landing/ConsultationSection";
 import PainPoints from "@/components/landing/PainPoints";
 import ProductCategories from "@/components/landing/ProductCategories";
 import ProcessSteps from "@/components/landing/ProcessSteps";
@@ -20,6 +21,7 @@ export default async function Home() {
     <>
       <Header global={content.global} />
       <Hero content={content.hero} />
+      <ConsultationSection />
       <PainPoints
         intro={content.painPointsIntro}
         items={content.painPoints}
