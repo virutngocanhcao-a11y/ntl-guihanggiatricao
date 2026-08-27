@@ -1,4 +1,13 @@
 import { ProcessStep } from "@/lib/content-schema";
+import Image from "next/image";
+
+const stepImages = [
+  '/images/step-consult.jpg', 
+  '/images/step-packing.jpg', 
+  '/images/step-transport.jpg', 
+  '/images/step-delivery.jpg', 
+  '/images/step-insurance.jpg'
+];
 
 export default function ProcessSteps({
   intro,
@@ -21,11 +30,14 @@ export default function ProcessSteps({
 
         <div className="relative mt-20">
           {/* Timeline Line */}
-          <div className="absolute top-7 left-[10%] right-[10%] h-0.5 bg-[#fdd800]/30 hidden lg:block" />
+          <div className="absolute top-24 left-[10%] right-[10%] h-0.5 bg-[#fdd800]/30 hidden lg:block" />
 
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5 relative z-10">
-            {steps.map((step) => (
+            {steps.map((step, i) => (
               <div key={step.number} className="text-center group">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#fdd800]/30 mx-auto mb-4">
+                  <Image src={stepImages[i] || stepImages[0]} alt={step.title} fill className="object-cover" sizes="80px" />
+                </div>
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#fdd800] text-xl font-extrabold text-[#222222] shadow-[0_0_0_8px_rgba(253,216,0,0.15)] group-hover:shadow-[0_0_0_12px_rgba(253,216,0,0.2)] transition-shadow">
                   {step.number}
                 </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { FaqItem } from "@/lib/content-schema";
 
 export default function Faq({ intro, items }: { intro: string; items: FaqItem[] }) {
@@ -9,36 +10,48 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
   return (
     <section className="bg-white py-16 md:py-24" id="faq">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-3xl font-extrabold text-[#222222] md:text-4xl">
+        <h2 className="text-center text-3xl font-extrabold text-[#222222] md:text-4xl mb-14">
           {intro}
         </h2>
-
-        <div className="mx-auto mt-14 max-w-3xl space-y-4">
-          {items.map((item, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div key={item.question} className="rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                >
-                  <span className="flex items-center gap-4 text-base font-bold text-[#222222]">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fdd800] text-sm font-bold text-white">
-                      ?
-                    </span>
-                    {item.question}
-                  </span>
-                  <span className="text-xl text-[#222222] font-light">{isOpen ? "−" : "+"}</span>
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 pl-[3.25rem]">
-                    <p className="text-[15px] text-gray-600 leading-relaxed">{item.answer}</p>
-                  </div>
-                )}
+        
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          <div className="lg:w-[40%] hidden lg:block w-full">
+            <div className="sticky top-24">
+              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
+                <Image src="/images/faq-illustration.jpg" alt="Tư vấn viên" fill className="object-cover" sizes="400px" />
               </div>
-            );
-          })}
+            </div>
+          </div>
+          
+          <div className="lg:w-[60%] w-full">
+            <div className="space-y-4">
+              {items.map((item, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <div key={item.question} className="rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <button
+                      type="button"
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                    >
+                      <span className="flex items-center gap-4 text-base font-bold text-[#222222]">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fdd800] text-sm font-bold text-[#222222]">
+                          ?
+                        </span>
+                        {item.question}
+                      </span>
+                      <span className="text-xl text-[#222222] font-light">{isOpen ? "−" : "+"}</span>
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-6 pt-1 pl-[3.25rem]">
+                        <p className="text-[15px] text-gray-600 leading-relaxed">{item.answer}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

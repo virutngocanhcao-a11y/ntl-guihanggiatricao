@@ -85,6 +85,8 @@ export default function LeadForm() {
           name="phone"
           required
           type="tel"
+          pattern="^0[0-9]{9}$"
+          title="Vui lòng nhập số điện thoại hợp lệ (10 số, bắt đầu bằng 0)"
           placeholder="Số điện thoại"
           className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-[#222222] placeholder-gray-400 font-medium"
         />

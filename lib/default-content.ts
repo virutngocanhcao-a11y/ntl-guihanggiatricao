@@ -73,7 +73,7 @@ export const defaultContent: LandingContent = {
     {
       image: "/images/category-phone.jpg",
       title: "Điện thoại / điện tử",
-      bullets: ["Tránh gói chống sốc", "Niêm phong & xác nhận", "Giao nhanh, an toàn", "Bảo hiểm theo giá trị"],
+      bullets: ["Đóng gói chống sốc", "Niêm phong & xác nhận", "Giao nhanh, an toàn", "Bảo hiểm theo giá trị"],
     },
     {
       image: "/images/category-chip.jpg",

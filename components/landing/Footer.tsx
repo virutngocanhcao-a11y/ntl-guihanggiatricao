@@ -9,18 +9,18 @@ export default function Footer({ content }: { content: FooterContent }) {
           <span className="font-extrabold text-[#fdd800]">{content.companyName}</span> – {content.tagline}
         </div>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-          <span className="flex items-center gap-2">
+          <a href="tel:19006366888" className="flex items-center gap-2">
             <Icon name="phone" className="h-5 w-5 text-white/60" />
             {content.hotline}
-          </span>
-          <span className="flex items-center gap-2">
+          </a>
+          <a href="https://www.ntlogistics.vn" target="_blank" rel="noreferrer" className="flex items-center gap-2">
             <Icon name="globe" className="h-5 w-5 text-white/60" />
             {content.website}
-          </span>
-          <span className="flex items-center gap-2">
+          </a>
+          <a href="mailto:cskh@ntlogistics.vn" className="flex items-center gap-2">
             <Icon name="envelope" className="h-5 w-5 text-white/60" />
             {content.email}
-          </span>
+          </a>
         </div>
       </div>
     </footer>
