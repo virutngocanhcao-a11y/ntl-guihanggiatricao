@@ -47,9 +47,24 @@ export default function PainPoints({
           ))}
         </div>
 
-        <div className="mx-auto mt-8 md:mt-10 flex max-w-2xl items-center justify-center gap-4 rounded-full border-2 border-[#fdd800] bg-[#fdd800]/10 px-8 py-4">
-          <Icon name="building" className="h-6 w-6 shrink-0 text-[#d99400]" />
-          <p className="text-base font-bold text-[#222222]">{bannerNote}</p>
+        <div className="mx-auto mt-8 md:mt-10 max-w-3xl rounded-2xl bg-gradient-to-r from-[#fdd800]/15 via-[#fdd800]/5 to-transparent border border-[#fdd800]/40 p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-sm">
+          <div className="flex items-center gap-4 text-center sm:text-left">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-md shadow-[#fdd800]/25">
+              <Icon name="shield" className="h-6 w-6" />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#d99400]">Cam kết dịch vụ</p>
+              <p className="text-base md:text-lg font-extrabold text-[#1a1a1a] mt-0.5">
+                {bannerNote}
+              </p>
+            </div>
+          </div>
+          <a
+            href="#quy-trinh"
+            className="shrink-0 inline-flex items-center gap-2 text-xs font-extrabold uppercase text-[#222222] bg-[#fdd800] hover:bg-[#ffe340] px-5 py-3 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105"
+          >
+            Xem quy trình 5 bước &rarr;
+          </a>
         </div>
       </div>
     </section>
