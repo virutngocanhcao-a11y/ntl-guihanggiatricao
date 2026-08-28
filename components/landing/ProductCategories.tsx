@@ -19,15 +19,15 @@ export default function ProductCategories({
           {items.map((item) => (
             <div
               key={item.title}
-              className="group overflow-hidden rounded-2xl bg-white border border-gray-100 text-center shadow-md shadow-gray-200/50 hover:shadow-xl transition-all hover:-translate-y-1"
+              className="group overflow-hidden rounded-2xl bg-white border border-gray-200/80 text-center shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all hover:-translate-y-1 flex flex-col"
             >
-              <div className="relative h-56 w-full p-4 bg-gray-50/50 flex items-center justify-center">
+              <div className="relative h-52 w-full p-3 bg-white flex items-center justify-center overflow-hidden">
                 <div className="relative h-full w-full">
-                  <Image src={item.image} alt={item.title} fill className="object-contain group-hover:scale-110 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 250px" />
+                  <Image src={item.image} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 250px" />
                 </div>
               </div>
-              <div className="p-4 border-t border-gray-50">
-                <p className="text-[15px] font-bold text-[#222222] leading-snug">{item.title}</p>
+              <div className="p-4 border-t border-gray-100 bg-gray-50/50 mt-auto">
+                <p className="text-[14px] md:text-[15px] font-extrabold text-[#1a1a1a] leading-snug">{item.title}</p>
               </div>
             </div>
           ))}
