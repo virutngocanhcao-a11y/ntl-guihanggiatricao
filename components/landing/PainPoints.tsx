@@ -36,11 +36,8 @@ export default function PainPoints({
               </div>
               <div className="text-left flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 border border-gray-100 relative shrink-0">
-                     <Icon name={item.icon} className="h-5 w-5 text-[#222222]" />
-                     <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-[#fdd800] border border-white flex items-center justify-center">
-                       <Icon name="shield-check" className="h-2 w-2 text-[#222222]" />
-                     </div>
+                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fdd800]/15 text-[#d99400] shrink-0">
+                     <Icon name={item.icon} className="h-5 w-5" />
                    </div>
                    <h3 className="text-lg font-bold text-[#222222] leading-snug">{item.title}</h3>
                 </div>

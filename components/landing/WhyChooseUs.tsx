@@ -30,9 +30,6 @@ export default function WhyChooseUs({
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#fdd800]/15 border border-[#fdd800]/30 group-hover:scale-105 transition-transform">
                   <Icon name={item.icon} className="h-8 w-8 text-[#d99400]" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full bg-white flex items-center justify-center shadow-md border border-gray-200">
-                  <Icon name="shield-check" className="h-3.5 w-3.5 text-[#d99400]" />
-                </div>
               </div>
               <h3 className="font-extrabold text-[#1a1a1a] text-[15px] leading-snug">{item.title}</h3>
               <p className="mt-2 text-[13px] text-gray-600 leading-relaxed">{item.desc}</p>
