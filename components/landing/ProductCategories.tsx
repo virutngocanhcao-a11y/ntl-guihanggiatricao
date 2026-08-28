@@ -1,6 +1,21 @@
 import Image from "next/image";
 import { ProductCategory } from "@/lib/content-schema";
 
+const defaultCategoryImages = [
+  "/images/category-phone.jpg",
+  "/images/category-laptop.jpg",
+  "/images/category-chip.jpg",
+  "/images/category-machine.jpg",
+  "/images/category-bag.jpg",
+];
+
+function getValidImage(img: string | undefined, index: number) {
+  if (!img || img.endsWith(".svg")) {
+    return defaultCategoryImages[index] || defaultCategoryImages[0];
+  }
+  return img;
+}
+
 export default function ProductCategories({
   intro,
   items,
@@ -16,14 +31,14 @@ export default function ProductCategories({
         </h2>
 
         <div className="mt-8 md:mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {items.map((item) => (
+          {items.map((item, i) => (
             <div
               key={item.title}
               className="group overflow-hidden rounded-2xl bg-white border border-gray-200/80 text-center shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all hover:-translate-y-1 flex flex-col"
             >
               <div className="relative h-52 w-full p-3 bg-white flex items-center justify-center overflow-hidden">
                 <div className="relative h-full w-full">
-                  <Image src={item.image} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 250px" />
+                  <Image src={getValidImage(item.image, i)} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 250px" />
                 </div>
               </div>
               <div className="p-4 border-t border-gray-100 bg-gray-50/50 mt-auto">
