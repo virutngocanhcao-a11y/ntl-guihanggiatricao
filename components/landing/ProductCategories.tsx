@@ -9,13 +9,13 @@ export default function ProductCategories({
   items: ProductCategory[];
 }) {
   return (
-    <section className="bg-[#f8f9fa] py-16 md:py-24">
+    <section className="bg-[#f8f9fa] py-10 md:py-14 border-b border-gray-200">
       <div className="mx-auto max-w-7xl px-6">
         <h2 className="text-center text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
           {intro}
         </h2>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-8 md:mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {items.map((item) => (
             <div
               key={item.title}

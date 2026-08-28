@@ -3,7 +3,7 @@ import LeadForm from "./LeadForm";
 
 export default function ConsultationSection() {
   return (
-    <section id="dang-ky" className="relative bg-[#f8f9fa] text-[#1a1a1a] py-16 md:py-24 overflow-hidden scroll-mt-10 border-b border-gray-200">
+    <section id="dang-ky" className="relative bg-[#f8f9fa] text-[#1a1a1a] py-10 md:py-14 overflow-hidden scroll-mt-10 border-b border-gray-200">
       {/* Subtle background glow */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#fdd800]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gray-200/50 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20"></div>

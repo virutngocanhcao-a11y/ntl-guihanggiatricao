@@ -19,13 +19,13 @@ export default function PainPoints({
   bannerNote: string;
 }) {
   return (
-    <section className="bg-white py-16 md:py-24 relative z-20">
+    <section className="bg-white py-10 md:py-14 relative z-20 border-b border-gray-100">
       <div className="mx-auto max-w-7xl px-6">
         <h2 className="text-center text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
           {intro}
         </h2>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2">
+        <div className="mt-8 md:mt-10 grid gap-6 sm:grid-cols-2">
           {items.map((item, i) => (
             <div
               key={item.title}
@@ -50,8 +50,8 @@ export default function PainPoints({
           ))}
         </div>
 
-        <div className="mx-auto mt-16 flex max-w-2xl items-center justify-center gap-4 rounded-full border-2 border-[#fdd800] bg-[#fdd800]/10 px-8 py-5">
-          <Icon name="building" className="h-7 w-7 shrink-0 text-[#fdd800]" />
+        <div className="mx-auto mt-8 md:mt-10 flex max-w-2xl items-center justify-center gap-4 rounded-full border-2 border-[#fdd800] bg-[#fdd800]/10 px-8 py-4">
+          <Icon name="building" className="h-6 w-6 shrink-0 text-[#d99400]" />
           <p className="text-base font-bold text-[#222222]">{bannerNote}</p>
         </div>
       </div>

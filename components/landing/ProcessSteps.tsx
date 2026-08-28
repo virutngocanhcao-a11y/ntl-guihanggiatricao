@@ -17,7 +17,7 @@ export default function ProcessSteps({
   steps: ProcessStep[];
 }) {
   return (
-    <section className="bg-white py-16 md:py-24 text-[#1a1a1a] border-b border-gray-100" id="quy-trinh">
+    <section className="bg-white py-10 md:py-14 text-[#1a1a1a] border-b border-gray-100" id="quy-trinh">
       <div className="mx-auto max-w-7xl px-6">
         <h2 className="text-center text-3xl font-extrabold text-[#1a1a1a] md:text-4xl">
           {intro.split("giá trị cao").map((part, i, arr) => (
@@ -28,7 +28,7 @@ export default function ProcessSteps({
           ))}
         </h2>
 
-        <div className="relative mt-20">
+        <div className="relative mt-10 md:mt-12">
           {/* Timeline Line */}
           <div className="absolute top-36 left-[10%] right-[10%] h-1 bg-[#fdd800]/40 hidden lg:block" />
 
