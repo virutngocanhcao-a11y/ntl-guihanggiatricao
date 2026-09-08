@@ -18,6 +18,20 @@ const config: Config = {
       maxWidth: {
         content: "1200px",
       },
+      fontFamily: {
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"SF Pro Display"',
+          '"SF Pro Text"',
+          '"SF Pro"',
+          '"San Francisco"',
+          '"Helvetica Neue"',
+          "Helvetica",
+          "Arial",
+          "sans-serif",
+        ],
+      },
     },
   },
   plugins: [],

@@ -125,13 +125,13 @@ export default function LeadForm() {
         <input
           name="fullName"
           required
-          placeholder="Họ tên"
-          className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-[#222222] placeholder-gray-400 font-medium"
+          placeholder="Họ và tên"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-[#222222] placeholder-gray-400 font-medium"
         />
         <input
           name="company"
-          placeholder="Công ty"
-          className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-[#222222] placeholder-gray-400 font-medium"
+          placeholder="Tên công ty / Doanh nghiệp"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-[#222222] placeholder-gray-400 font-medium"
         />
         <input
           name="phone"
@@ -139,18 +139,18 @@ export default function LeadForm() {
           type="tel"
           pattern="^0[0-9]{9}$"
           title="Vui lòng nhập số điện thoại hợp lệ (10 số, bắt đầu bằng 0)"
-          placeholder="Số điện thoại"
-          className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-[#222222] placeholder-gray-400 font-medium"
+          placeholder="Số điện thoại liên hệ"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-[#222222] placeholder-gray-400 font-medium"
         />
         <div className="relative">
           <select
             name="cargoType"
             defaultValue=""
             required
-            className="w-full px-4 py-3.5 rounded-lg border border-gray-200 focus:outline-none focus:border-[#fdd800] focus:ring-1 focus:ring-[#fdd800] text-gray-500 font-medium appearance-none bg-white"
+            className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-gray-500 font-medium appearance-none"
           >
             <option value="" disabled>
-              Loại hàng hóa
+              Chọn loại hàng hóa cần gửi
             </option>
             {cargoTypes.map((type) => (
               <option key={type} value={type} className="text-[#222222]">
@@ -170,13 +170,13 @@ export default function LeadForm() {
         <button
           type="submit"
           disabled={isDisabled}
-          className="w-full mt-2 bg-[#fdd800] text-[#222222] font-bold py-4 rounded-lg hover:bg-[#ffe340] transition-colors uppercase shadow-md shadow-[#fdd800]/20 disabled:opacity-60"
+          className="w-full mt-3 bg-[#fdd800] text-[#222222] font-extrabold py-4 rounded-xl hover:bg-[#ffe340] transition-all uppercase tracking-wide shadow-md shadow-[#fdd800]/25 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:hover:translate-y-0"
         >
           {status === "submitting"
-            ? "Đang gửi..."
+            ? "Đang gửi thông tin..."
             : status === "cooldown"
             ? `Vui lòng chờ ${cooldownSeconds}s`
-            : "Nhận tư vấn →"}
+            : "Nhận tư vấn ngay →"}
         </button>
       </form>
     </div>

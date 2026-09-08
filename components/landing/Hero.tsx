@@ -42,7 +42,7 @@ export default function Hero({ content }: { content: HeroContent }) {
           {/* 3 Badges on 1 row */}
           <div className="mt-5 flex flex-wrap sm:flex-nowrap items-center justify-start gap-2.5 max-w-lg">
             {content.badges.map((badge) => (
-              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[13px] xl:text-sm font-bold text-gray-800 shadow-sm whitespace-nowrap h-9">
+              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-xl border border-gray-200/90 bg-white/90 backdrop-blur-sm px-3.5 py-2 text-[13px] font-bold text-gray-800 shadow-sm hover:border-[#fdd800] transition-all whitespace-nowrap h-10">
                 <Icon name={badge.icon} className="h-4 w-4 text-[#d99400] shrink-0" />
                 {badge.label}
               </div>
@@ -53,7 +53,7 @@ export default function Hero({ content }: { content: HeroContent }) {
           <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <a
               href="#dang-ky"
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#fdd800] px-6 py-3 text-sm font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-lg hover:scale-105"
+              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#fdd800] px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
             >
               Nhận tư vấn giải pháp
               <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,7 +62,7 @@ export default function Hero({ content }: { content: HeroContent }) {
             </a>
             <a
               href="#quy-trinh"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3.5 text-sm font-bold text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3.5 text-sm font-bold text-gray-800 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm hover:-translate-y-0.5"
             >
               Xem quy trình 5 bước &rarr;
             </a>

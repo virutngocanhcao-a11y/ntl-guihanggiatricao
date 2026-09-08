@@ -26,10 +26,10 @@ export default function ConsultationSection() {
               </p>
             </div>
 
-            {/* 3 Value Pillars */}
+            {/* 4 Value Pillars */}
             <div className="grid sm:grid-cols-2 gap-3.5">
-              <div className="flex gap-4 p-4 rounded-xl bg-white border border-gray-200/80 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#fdd800] text-[#222222]">
+              <div className="flex gap-4 p-4 rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:border-[#fdd800] hover:shadow-md transition-all hover:-translate-y-0.5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-sm shadow-[#fdd800]/20">
                   <Icon name="headset" className="h-6 w-6" />
                 </div>
                 <div>
@@ -38,8 +38,8 @@ export default function ConsultationSection() {
                 </div>
               </div>
 
-              <div className="flex gap-4 p-4 rounded-xl bg-white border border-gray-200/80 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#fdd800] text-[#222222]">
+              <div className="flex gap-4 p-4 rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:border-[#fdd800] hover:shadow-md transition-all hover:-translate-y-0.5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-sm shadow-[#fdd800]/20">
                   <Icon name="shield" className="h-6 w-6" />
                 </div>
                 <div>
@@ -48,8 +48,8 @@ export default function ConsultationSection() {
                 </div>
               </div>
 
-              <div className="flex gap-4 p-4 rounded-xl bg-white border border-gray-200/80 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#fdd800] text-[#222222]">
+              <div className="flex gap-4 p-4 rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:border-[#fdd800] hover:shadow-md transition-all hover:-translate-y-0.5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-sm shadow-[#fdd800]/20">
                   <Icon name="package" className="h-6 w-6" />
                 </div>
                 <div>
@@ -58,8 +58,8 @@ export default function ConsultationSection() {
                 </div>
               </div>
 
-              <div className="flex gap-4 p-4 rounded-xl bg-white border border-gray-200/80 shadow-sm">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#fdd800] text-[#222222]">
+              <div className="flex gap-4 p-4 rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:border-[#fdd800] hover:shadow-md transition-all hover:-translate-y-0.5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-sm shadow-[#fdd800]/20">
                   <Icon name="trophy" className="h-6 w-6" />
                 </div>
                 <div>
@@ -70,9 +70,9 @@ export default function ConsultationSection() {
             </div>
 
             {/* Hotline banner */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-white border-2 border-[#fdd800] shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-white via-[#fdd800]/5 to-[#fdd800]/15 border-2 border-[#fdd800] shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fdd800] text-[#222222]">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#fdd800] text-[#222222] shadow-sm">
                   <Icon name="phone" className="h-5 w-5" />
                 </div>
                 <div>
@@ -82,7 +82,7 @@ export default function ConsultationSection() {
               </div>
               <a 
                 href="tel:19006366888" 
-                className="w-full sm:w-auto text-center rounded-lg bg-[#fdd800] px-6 py-3 text-xs font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-lg"
+                className="w-full sm:w-auto text-center rounded-xl bg-[#fdd800] px-6 py-3 text-xs font-extrabold uppercase tracking-wide text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-lg hover:scale-105"
               >
                 Gọi Ngay →
               </a>

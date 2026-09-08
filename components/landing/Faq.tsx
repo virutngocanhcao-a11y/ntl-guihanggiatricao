@@ -28,22 +28,31 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
               {items.map((item, index) => {
                 const isOpen = openIndex === index;
                 return (
-                  <div key={item.question} className="rounded-xl border border-gray-200/90 bg-white shadow-sm hover:shadow-md hover:border-[#fdd800] transition-all">
+                  <div
+                    key={item.question}
+                    className={`rounded-2xl border bg-white transition-all overflow-hidden ${
+                      isOpen
+                        ? "border-[#fdd800] shadow-md ring-1 ring-[#fdd800]/30"
+                        : "border-gray-200/90 shadow-sm hover:shadow-md hover:border-[#fdd800]"
+                    }`}
+                  >
                     <button
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? null : index)}
-                      className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                      className="flex w-full items-center justify-between gap-4 px-6 py-4.5 sm:py-5 text-left transition-colors hover:bg-amber-50/10"
                     >
-                      <span className="flex items-center gap-4 text-base font-bold text-[#1a1a1a]">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fdd800] text-sm font-bold text-[#222222]">
+                      <span className="flex items-center gap-3.5 text-[15px] sm:text-base font-extrabold text-[#1a1a1a]">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fdd800] text-xs font-black text-[#222222]">
                           ?
                         </span>
                         {item.question}
                       </span>
-                      <span className="text-xl text-[#222222] font-semibold">{isOpen ? "−" : "+"}</span>
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100 text-sm text-[#222222] font-extrabold transition-colors">
+                        {isOpen ? "−" : "+"}
+                      </span>
                     </button>
                     {isOpen && (
-                      <div className="px-6 pb-6 pt-1 pl-[3.25rem]">
+                      <div className="px-6 pb-6 pt-1 pl-[3.25rem] border-t border-gray-100/80 bg-gray-50/30">
                         <p className="text-[15px] text-gray-600 leading-relaxed">{item.answer}</p>
                       </div>
                     )}
@@ -52,14 +61,14 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
               })}
             </div>
 
-            <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-white border border-[#fdd800]/60 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-white via-[#fdd800]/10 to-white border-2 border-[#fdd800] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <p className="text-[14px] font-extrabold text-[#1a1a1a]">Bạn có thắc mắc đặc thù cho đơn hàng của mình?</p>
-                <p className="text-xs text-gray-500 mt-0.5">Chuyên viên logistics sẽ liên hệ giải đáp và tính toán chi phí chi tiết.</p>
+                <p className="text-[15px] font-extrabold text-[#1a1a1a]">Bạn có thắc mắc đặc thù cho đơn hàng của mình?</p>
+                <p className="text-xs text-gray-500 mt-1">Chuyên viên logistics sẽ liên hệ giải đáp và tính toán chi phí chi tiết.</p>
               </div>
               <a
                 href="#dang-ky"
-                className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-[#fdd800] px-5 py-2.5 text-xs font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] shadow-sm hover:scale-105 transition-all"
+                className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-[#fdd800] px-6 py-3 text-xs font-extrabold uppercase tracking-wide text-[#222222] hover:bg-[#ffe340] shadow-md hover:shadow-lg hover:scale-105 transition-all"
               >
                 Đăng ký tư vấn ngay &rarr;
               </a>

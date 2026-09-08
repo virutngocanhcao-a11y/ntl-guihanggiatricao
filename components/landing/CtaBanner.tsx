@@ -25,7 +25,7 @@ export default function CtaBanner({ content }: { content: CtaBannerContent }) {
           </h2>
           <button
             onClick={() => window.dispatchEvent(new Event("open-lead-form"))}
-            className="whitespace-nowrap rounded-xl bg-[#1a1a1a] px-7 py-3.5 text-sm font-extrabold text-white hover:bg-[#333333] shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer text-center"
+            className="whitespace-nowrap rounded-xl bg-[#1a1a1a] px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white hover:bg-[#2c2c2c] shadow-lg hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer text-center ring-4 ring-black/10"
           >
             Đăng ký tư vấn ngay &rarr;
           </button>
