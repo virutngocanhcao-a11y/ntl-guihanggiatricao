@@ -25,23 +25,32 @@ export default function PainPoints({
           {intro}
         </h2>
 
-        <div className="mt-8 md:mt-10 grid gap-6 sm:grid-cols-2">
+        <div className="mt-8 md:mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item, i) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-gray-100 bg-white p-6 shadow-lg shadow-gray-200/50 hover:shadow-xl transition-shadow relative overflow-hidden flex flex-row items-center gap-6"
+              className="rounded-2xl border border-gray-200/80 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all group flex flex-col hover:-translate-y-1"
             >
-              <div className="w-32 h-24 rounded-xl overflow-hidden relative shrink-0">
-                <Image src={painImages[i] || painImages[0]} alt={item.title} fill className="object-cover" sizes="128px" />
+              {/* Large Feature Image on Top */}
+              <div className="relative h-48 w-full overflow-hidden bg-gray-100 shrink-0">
+                <Image
+                  src={painImages[i] || painImages[0]}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                />
               </div>
-              <div className="text-left flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fdd800]/15 text-[#d99400] shrink-0">
-                     <Icon name={item.icon} className="h-5 w-5" />
-                   </div>
-                   <h3 className="text-lg font-bold text-[#222222] leading-snug">{item.title}</h3>
+
+              {/* Card Content */}
+              <div className="p-5 flex-1 flex flex-col">
+                <div className="flex items-center gap-2.5 mb-2.5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#fdd800]/15 text-[#d99400] shrink-0">
+                    <Icon name={item.icon} className="h-4 w-4" />
+                  </div>
+                  <h3 className="text-[15px] md:text-[16px] font-extrabold text-[#1a1a1a] leading-snug">{item.title}</h3>
                 </div>
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                <p className="text-[13px] text-gray-600 leading-relaxed mt-1 flex-1">{item.desc}</p>
               </div>
             </div>
           ))}
