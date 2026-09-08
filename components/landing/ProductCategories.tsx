@@ -47,6 +47,15 @@ export default function ProductCategories({
             </div>
           ))}
         </div>
+
+        <div className="mt-6 md:mt-7 text-center">
+          <a
+            href="#dang-ky"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#fdd800] px-7 py-3 text-xs sm:text-sm font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] shadow-md hover:shadow-xl hover:scale-105 transition-all"
+          >
+            Đăng ký báo giá theo loại hàng &rarr;
+          </a>
+        </div>
       </div>
     </section>
   );

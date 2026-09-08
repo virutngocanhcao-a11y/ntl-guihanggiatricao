@@ -11,6 +11,7 @@ import Faq from "@/components/landing/Faq";
 import CtaBanner from "@/components/landing/CtaBanner";
 import Footer from "@/components/landing/Footer";
 import FormModal from "@/components/landing/FormModal";
+import FloatingCta from "@/components/landing/FloatingCta";
 
 export const revalidate = 0;
 
@@ -45,6 +46,7 @@ export default async function Home() {
       <CtaBanner content={content.ctaBanner} />
       <Footer content={content.footer} />
       <FormModal />
+      <FloatingCta />
     </>
   );
 }

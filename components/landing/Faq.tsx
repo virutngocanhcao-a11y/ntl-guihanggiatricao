@@ -51,6 +51,19 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
                 );
               })}
             </div>
+
+            <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-white border border-[#fdd800]/60 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <p className="text-[14px] font-extrabold text-[#1a1a1a]">Bạn có thắc mắc đặc thù cho đơn hàng của mình?</p>
+                <p className="text-xs text-gray-500 mt-0.5">Chuyên viên logistics sẽ liên hệ giải đáp và tính toán chi phí chi tiết.</p>
+              </div>
+              <a
+                href="#dang-ky"
+                className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-[#fdd800] px-5 py-2.5 text-xs font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] shadow-sm hover:scale-105 transition-all"
+              >
+                Đăng ký tư vấn ngay &rarr;
+              </a>
+            </div>
           </div>
         </div>
       </div>
