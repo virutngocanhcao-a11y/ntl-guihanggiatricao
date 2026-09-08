@@ -72,18 +72,28 @@ export const defaultContent: LandingContent = {
   solutionsByCategory: [
     {
       image: "/images/category-phone.jpg",
-      title: "Điện thoại / điện tử",
-      bullets: ["Đóng gói chống sốc", "Niêm phong & xác nhận", "Giao nhanh, an toàn", "Bảo hiểm theo giá trị"],
+      title: "Điện thoại & thiết bị di động",
+      bullets: [],
+    },
+    {
+      image: "/images/category-laptop.jpg",
+      title: "Laptop & thiết bị CNTT",
+      bullets: [],
     },
     {
       image: "/images/category-chip.jpg",
-      title: "Linh kiện / phụ tùng",
-      bullets: ["Quản lý theo lô, theo mã", "Kiểm soát điểm nhận", "Vận chuyển tối ưu", "Theo dõi chi tiết"],
+      title: "Linh kiện điện tử & phụ tùng",
+      bullets: [],
+    },
+    {
+      image: "/images/category-medical.jpg",
+      title: "Thiết bị y tế & thiết bị chuyên dụng",
+      bullets: [],
     },
     {
       image: "/images/category-machine.jpg",
-      title: "Thiết bị / máy móc",
-      bullets: ["Đóng gói chuyên dụng", "Xe tải phù hợp trọng tải", "Giao lắp (nếu cần)", "Bảo hiểm toàn diện"],
+      title: "Máy móc & thiết bị công nghiệp",
+      bullets: [],
     },
   ],
   faqIntro: "Câu hỏi thường gặp",

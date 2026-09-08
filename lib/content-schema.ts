@@ -38,7 +38,7 @@ export interface WhyReason {
 export interface SolutionCategory {
   image: string;
   title: string;
-  bullets: string[];
+  bullets?: string[];
 }
 
 export interface FaqItem {

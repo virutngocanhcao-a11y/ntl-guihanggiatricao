@@ -290,7 +290,7 @@ export default function AdminDashboard() {
                   <TextField label={`Tên nhóm ${i + 1}`} value={item.title} onChange={(v) => { const arr = [...content.solutionsByCategory]; arr[i] = { ...arr[i], title: v }; set("solutionsByCategory", arr); }} />
                   <ImageUploader label={`Ảnh ${i + 1}`} value={item.image} onChange={(url) => { const arr = [...content.solutionsByCategory]; arr[i] = { ...arr[i], image: url }; set("solutionsByCategory", arr); }} />
                 </div>
-                <TextAreaField label="Gạch đầu dòng (mỗi dòng 1 ý)" rows={4} value={item.bullets.join("\n")} onChange={(v) => { const arr = [...content.solutionsByCategory]; arr[i] = { ...arr[i], bullets: v.split("\n").filter(Boolean) }; set("solutionsByCategory", arr); }} />
+                <TextAreaField label="Gạch đầu dòng (không bắt buộc)" rows={3} value={(item.bullets || []).join("\n")} onChange={(v) => { const arr = [...content.solutionsByCategory]; arr[i] = { ...arr[i], bullets: v.split("\n").filter(Boolean) }; set("solutionsByCategory", arr); }} />
               </div>
             ))}
           </SectionCard>

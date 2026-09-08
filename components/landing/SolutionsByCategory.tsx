@@ -1,15 +1,32 @@
 import Image from "next/image";
 import { SolutionCategory } from "@/lib/content-schema";
 
-const defaultSolutionImages = [
-  "/images/category-phone.jpg",
-  "/images/category-chip.jpg",
-  "/images/category-machine.jpg",
+const defaultCategories = [
+  {
+    title: "Điện thoại & thiết bị di động",
+    image: "/images/category-phone.jpg",
+  },
+  {
+    title: "Laptop & thiết bị CNTT",
+    image: "/images/category-laptop.jpg",
+  },
+  {
+    title: "Linh kiện điện tử & phụ tùng",
+    image: "/images/category-chip.jpg",
+  },
+  {
+    title: "Thiết bị y tế & thiết bị chuyên dụng",
+    image: "/images/category-medical.jpg",
+  },
+  {
+    title: "Máy móc & thiết bị công nghiệp",
+    image: "/images/category-machine.jpg",
+  },
 ];
 
 function getValidSolutionImage(img: string | undefined, index: number) {
   if (!img || img.endsWith(".svg")) {
-    return defaultSolutionImages[index] || defaultSolutionImages[0];
+    return defaultCategories[index]?.image || defaultCategories[0].image;
   }
   return img;
 }
@@ -21,31 +38,48 @@ export default function SolutionsByCategory({
   intro: string;
   items: SolutionCategory[];
 }) {
+  const displayItems =
+    items && items.length >= 5
+      ? items
+      : defaultCategories.map((def, idx) => ({
+          title: items?.[idx]?.title || def.title,
+          image: items?.[idx]?.image || def.image,
+        }));
+
   return (
     <section className="bg-white py-10 md:py-14 border-b border-gray-100" id="giai-phap">
       <div className="mx-auto max-w-7xl px-6">
         <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
-          {intro}
+          {intro || "Giải pháp phù hợp cho từng nhóm hàng"}
         </h2>
+        <p className="mt-2.5 text-center text-sm md:text-[15px] text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Năng lực xử lý và vận chuyển an toàn chuyên biệt cho từng đặc thù mặt hàng giá trị cao
+        </p>
 
-        <div className="mt-8 md:mt-10 grid gap-5 lg:grid-cols-3">
-          {items.map((item, i) => (
-            <div key={item.title} className="overflow-hidden rounded-2xl bg-white border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all hover:-translate-y-1.5 flex flex-col sm:flex-row lg:flex-col xl:flex-row items-center p-3 group duration-300">
-              <div className="relative h-44 sm:h-48 w-full sm:w-1/2 lg:w-full xl:w-1/2 shrink-0 bg-gradient-to-b from-[#f8f9fa] to-white rounded-xl overflow-hidden flex items-center justify-center p-3 border border-gray-100">
+        <div className="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
+          {displayItems.map((item, i) => (
+            <div
+              key={item.title}
+              className="group overflow-hidden rounded-2xl bg-white border border-gray-200/90 text-center shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all hover:-translate-y-1.5 flex flex-col duration-300"
+            >
+              {/* Product Visual */}
+              <div className="relative h-48 sm:h-52 w-full p-3.5 bg-gradient-to-b from-gray-50/70 to-white flex items-center justify-center overflow-hidden">
                 <div className="relative h-full w-full">
-                  <Image src={getValidSolutionImage(item.image, i)} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 300px" />
+                  <Image
+                    src={getValidSolutionImage(item.image, i)}
+                    alt={item.title}
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 240px"
+                  />
                 </div>
               </div>
-              <div className="p-4 sm:p-5 lg:p-4 xl:p-5 w-full">
-                <h3 className="font-extrabold text-[#1a1a1a] text-[16px] md:text-lg group-hover:text-[#b37700] transition-colors">{item.title}</h3>
-                <ul className="mt-3 space-y-2.5 text-sm text-gray-700">
-                  {item.bullets.slice(0, 3).map((bullet) => (
-                    <li key={bullet} className="flex gap-2.5 items-start">
-                      <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#fdd800]/25 text-[#b37700] text-[11px] font-black mt-0.5">✓</span> 
-                      <span className="font-medium text-gray-700 leading-snug">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+
+              {/* Category Name Label */}
+              <div className="p-4 border-t border-gray-100 bg-white group-hover:bg-amber-50/25 mt-auto transition-colors flex items-center justify-center min-h-[64px]">
+                <p className="text-sm sm:text-[14.5px] font-extrabold text-[#1a1a1a] group-hover:text-[#b37700] transition-colors leading-snug">
+                  {item.title}
+                </p>
               </div>
             </div>
           ))}
