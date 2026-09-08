@@ -24,13 +24,13 @@ export default function ProductCategories({
   items: ProductCategory[];
 }) {
   return (
-    <section className="bg-[#f8f9fa] py-7 md:py-9 border-b border-gray-200">
+    <section className="bg-[#f8f9fa] py-10 md:py-14 border-b border-gray-200">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl font-extrabold text-[#222222] md:text-3xl lg:text-4xl max-w-3xl mx-auto">
+        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
           {intro}
         </h2>
 
-        <div className="mt-6 md:mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-8 md:mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {items.map((item, i) => (
             <div
               key={item.title}
@@ -42,13 +42,13 @@ export default function ProductCategories({
                 </div>
               </div>
               <div className="p-3.5 border-t border-gray-100 bg-gray-50/50 mt-auto">
-                <p className="text-[13.5px] md:text-[14px] font-extrabold text-[#1a1a1a] leading-snug">{item.title}</p>
+                <p className="text-sm md:text-[15px] font-extrabold text-[#1a1a1a] leading-snug">{item.title}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 md:mt-7 text-center">
+        <div className="mt-8 md:mt-10 text-center">
           <a
             href="#dang-ky"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#fdd800] px-7 py-3 text-xs sm:text-sm font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] shadow-md hover:shadow-xl hover:scale-105 transition-all"

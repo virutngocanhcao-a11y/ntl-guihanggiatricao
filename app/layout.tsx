@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { getContent } from "@/lib/get-content";
+import TrafficTracker from "@/components/TrafficTracker";
 
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getContent();
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className="bg-white text-navy-dark antialiased">{children}</body>
+      <body className="bg-white text-navy-dark antialiased">
+        <TrafficTracker />
+        {children}
+      </body>
     </html>
   );
 }

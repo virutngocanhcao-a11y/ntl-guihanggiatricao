@@ -8,9 +8,9 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#f8f9fa] py-7 md:py-9 border-b border-gray-200" id="faq">
+    <section className="bg-[#f8f9fa] py-10 md:py-14 border-b border-gray-200" id="faq">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl font-extrabold text-[#1a1a1a] md:text-3xl lg:text-4xl mb-6 md:mb-7">
+        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl mb-8 md:mb-10">
           {intro}
         </h2>
         

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function CtaBanner({ content }: { content: CtaBannerContent }) {
   return (
     <section className="bg-gradient-to-r from-[#fdd800] via-[#ffe033] to-[#ffea66] overflow-hidden shadow-inner">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 sm:gap-8 px-6 sm:flex-row sm:justify-between sm:text-left min-h-[210px] py-6 sm:py-0">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 sm:gap-8 px-6 sm:flex-row sm:justify-between sm:text-left min-h-[240px] py-6 sm:py-0">
         
         <div className="relative hidden sm:block h-52 sm:h-[210px] md:h-[230px] w-full sm:w-[320px] md:w-[400px] shrink-0 self-end">
           {/* Yellow truck image */}

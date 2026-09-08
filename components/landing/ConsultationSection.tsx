@@ -3,7 +3,7 @@ import LeadForm from "./LeadForm";
 
 export default function ConsultationSection() {
   return (
-    <section id="dang-ky" className="relative bg-[#f8f9fa] text-[#1a1a1a] py-8 md:py-10 overflow-hidden scroll-mt-10 border-b border-gray-200">
+    <section id="dang-ky" className="relative bg-[#f8f9fa] text-[#1a1a1a] py-10 md:py-14 overflow-hidden scroll-mt-10 border-b border-gray-200">
       {/* Subtle background glow */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#fdd800]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gray-200/50 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20"></div>
@@ -21,7 +21,7 @@ export default function ConsultationSection() {
               <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl lg:text-[42px] leading-tight">
                 Đăng Ký Nhận Báo Giá &amp; Tư Vấn Giải Pháp
               </h2>
-              <p className="mt-2.5 text-[14px] md:text-[15px] text-gray-600 leading-relaxed max-w-xl">
+              <p className="mt-2.5 text-sm md:text-[15px] text-gray-600 leading-relaxed max-w-xl">
                 Để lại thông tin lô hàng của bạn. Đội ngũ chuyên viên logistics cấp cao của Nhất Tín sẽ trực tiếp liên hệ khảo sát và thiết kế phương án vận chuyển tối ưu nhất.
               </p>
             </div>

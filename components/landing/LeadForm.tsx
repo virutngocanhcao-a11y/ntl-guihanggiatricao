@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const cargoTypes = [
   "Điện thoại & thiết bị di động",
@@ -10,11 +10,31 @@ const cargoTypes = [
   "Hàng thương mại giá trị cao khác",
 ];
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "error" | "cooldown";
 
 export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const formLoadedAt = useRef(Date.now());
+  const [cooldownSeconds, setCooldownSeconds] = useState(0);
+
+  // Reset form load time when status returns to idle
+  useEffect(() => {
+    if (status === "idle") {
+      formLoadedAt.current = Date.now();
+    }
+  }, [status]);
+
+  // Cooldown timer after successful submission
+  useEffect(() => {
+    if (status !== "cooldown") return;
+    if (cooldownSeconds <= 0) {
+      setStatus("idle");
+      return;
+    }
+    const timer = setTimeout(() => setCooldownSeconds((s) => s - 1), 1000);
+    return () => clearTimeout(timer);
+  }, [status, cooldownSeconds]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -22,11 +42,30 @@ export default function LeadForm() {
     setErrorMessage("");
 
     const form = e.currentTarget;
+    const honeypot = (form.elements.namedItem("website") as HTMLInputElement)?.value;
+    
+    // Client-side honeypot check
+    if (honeypot) {
+      // Fake success to not alert bots
+      setStatus("success");
+      return;
+    }
+
+    // Client-side timing check (< 3 seconds is suspicious)
+    const elapsed = Date.now() - formLoadedAt.current;
+    if (elapsed < 3000) {
+      setErrorMessage("Vui lòng kiểm tra lại thông tin trước khi gửi.");
+      setStatus("error");
+      return;
+    }
+
     const data = {
       fullName: (form.elements.namedItem("fullName") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       cargoType: (form.elements.namedItem("cargoType") as HTMLSelectElement).value,
+      _hp: honeypot || "",
+      _ts: formLoadedAt.current,
     };
 
     try {
@@ -47,6 +86,11 @@ export default function LeadForm() {
     }
   }
 
+  function handleReset() {
+    setCooldownSeconds(30);
+    setStatus("cooldown");
+  }
+
   if (status === "success") {
     return (
       <div className="rounded-2xl bg-white p-7 md:p-8 shadow-2xl text-center">
@@ -55,7 +99,7 @@ export default function LeadForm() {
           Đội ngũ Nhất Tín Logistics sẽ liên hệ tư vấn trong thời gian sớm nhất.
         </p>
         <button
-          onClick={() => setStatus("idle")}
+          onClick={handleReset}
           className="mt-6 text-sm font-bold text-[#fdd800] hover:text-[#e5c300] transition-colors"
         >
           Gửi yêu cầu khác &rarr;
@@ -64,12 +108,20 @@ export default function LeadForm() {
     );
   }
 
+  const isDisabled = status === "submitting" || status === "cooldown";
+
   return (
     <div className="bg-white rounded-2xl p-7 md:p-8 shadow-2xl">
       <h3 className="text-[#222222] text-xl md:text-2xl font-bold mb-6 leading-snug">
         Nhận tư vấn giải pháp<br />giao hàng giá trị cao
       </h3>
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Honeypot - hidden from real users */}
+        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, height: 0, overflow: "hidden" }}>
+          <label htmlFor="website">Website</label>
+          <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+        </div>
+
         <input
           name="fullName"
           required
@@ -117,10 +169,14 @@ export default function LeadForm() {
 
         <button
           type="submit"
-          disabled={status === "submitting"}
+          disabled={isDisabled}
           className="w-full mt-2 bg-[#fdd800] text-[#222222] font-bold py-4 rounded-lg hover:bg-[#ffe340] transition-colors uppercase shadow-md shadow-[#fdd800]/20 disabled:opacity-60"
         >
-          {status === "submitting" ? "Đang gửi..." : "Nhận tư vấn →"}
+          {status === "submitting"
+            ? "Đang gửi..."
+            : status === "cooldown"
+            ? `Vui lòng chờ ${cooldownSeconds}s`
+            : "Nhận tư vấn →"}
         </button>
       </form>
     </div>

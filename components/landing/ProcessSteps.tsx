@@ -17,9 +17,9 @@ export default function ProcessSteps({
   steps: ProcessStep[];
 }) {
   return (
-    <section className="bg-white py-7 md:py-9 text-[#1a1a1a] border-b border-gray-100" id="quy-trinh">
+    <section className="bg-white py-10 md:py-14 text-[#1a1a1a] border-b border-gray-100" id="quy-trinh">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl font-extrabold text-[#1a1a1a] md:text-3xl lg:text-4xl">
+        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl">
           {intro.split("giá trị cao").map((part, i, arr) => (
             <span key={i}>
               {part}
@@ -28,7 +28,7 @@ export default function ProcessSteps({
           ))}
         </h2>
 
-        <div className="relative mt-7 md:mt-8">
+        <div className="relative mt-8 md:mt-10">
           {/* Timeline Line */}
           <div className="absolute top-28 left-[10%] right-[10%] h-1 bg-[#fdd800]/40 hidden lg:block" />
 
@@ -41,17 +41,17 @@ export default function ProcessSteps({
                 <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#fdd800] text-base font-extrabold text-[#222222] shadow-md group-hover:bg-[#ffe340] transition-colors">
                   {step.number}
                 </div>
-                <h3 className="mt-3 text-[15px] font-bold text-[#1a1a1a] px-1 leading-snug h-10 flex items-center justify-center">
+                <h3 className="mt-3 text-base font-bold text-[#1a1a1a] px-1 leading-snug h-10 flex items-center justify-center">
                   {step.title}
                 </h3>
-                <p className="mt-1.5 text-[12.5px] md:text-[13px] text-gray-600 leading-relaxed px-1">
+                <p className="mt-1.5 text-[13px] md:text-sm text-gray-600 leading-relaxed px-1">
                   {step.desc}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-7 md:mt-8 text-center">
+          <div className="mt-8 md:mt-10 text-center">
             <a
               href="#dang-ky"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#fdd800] px-7 py-3 text-xs sm:text-sm font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] shadow-md hover:shadow-xl hover:scale-105 transition-all"

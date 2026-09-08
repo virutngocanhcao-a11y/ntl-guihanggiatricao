@@ -42,7 +42,7 @@ export default function Hero({ content }: { content: HeroContent }) {
           {/* 3 Badges on 1 row */}
           <div className="mt-5 flex flex-wrap sm:flex-nowrap items-center justify-start gap-2.5 max-w-lg">
             {content.badges.map((badge) => (
-              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[12px] xl:text-[13px] font-bold text-gray-800 shadow-sm whitespace-nowrap h-9">
+              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[13px] xl:text-sm font-bold text-gray-800 shadow-sm whitespace-nowrap h-9">
                 <Icon name={badge.icon} className="h-4 w-4 text-[#d99400] shrink-0" />
                 {badge.label}
               </div>
