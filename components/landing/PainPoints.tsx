@@ -21,7 +21,7 @@ export default function PainPoints({
   return (
     <section className="bg-white py-10 md:py-14 relative z-20 border-b border-gray-100">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
+        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
           {intro}
         </h2>
 
@@ -56,14 +56,14 @@ export default function PainPoints({
           ))}
         </div>
 
-        <div className="mx-auto mt-8 md:mt-10 max-w-3xl rounded-2xl bg-gradient-to-r from-white via-amber-50/20 to-[#fdd800]/15 border-2 border-[#fdd800] p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-sm">
+        <div className="mx-auto mt-8 md:mt-10 max-w-4xl lg:max-w-5xl rounded-2xl bg-gradient-to-r from-white via-amber-50/20 to-[#fdd800]/15 border-2 border-[#fdd800] p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-sm">
           <div className="flex items-center gap-4 text-center sm:text-left">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-md shadow-[#fdd800]/25">
               <Icon name="shield" className="h-6 w-6" />
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-[#b37700]">Cam kết dịch vụ</p>
-              <p className="text-base md:text-lg font-extrabold text-[#1a1a1a] mt-0.5">
+              <p className="text-base md:text-lg font-extrabold text-[#1a1a1a] mt-0.5 sm:whitespace-nowrap">
                 {bannerNote}
               </p>
             </div>

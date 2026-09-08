@@ -26,7 +26,7 @@ export default function ProductCategories({
   return (
     <section className="bg-[#f8f9fa] py-10 md:py-14 border-b border-gray-200">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
+        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
           {intro}
         </h2>
 

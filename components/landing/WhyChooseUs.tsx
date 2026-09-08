@@ -14,7 +14,7 @@ export default function WhyChooseUs({
   return (
     <section className="bg-[#f8f9fa] text-[#1a1a1a] py-10 md:py-14 relative z-20 overflow-hidden border-b border-gray-200">
       <div className="mx-auto max-w-7xl px-6 relative z-10">
-        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl max-w-3xl mx-auto leading-snug">
+        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
           {intro.split("chọn").map((part, i, arr) => (
             <span key={i}>
               {part}
