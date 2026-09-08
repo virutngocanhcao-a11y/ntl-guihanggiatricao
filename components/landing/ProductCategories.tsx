@@ -24,25 +24,25 @@ export default function ProductCategories({
   items: ProductCategory[];
 }) {
   return (
-    <section className="bg-[#f8f9fa] py-10 md:py-14 border-b border-gray-200">
+    <section className="bg-[#f8f9fa] py-7 md:py-9 border-b border-gray-200">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-3xl font-extrabold text-[#222222] md:text-4xl max-w-3xl mx-auto">
+        <h2 className="text-center text-2xl font-extrabold text-[#222222] md:text-3xl lg:text-4xl max-w-3xl mx-auto">
           {intro}
         </h2>
 
-        <div className="mt-8 md:mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-6 md:mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {items.map((item, i) => (
             <div
               key={item.title}
               className="group overflow-hidden rounded-2xl bg-white border border-gray-200/80 text-center shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all hover:-translate-y-1 flex flex-col"
             >
-              <div className="relative h-52 w-full p-3 bg-white flex items-center justify-center overflow-hidden">
+              <div className="relative h-44 sm:h-48 w-full p-2.5 bg-white flex items-center justify-center overflow-hidden">
                 <div className="relative h-full w-full">
                   <Image src={getValidImage(item.image, i)} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 250px" />
                 </div>
               </div>
-              <div className="p-4 border-t border-gray-100 bg-gray-50/50 mt-auto">
-                <p className="text-[14px] md:text-[15px] font-extrabold text-[#1a1a1a] leading-snug">{item.title}</p>
+              <div className="p-3.5 border-t border-gray-100 bg-gray-50/50 mt-auto">
+                <p className="text-[13.5px] md:text-[14px] font-extrabold text-[#1a1a1a] leading-snug">{item.title}</p>
               </div>
             </div>
           ))}

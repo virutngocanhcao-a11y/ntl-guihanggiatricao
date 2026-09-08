@@ -8,23 +8,23 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#f8f9fa] py-10 md:py-14 border-b border-gray-200" id="faq">
+    <section className="bg-[#f8f9fa] py-7 md:py-9 border-b border-gray-200" id="faq">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-3xl font-extrabold text-[#1a1a1a] md:text-4xl mb-8 md:mb-10">
+        <h2 className="text-center text-2xl font-extrabold text-[#1a1a1a] md:text-3xl lg:text-4xl mb-6 md:mb-7">
           {intro}
         </h2>
         
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
-          <div className="lg:w-[40%] hidden lg:block w-full">
-            <div className="sticky top-24">
-              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+          <div className="lg:w-[38%] hidden lg:block w-full">
+            <div className="sticky top-20">
+              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-gray-200">
                 <Image src="/images/faq-illustration.jpg" alt="Tư vấn viên" fill className="object-cover" sizes="400px" />
               </div>
             </div>
           </div>
           
-          <div className="lg:w-[60%] w-full">
-            <div className="space-y-4">
+          <div className="lg:w-[62%] w-full">
+            <div className="space-y-3">
               {items.map((item, index) => {
                 const isOpen = openIndex === index;
                 return (

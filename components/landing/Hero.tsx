@@ -4,7 +4,7 @@ import { HeroContent } from "@/lib/content-schema";
 
 export default function Hero({ content }: { content: HeroContent }) {
   return (
-    <section className="relative bg-white text-[#1a1a1a] overflow-hidden min-h-[480px] lg:h-[540px] xl:h-[580px] flex items-center pt-24 lg:pt-0 border-b border-gray-200">
+    <section className="relative bg-white text-[#1a1a1a] overflow-hidden min-h-[420px] lg:h-[470px] xl:h-[500px] flex items-center pt-20 lg:pt-0 border-b border-gray-200">
       
       {/* Background Graphic & Visual - White theme */}
       <div className="absolute inset-0 z-0 flex justify-end pointer-events-none">
@@ -25,24 +25,24 @@ export default function Hero({ content }: { content: HeroContent }) {
       {/* Very faint decorative grid on the left */}
       <div className="absolute inset-y-0 left-0 w-1/3 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_right,white,transparent)]"></div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-6 py-8 lg:py-0">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-6 py-6 lg:py-0">
         
         {/* LEFT: TEXT & ACTION */}
         <div className="w-full lg:w-[52%] xl:w-[48%] shrink-0">
-          <h1 className="text-3xl font-extrabold leading-[1.1] md:text-4xl lg:text-[46px] xl:text-[52px] uppercase tracking-tight text-[#1a1a1a]">
+          <h1 className="text-3xl font-extrabold leading-[1.1] md:text-4xl lg:text-[44px] xl:text-[48px] uppercase tracking-tight text-[#1a1a1a]">
             <span className="block">{content.titleLine1}</span>
             <span className="text-[#d99400] block mt-0.5 mb-0.5">{content.titleLine2}</span>
             <span className="block whitespace-nowrap">{content.titleLine3}</span>
           </h1>
           
-          <p className="mt-4 max-w-[460px] text-gray-600 text-[15px] md:text-[16px] leading-relaxed">
+          <p className="mt-3.5 max-w-[460px] text-gray-600 text-[14px] md:text-[15px] leading-relaxed">
             {content.subtitle}
           </p>
 
           {/* 3 Badges on 1 row */}
-          <div className="mt-6 flex flex-wrap sm:flex-nowrap items-center justify-start gap-2.5 max-w-lg">
+          <div className="mt-5 flex flex-wrap sm:flex-nowrap items-center justify-start gap-2.5 max-w-lg">
             {content.badges.map((badge) => (
-              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-2 text-[12px] xl:text-[13px] font-bold text-gray-800 shadow-sm whitespace-nowrap h-10">
+              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 text-[12px] xl:text-[13px] font-bold text-gray-800 shadow-sm whitespace-nowrap h-9">
                 <Icon name={badge.icon} className="h-4 w-4 text-[#d99400] shrink-0" />
                 {badge.label}
               </div>
@@ -50,10 +50,10 @@ export default function Hero({ content }: { content: HeroContent }) {
           </div>
 
           {/* CTA Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+          <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <a
               href="#dang-ky"
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#fdd800] px-7 py-3.5 text-sm font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] transition-all shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#fdd800] px-6 py-3 text-sm font-extrabold uppercase text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-lg hover:scale-105"
             >
               Nhận tư vấn giải pháp
               <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
