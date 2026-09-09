@@ -69,24 +69,24 @@ export default function ConsultationSection() {
               </div>
             </div>
 
-            {/* Hotline banner */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-white via-[#fdd800]/5 to-[#fdd800]/15 border-2 border-[#fdd800] shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#fdd800] text-[#222222] shadow-sm">
+            {/* Hotline banner - Sleek, lightweight, premium bar */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-5 py-3.5 rounded-xl bg-white border border-gray-200/90 shadow-sm hover:border-[#fdd800] transition-colors">
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#fdd800]/20 text-[#222222] shrink-0">
                   <Icon name="phone" className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-gray-500">Cần tư vấn trực tiếp ngay bây giờ?</p>
-                  <p className="text-lg font-extrabold text-[#222222]">
-                    Hotline: <span className="bg-[#fdd800] text-[#222222] px-2 py-0.5 rounded-lg font-black ml-1">1900 63 6688</span> <span className="text-sm font-bold text-gray-600 ml-1">(phím 2)</span>
+                  <p className="text-xs font-medium text-gray-500">Cần tư vấn trực tiếp ngay bây giờ?</p>
+                  <p className="text-[15px] sm:text-base font-bold text-[#222222]">
+                    Hotline: <span className="font-extrabold text-[#222222] tracking-tight">1900 63 6688</span> <span className="text-xs font-semibold text-gray-500">(phím 2)</span>
                   </p>
                 </div>
               </div>
               <a 
                 href="tel:1900636688" 
-                className="w-full sm:w-auto text-center rounded-xl bg-[#fdd800] px-6 py-3 text-xs font-extrabold uppercase tracking-wide text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-lg hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-[#fdd800] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#222222] hover:bg-[#ffe340] transition-all shadow-sm active:scale-95 shrink-0"
               >
-                Gọi Ngay →
+                Gọi ngay &rarr;
               </a>
             </div>
           </div>
