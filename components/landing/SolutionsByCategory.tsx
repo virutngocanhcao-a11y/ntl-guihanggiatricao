@@ -76,8 +76,8 @@ export default function SolutionsByCategory({
               </div>
 
               {/* Category Name Label */}
-              <div className="p-4 border-t border-gray-100 bg-white group-hover:bg-amber-50/25 mt-auto transition-colors flex items-center justify-center min-h-[64px]">
-                <p className="text-sm sm:text-[14.5px] font-extrabold text-[#1a1a1a] group-hover:text-[#b37700] transition-colors leading-snug">
+              <div className="p-4 border-t border-gray-100 bg-white group-hover:bg-[#fdd800]/10 mt-auto transition-colors flex items-center justify-center min-h-[64px]">
+                <p className="text-sm sm:text-[14.5px] font-extrabold text-[#222222] transition-colors leading-snug">
                   {item.title}
                 </p>
               </div>

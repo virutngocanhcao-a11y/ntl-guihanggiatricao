@@ -40,16 +40,16 @@ export default function ProcessSteps({
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 relative z-10">
             {steps.map((step, i) => (
               <div key={step.number} className="text-center group flex flex-col items-center">
-                <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#fdd800] mx-auto mb-3 shadow-md group-hover:scale-110 group-hover:border-[#d99400] transition-all duration-300 ring-4 ring-[#fdd800]/15">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#fdd800] mx-auto mb-3 shadow-md group-hover:scale-110 transition-all duration-300 ring-4 ring-[#fdd800]/20">
                   <Image src={stepImages[i] || stepImages[0]} alt={step.title} fill className="object-cover" sizes="80px" />
                 </div>
                 <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#fdd800] text-base font-extrabold text-[#222222] shadow-md group-hover:bg-[#ffe340] group-hover:scale-110 transition-all duration-300 ring-2 ring-white">
                   {step.number}
                 </div>
-                <h3 className="mt-3 text-base font-extrabold text-[#1a1a1a] px-1 leading-snug h-12 flex items-center justify-center">
+                <h3 className="mt-3 text-base font-extrabold text-[#222222] px-1 leading-snug h-12 flex items-center justify-center">
                   {step.title}
                 </h3>
-                <p className="mt-1 text-[13px] md:text-sm text-gray-600 leading-relaxed px-1 max-w-xs">
+                <p className="mt-2 text-[13px] md:text-sm text-gray-600 leading-relaxed px-1 max-w-xs">
                   {step.desc}
                 </p>
               </div>

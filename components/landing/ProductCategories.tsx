@@ -41,8 +41,8 @@ export default function ProductCategories({
                   <Image src={getValidImage(item.image, i)} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, 250px" />
                 </div>
               </div>
-              <div className="p-4 border-t border-gray-100 bg-white group-hover:bg-amber-50/20 mt-auto transition-colors">
-                <p className="text-sm md:text-[15px] font-extrabold text-[#1a1a1a] group-hover:text-[#b37700] transition-colors leading-snug">{item.title}</p>
+              <div className="p-4 border-t border-gray-100 bg-white group-hover:bg-[#fdd800]/10 mt-auto transition-colors">
+                <p className="text-sm md:text-[15px] font-extrabold text-[#222222] transition-colors leading-snug">{item.title}</p>
               </div>
             </div>
           ))}

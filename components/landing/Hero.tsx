@@ -29,21 +29,25 @@ export default function Hero({ content }: { content: HeroContent }) {
         
         {/* LEFT: TEXT & ACTION */}
         <div className="w-full lg:w-[52%] xl:w-[48%] shrink-0">
-          <h1 className="text-3xl font-extrabold leading-[1.1] md:text-4xl lg:text-[44px] xl:text-[48px] uppercase tracking-tight text-[#1a1a1a]">
-            <span className="block">{content.titleLine1}</span>
-            <span className="text-[#d99400] block mt-0.5 mb-0.5">{content.titleLine2}</span>
-            <span className="block whitespace-nowrap">{content.titleLine3}</span>
+          <h1 className="text-3xl font-extrabold md:text-4xl lg:text-[42px] xl:text-[46px] uppercase text-[#222222] flex flex-col gap-2 sm:gap-2.5">
+            <span className="block leading-tight">{content.titleLine1}</span>
+            <span className="inline-block self-start bg-[#fdd800] text-[#222222] px-3.5 py-1 rounded-xl leading-tight shadow-sm font-black">
+              {content.titleLine2}
+            </span>
+            <span className="block leading-tight whitespace-nowrap">{content.titleLine3}</span>
           </h1>
           
-          <p className="mt-3.5 max-w-[460px] text-gray-600 text-[14px] md:text-[15px] leading-relaxed">
+          <p className="mt-4 max-w-[480px] text-gray-600 text-sm md:text-base leading-relaxed">
             {content.subtitle}
           </p>
 
           {/* 3 Badges on 1 row */}
-          <div className="mt-5 flex flex-wrap sm:flex-nowrap items-center justify-start gap-2.5 max-w-lg">
+          <div className="mt-6 flex flex-wrap sm:flex-nowrap items-center justify-start gap-2.5 max-w-lg">
             {content.badges.map((badge) => (
-              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2 rounded-xl border border-gray-200/90 bg-white/90 backdrop-blur-sm px-3.5 py-2 text-[13px] font-bold text-gray-800 shadow-sm hover:border-[#fdd800] transition-all whitespace-nowrap h-10">
-                <Icon name={badge.icon} className="h-4 w-4 text-[#d99400] shrink-0" />
+              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2.5 rounded-xl border border-gray-200/90 bg-white/90 backdrop-blur-sm px-3.5 py-2 text-[13px] font-bold text-[#222222] shadow-sm hover:border-[#fdd800] transition-all whitespace-nowrap h-11">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#fdd800] text-[#222222] shrink-0">
+                  <Icon name={badge.icon} className="h-3 w-3" />
+                </span>
                 {badge.label}
               </div>
             ))}

@@ -39,9 +39,9 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
                     <button
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? null : index)}
-                      className="flex w-full items-center justify-between gap-4 px-6 py-4.5 sm:py-5 text-left transition-colors hover:bg-amber-50/10"
+                      className="flex w-full items-center justify-between gap-4 px-6 py-4.5 sm:py-5 text-left transition-colors hover:bg-[#fdd800]/5"
                     >
-                      <span className="flex items-center gap-3.5 text-[15px] sm:text-base font-extrabold text-[#1a1a1a]">
+                      <span className="flex items-center gap-3.5 text-[15px] sm:text-base font-extrabold text-[#222222]">
                         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fdd800] text-xs font-black text-[#222222]">
                           ?
                         </span>

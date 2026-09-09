@@ -14,14 +14,14 @@ export default function ConsultationSection() {
           {/* Left Column: Value Prop & Trust */}
           <div className="lg:col-span-7 space-y-5">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#d99400]/30 bg-[#fdd800]/15 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#b37700]">
-                <Icon name="shield-check" className="h-3.5 w-3.5 text-[#b37700]" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#fdd800] bg-[#fdd800]/20 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-[#222222]">
+                <Icon name="shield-check" className="h-3.5 w-3.5 text-[#222222]" />
                 Giải pháp B2B Chuyên Biệt
               </div>
-              <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl lg:text-[42px] leading-tight">
+              <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl lg:text-[40px] leading-tight">
                 Đăng Ký Nhận Báo Giá &amp; Tư Vấn Giải Pháp
               </h2>
-              <p className="mt-2.5 text-sm md:text-[15px] text-gray-600 leading-relaxed max-w-xl">
+              <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed max-w-xl">
                 Để lại thông tin lô hàng của bạn. Đội ngũ chuyên viên logistics cấp cao của Nhất Tín sẽ trực tiếp liên hệ khảo sát và thiết kế phương án vận chuyển tối ưu nhất.
               </p>
             </div>
@@ -33,8 +33,8 @@ export default function ConsultationSection() {
                   <Icon name="headset" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#1a1a1a]">Phản Hồi Trong 15 Phút</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-normal">Tư vấn viên liên hệ hỗ trợ nhanh và chuẩn xác.</p>
+                  <h3 className="text-base font-bold text-[#222222] leading-snug">Phản Hồi Trong 15 Phút</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Tư vấn viên liên hệ hỗ trợ nhanh và chuẩn xác.</p>
                 </div>
               </div>
 
@@ -43,8 +43,8 @@ export default function ConsultationSection() {
                   <Icon name="shield" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#1a1a1a]">Bảo Mật &amp; Cam Kết</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-normal">Bảo mật thông tin đơn hàng và giá trị tài sản 100%.</p>
+                  <h3 className="text-base font-bold text-[#222222] leading-snug">Bảo Mật &amp; Cam Kết</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Bảo mật thông tin đơn hàng và giá trị tài sản 100%.</p>
                 </div>
               </div>
 
@@ -53,8 +53,8 @@ export default function ConsultationSection() {
                   <Icon name="package" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#1a1a1a]">Lộ Trình Ưu Tiên</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-normal">Xếp lịch xe và phân luồng an ninh cao nhất.</p>
+                  <h3 className="text-base font-bold text-[#222222] leading-snug">Lộ Trình Ưu Tiên</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Xếp lịch xe và phân luồng an ninh cao nhất.</p>
                 </div>
               </div>
 
@@ -63,8 +63,8 @@ export default function ConsultationSection() {
                   <Icon name="trophy" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#1a1a1a]">Chính Sách Linh Hoạt</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-normal">Chiết khấu và hợp đồng linh hoạt cho doanh nghiệp.</p>
+                  <h3 className="text-base font-bold text-[#222222] leading-snug">Chính Sách Linh Hoạt</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Chiết khấu và hợp đồng linh hoạt cho doanh nghiệp.</p>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function ConsultationSection() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-gray-500">Cần tư vấn trực tiếp ngay bây giờ?</p>
-                  <p className="text-lg font-extrabold text-[#1a1a1a]">Hotline: <span className="text-[#d99400]">1900 63 6688</span></p>
+                  <p className="text-lg font-extrabold text-[#222222]">Hotline: <span className="bg-[#fdd800] text-[#222222] px-2 py-0.5 rounded-lg font-black ml-1">1900 63 6688</span></p>
                 </div>
               </div>
               <a 

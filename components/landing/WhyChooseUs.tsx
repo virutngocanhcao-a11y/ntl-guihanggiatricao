@@ -32,23 +32,25 @@ export default function WhyChooseUs({
           {items.map((item) => (
             <div key={item.title} className="rounded-2xl border border-gray-200/90 bg-white p-6 text-center shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all hover:-translate-y-1.5 flex flex-col items-center group duration-300">
               <div className="relative mb-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fdd800]/15 border border-[#fdd800]/30 group-hover:scale-110 group-hover:bg-[#fdd800]/25 transition-all duration-300">
-                  <Icon name={item.icon} className="h-7 w-7 text-[#d99400]" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fdd800] text-[#222222] shadow-sm shadow-[#fdd800]/20 group-hover:scale-110 transition-all duration-300">
+                  <Icon name={item.icon} className="h-7 w-7 text-[#222222]" />
                 </div>
               </div>
-              <h3 className="font-extrabold text-[#1a1a1a] text-[15px] md:text-base leading-snug group-hover:text-[#b37700] transition-colors">{item.title}</h3>
+              <h3 className="font-extrabold text-[#222222] text-[15px] md:text-base leading-snug transition-colors">{item.title}</h3>
               <p className="mt-2 text-[13px] md:text-sm text-gray-600 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
 
-        <div className="mx-auto mt-8 md:mt-10 max-w-2xl rounded-full border-2 border-[#fdd800] bg-gradient-to-r from-white via-amber-50/20 to-white px-8 py-4 flex items-center justify-center gap-5 shadow-sm relative">
-          <span className="text-[#d99400] text-3xl leading-none font-serif absolute left-6 top-1.5">&ldquo;</span>
-          <p className="text-base font-extrabold text-[#1a1a1a] z-10 pl-5">
+        <div className="mx-auto mt-8 md:mt-10 max-w-2xl rounded-full border-2 border-[#fdd800] bg-gradient-to-r from-white via-[#fdd800]/5 to-white px-8 py-4 flex items-center justify-center gap-5 shadow-sm relative">
+          <span className="text-[#fdd800] text-4xl leading-none font-serif absolute left-6 top-1">&ldquo;</span>
+          <p className="text-base font-extrabold text-[#222222] z-10 pl-5">
             {quote}
           </p>
           <div className="flex items-center ml-1">
-             <Icon name="box" className="h-7 w-7 text-[#d99400]" />
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#fdd800] text-[#222222] shadow-sm">
+              <Icon name="box" className="h-5 w-5 text-[#222222]" />
+            </span>
           </div>
         </div>
 
