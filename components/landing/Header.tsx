@@ -18,18 +18,18 @@ export default function Header({ global }: { global?: GlobalSettings }) {
             </span>
           )}
         </a>
-        <nav className="hidden gap-8 text-[14px] font-medium text-[#333333] md:flex">
-          <a href="#giai-phap" className="transition-colors hover:text-[#b37700]">Giải pháp</a>
-          <a href="#quy-trinh" className="transition-colors hover:text-[#b37700]">Quy trình</a>
-          <a href="#faq" className="transition-colors hover:text-[#b37700]">FAQ</a>
-          <a href="#lien-he" className="transition-colors hover:text-[#b37700]">Liên hệ</a>
+        <nav className="hidden gap-8 text-[13px] font-bold text-[#333333] md:flex uppercase tracking-wider">
+          <a href="#giai-phap" className="hover:text-[#e5a000] transition-colors">Giải pháp</a>
+          <a href="#quy-trinh" className="hover:text-[#e5a000] transition-colors">Quy trình</a>
+          <a href="#faq" className="hover:text-[#e5a000] transition-colors">FAQ</a>
+          <a href="#lien-he" className="hover:text-[#e5a000] transition-colors">Liên hệ</a>
         </nav>
         <div className="flex items-center gap-4">
           <a
             href="#dang-ky"
-            className="rounded-lg bg-[#fdd800] px-5 py-2.5 text-[13.5px] font-semibold text-[#1a1a1a] transition-colors hover:bg-[#ffe340]"
+            className="rounded-lg bg-[#fdd800] px-5 py-2.5 text-[13px] font-bold text-[#222222] hover:bg-[#ffe340] transition-colors uppercase shadow-sm"
           >
-            Đăng ký tư vấn &rarr;
+            Đăng ký tư vấn ngay &rarr;
           </a>
           <button
             className="md:hidden text-[#1a1a1a] focus:outline-none"

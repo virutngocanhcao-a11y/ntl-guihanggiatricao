@@ -18,14 +18,14 @@ export default function CtaBanner({ content }: { content: CtaBannerContent }) {
         </div>
 
         <div className="flex-1 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-7 sm:py-8 self-center w-full">
-          <h2 className="text-center text-[22px] font-bold leading-[1.35] tracking-[-0.01em] text-[#1a1a1a] sm:text-left sm:text-[26px] md:text-[30px]">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-[#1a1a1a] md:text-3xl text-center sm:text-left tracking-tight">
             {content.titleLine1}
             <br />
-            <span className="font-extrabold">{content.titleLine2}</span>
+            <span className="text-[#222222] font-black">{content.titleLine2}</span>
           </h2>
           <button
             onClick={() => window.dispatchEvent(new Event("open-lead-form"))}
-            className="cursor-pointer whitespace-nowrap rounded-lg bg-[#1a1a1a] px-8 py-4 text-center text-[14px] font-bold text-white shadow-sm transition-colors hover:bg-[#333333]"
+            className="whitespace-nowrap rounded-xl bg-[#1a1a1a] px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white hover:bg-[#2c2c2c] shadow-lg hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer text-center ring-4 ring-black/10"
           >
             Đăng ký tư vấn ngay &rarr;
           </button>
