@@ -120,8 +120,8 @@ export const defaultContent: LandingContent = {
     },
   ],
   ctaBanner: {
-    titleLine1: "Giá trị được trao đi.",
-    titleLine2: "Chữ Tín được giữ lại.",
+    titleLine1: "HƠN CẢ MỘT DỊCH VỤ",
+    titleLine2: "",
   },
   footer: {
     companyName: "Nhất Tín Logistics",
