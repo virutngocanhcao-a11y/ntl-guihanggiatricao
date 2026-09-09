@@ -77,11 +77,13 @@ export default function ConsultationSection() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-gray-500">Cần tư vấn trực tiếp ngay bây giờ?</p>
-                  <p className="text-lg font-extrabold text-[#222222]">Hotline: <span className="bg-[#fdd800] text-[#222222] px-2 py-0.5 rounded-lg font-black ml-1">1900 63 6688</span></p>
+                  <p className="text-lg font-extrabold text-[#222222]">
+                    Hotline: <span className="bg-[#fdd800] text-[#222222] px-2 py-0.5 rounded-lg font-black ml-1">1900 63 6688</span> <span className="text-sm font-bold text-gray-600 ml-1">(phím 2)</span>
+                  </p>
                 </div>
               </div>
               <a 
-                href="tel:19006366888" 
+                href="tel:1900636688" 
                 className="w-full sm:w-auto text-center rounded-xl bg-[#fdd800] px-6 py-3 text-xs font-extrabold uppercase tracking-wide text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-lg hover:scale-105"
               >
                 Gọi Ngay →

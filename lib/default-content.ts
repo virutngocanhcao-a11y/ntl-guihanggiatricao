@@ -126,7 +126,7 @@ export const defaultContent: LandingContent = {
   footer: {
     companyName: "Nhất Tín Logistics",
     tagline: "Hơn cả một dịch vụ",
-    hotline: "1900 63 6688",
+    hotline: "1900 63 6688 (phím 2)",
     website: "www.ntlogistics.vn",
     email: "cskh@ntlogistics.vn",
   },

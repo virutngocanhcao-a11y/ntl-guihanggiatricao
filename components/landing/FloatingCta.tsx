@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Icon from "@/components/Icon";
@@ -28,12 +28,12 @@ export default function FloatingCta() {
       <a
         href="tel:19006366888"
         className="hidden sm:flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-sm border border-gray-200 px-4 py-3 text-xs font-bold text-[#1a1a1a] shadow-lg hover:shadow-xl hover:border-[#fdd800] transition-all"
-        title="Gọi hotline 1900 63 6688"
+        title="Gọi hotline 1900 63 6688 (phím 2)"
       >
         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#fdd800] text-[#222222]">
           <Icon name="phone" className="h-3 w-3" />
         </span>
-        <span>1900 63 6688</span>
+        <span>1900 63 6688 <span className="font-semibold text-gray-500">(phím 2)</span></span>
       </a>
 
       {/* Main Floating Form CTA */}
