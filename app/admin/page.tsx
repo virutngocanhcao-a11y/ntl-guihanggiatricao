@@ -297,6 +297,11 @@ export default function AdminDashboard() {
 
           <SectionCard title="Câu hỏi thường gặp">
             <TextField label="Tiêu đề section" value={content.faqIntro} onChange={(v) => set("faqIntro", v)} />
+            <ImageUploader
+              label="Ảnh minh họa tư vấn viên FAQ"
+              value={content.faqImage || "/images/faq-illustration.jpg"}
+              onChange={(url) => set("faqImage", url)}
+            />
             {content.faq.map((item, i) => (
               <div key={i} className="space-y-3 rounded-lg border border-gray-100 p-3">
                 <TextField label={`Câu hỏi ${i + 1}`} value={item.question} onChange={(v) => { const arr = [...content.faq]; arr[i] = { ...arr[i], question: v }; set("faq", arr); }} />
@@ -306,8 +311,13 @@ export default function AdminDashboard() {
           </SectionCard>
 
           <SectionCard title="CTA cuối trang">
-            <TextField label="Dòng 1" value={content.ctaBanner.titleLine1} onChange={(v) => set("ctaBanner", { ...content.ctaBanner, titleLine1: v })} />
-            <TextField label="Dòng 2 (màu vàng)" value={content.ctaBanner.titleLine2} onChange={(v) => set("ctaBanner", { ...content.ctaBanner, titleLine2: v })} />
+            <TextField label="Slogan / Dòng 1" value={content.ctaBanner.titleLine1} onChange={(v) => set("ctaBanner", { ...content.ctaBanner, titleLine1: v })} />
+            <TextField label="Dòng 2 (không bắt buộc)" value={content.ctaBanner.titleLine2} onChange={(v) => set("ctaBanner", { ...content.ctaBanner, titleLine2: v })} />
+            <ImageUploader
+              label="Ảnh xe tải / visual CTA banner"
+              value={content.ctaBanner.image || "/images/cta-truck.jpg"}
+              onChange={(url) => set("ctaBanner", { ...content.ctaBanner, image: url })}
+            />
           </SectionCard>
 
           <SectionCard title="Footer">

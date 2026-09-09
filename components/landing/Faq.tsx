@@ -4,7 +4,15 @@ import { useState } from "react";
 import Image from "next/image";
 import { FaqItem } from "@/lib/content-schema";
 
-export default function Faq({ intro, items }: { intro: string; items: FaqItem[] }) {
+export default function Faq({
+  intro,
+  items,
+  image,
+}: {
+  intro: string;
+  items: FaqItem[];
+  image?: string;
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -18,7 +26,13 @@ export default function Faq({ intro, items }: { intro: string; items: FaqItem[] 
           <div className="lg:w-[38%] hidden lg:block w-full">
             <div className="sticky top-20">
               <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-                <Image src="/images/faq-illustration.jpg" alt="Tư vấn viên" fill className="object-cover" sizes="400px" />
+                <Image
+                  src={image || "/images/faq-illustration.jpg"}
+                  alt="Tư vấn viên"
+                  fill
+                  className="object-cover"
+                  sizes="400px"
+                />
               </div>
             </div>
           </div>

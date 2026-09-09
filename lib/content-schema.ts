@@ -49,6 +49,7 @@ export interface FaqItem {
 export interface CtaBannerContent {
   titleLine1: string;
   titleLine2: string;
+  image?: string;
 }
 
 export interface FooterContent {
@@ -80,6 +81,7 @@ export interface LandingContent {
   solutionsIntro: string;
   solutionsByCategory: SolutionCategory[];
   faqIntro: string;
+  faqImage?: string;
   faq: FaqItem[];
   ctaBanner: CtaBannerContent;
   footer: FooterContent;

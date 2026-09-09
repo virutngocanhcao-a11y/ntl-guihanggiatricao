@@ -97,6 +97,7 @@ export const defaultContent: LandingContent = {
     },
   ],
   faqIntro: "Câu hỏi thường gặp",
+  faqImage: "/images/faq-illustration.jpg",
   faq: [
     {
       question: "Hàng giá trị cao là gì?",
@@ -122,6 +123,7 @@ export const defaultContent: LandingContent = {
   ctaBanner: {
     titleLine1: "HƠN CẢ MỘT DỊCH VỤ",
     titleLine2: "",
+    image: "/images/cta-truck.jpg",
   },
   footer: {
     companyName: "Nhất Tín Logistics",

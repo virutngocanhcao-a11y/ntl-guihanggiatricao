@@ -16,7 +16,7 @@ export default function CtaBanner({ content }: { content: CtaBannerContent }) {
         {/* Truck visual - Framed cleanly */}
         <div className="relative h-36 w-60 sm:h-40 sm:w-68 md:h-44 md:w-80 rounded-2xl overflow-hidden shadow-lg border-2 border-white/80 shrink-0">
           <Image
-            src="/images/cta-truck.jpg"
+            src={content?.image || "/images/cta-truck.jpg"}
             alt="Nhất Tín Logistics Truck"
             fill
             className="object-cover"

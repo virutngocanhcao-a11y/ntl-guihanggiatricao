@@ -42,7 +42,7 @@ export default async function Home() {
         intro={content.solutionsIntro}
         items={content.solutionsByCategory}
       />
-      <Faq intro={content.faqIntro} items={content.faq} />
+      <Faq intro={content.faqIntro} items={content.faq} image={content.faqImage} />
       <CtaBanner content={content.ctaBanner} />
       <Footer content={content.footer} />
       <FormModal />
