@@ -6,19 +6,21 @@ export default function Hero({ content }: { content: HeroContent }) {
   return (
     <section className="relative bg-white text-[#1a1a1a] overflow-hidden min-h-[420px] lg:h-[470px] xl:h-[500px] flex items-center pt-20 lg:pt-0 border-b border-gray-200">
       
-      {/* Background Graphic & Visual - White theme */}
-      <div className="absolute inset-0 z-0 flex justify-end pointer-events-none">
-        <div className="relative w-full h-full lg:w-[60%] xl:w-[58%] max-w-[1200px]">
+      {/* Background Graphic & Visual - Blended smoothly into white background */}
+      <div className="absolute inset-0 z-0 flex justify-end pointer-events-none overflow-hidden">
+        <div className="relative w-full h-full lg:w-[62%] xl:w-[60%] max-w-[1250px]">
           <Image
             src={content.heroImage}
             alt="Giao hàng giá trị cao Nhất Tín Logistics"
             fill
-            style={{ objectFit: "contain", objectPosition: "center right" }}
+            style={{ objectFit: "cover", objectPosition: "center left" }}
             priority
-            sizes="(max-width: 1024px) 100vw, 1200px"
+            sizes="(max-width: 1024px) 100vw, 1250px"
           />
-          {/* Subtle gradient to merge left side */}
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent hidden lg:block"></div>
+          {/* Smooth blend gradients: left, top, and bottom into pure white */}
+          <div className="absolute inset-y-0 left-0 w-44 md:w-64 lg:w-80 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white to-transparent"></div>
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
         </div>
       </div>
       
