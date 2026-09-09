@@ -5,11 +5,10 @@ import { WhyReason } from "@/lib/content-schema";
 export default function WhyChooseUs({
   intro,
   items,
-  quote,
 }: {
   intro: string;
   items: WhyReason[];
-  quote: string;
+  quote?: string;
 }) {
   return (
     <section className="bg-[#f8f9fa] text-[#1a1a1a] py-10 md:py-14 relative z-20 overflow-hidden border-b border-gray-200">
@@ -40,18 +39,6 @@ export default function WhyChooseUs({
               <p className="mt-2 text-[13px] md:text-sm text-gray-600 leading-relaxed">{item.desc}</p>
             </div>
           ))}
-        </div>
-
-        <div className="mx-auto mt-8 md:mt-10 max-w-2xl rounded-full border-2 border-[#fdd800] bg-gradient-to-r from-white via-[#fdd800]/5 to-white px-8 py-4 flex items-center justify-center gap-5 shadow-sm relative">
-          <span className="text-[#fdd800] text-4xl leading-none font-serif absolute left-6 top-1">&ldquo;</span>
-          <p className="text-base font-extrabold text-[#222222] z-10 pl-5">
-            {quote}
-          </p>
-          <div className="flex items-center ml-1">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#fdd800] text-[#222222] shadow-sm">
-              <Icon name="box" className="h-5 w-5 text-[#222222]" />
-            </span>
-          </div>
         </div>
 
         <div className="mt-8 md:mt-10 text-center">
