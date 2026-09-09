@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 import { SolutionCategory } from "@/lib/content-schema";
 
 const defaultCategories = [
@@ -47,23 +48,22 @@ export default function SolutionsByCategory({
         }));
 
   return (
-    <section className="bg-white py-10 md:py-14 border-b border-gray-100" id="giai-phap">
+    <section className="bg-white py-16 md:py-24" id="giai-phap">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#1a1a1a] md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
-          {intro || "Giải pháp phù hợp cho từng nhóm hàng"}
-        </h2>
-        <p className="mt-2.5 text-center text-sm md:text-[15px] text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Năng lực xử lý và vận chuyển an toàn chuyên biệt cho từng đặc thù mặt hàng giá trị cao
-        </p>
+        <SectionHeading
+          eyebrow="Giải pháp"
+          title={intro || "Giải pháp phù hợp cho từng nhóm hàng"}
+          subtitle="Năng lực xử lý và vận chuyển an toàn chuyên biệt cho từng đặc thù mặt hàng giá trị cao."
+        />
 
-        <div className="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-5 md:mt-14">
           {displayItems.map((item, i) => (
             <div
               key={item.title}
-              className="group overflow-hidden rounded-2xl bg-white border border-gray-200/90 text-center shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all hover:-translate-y-1.5 flex flex-col duration-300"
+              className="group flex flex-col overflow-hidden rounded-xl border border-gray-200/80 bg-white text-center transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)]"
             >
               {/* Product Visual */}
-              <div className="relative h-48 sm:h-52 w-full p-3.5 bg-gradient-to-b from-gray-50/70 to-white flex items-center justify-center overflow-hidden">
+              <div className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-white p-4 sm:h-52">
                 <div className="relative h-full w-full">
                   <Image
                     src={getValidSolutionImage(item.image, i)}
@@ -76,8 +76,8 @@ export default function SolutionsByCategory({
               </div>
 
               {/* Category Name Label */}
-              <div className="p-4 border-t border-gray-100 bg-white group-hover:bg-amber-50/25 mt-auto transition-colors flex items-center justify-center min-h-[64px]">
-                <p className="text-sm sm:text-[14.5px] font-extrabold text-[#1a1a1a] group-hover:text-[#b37700] transition-colors leading-snug">
+              <div className="mt-auto flex min-h-[64px] items-center justify-center border-t border-gray-100 p-4">
+                <p className="text-[14px] font-semibold leading-[1.45] text-[#1a1a1a]">
                   {item.title}
                 </p>
               </div>
@@ -85,10 +85,10 @@ export default function SolutionsByCategory({
           ))}
         </div>
 
-        <div className="mt-8 md:mt-10 text-center">
+        <div className="mt-10 text-center">
           <a
             href="#dang-ky"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#fdd800] px-8 py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wide text-[#222222] hover:bg-[#ffe340] shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all active:translate-y-0"
+            className="inline-flex items-center justify-center gap-1.5 text-[14px] font-semibold text-[#1a1a1a] underline decoration-[#fdd800] decoration-2 underline-offset-4 transition-colors hover:text-[#b37700]"
           >
             Nhận giải pháp riêng cho doanh nghiệp &rarr;
           </a>

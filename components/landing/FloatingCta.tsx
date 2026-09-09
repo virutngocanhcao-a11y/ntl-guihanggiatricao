@@ -27,10 +27,10 @@ export default function FloatingCta() {
       {/* Hotline Quick Call */}
       <a
         href="tel:19006366888"
-        className="hidden sm:flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-sm border border-gray-200 px-4 py-3 text-xs font-bold text-[#1a1a1a] shadow-lg hover:shadow-xl hover:border-[#fdd800] transition-all"
+        className="hidden items-center gap-2 rounded-full border border-gray-200 bg-white/95 px-4 py-3 text-[13px] font-medium text-[#1a1a1a] shadow-md backdrop-blur-sm transition-colors hover:border-gray-300 sm:flex"
         title="Gọi hotline 1900 63 6688"
       >
-        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#fdd800] text-[#222222]">
+        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#fdd800] text-[#1a1a1a]">
           <Icon name="phone" className="h-3 w-3" />
         </span>
         <span>1900 63 6688</span>
@@ -39,11 +39,8 @@ export default function FloatingCta() {
       {/* Main Floating Form CTA */}
       <a
         href="#dang-ky"
-        className="flex items-center gap-2.5 rounded-full bg-[#fdd800] px-5 sm:px-6 py-3.5 text-xs sm:text-sm font-black uppercase tracking-wider text-[#222222] shadow-2xl hover:bg-[#ffe340] hover:scale-105 transition-all border-2 border-white ring-4 ring-[#fdd800]/20"
+        className="flex items-center gap-2 rounded-full bg-[#fdd800] px-6 py-3.5 text-[13.5px] font-bold text-[#1a1a1a] shadow-lg transition-colors hover:bg-[#ffe340]"
       >
-        <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
         <span>Điền form tư vấn</span>
       </a>
     </div>

@@ -1,5 +1,6 @@
 import Icon from "@/components/Icon";
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 import { PainPoint } from "@/lib/content-schema";
 
 const painImages = [
@@ -19,20 +20,22 @@ export default function PainPoints({
   bannerNote: string;
 }) {
   return (
-    <section className="bg-white py-10 md:py-14 relative z-20 border-b border-gray-100">
+    <section className="relative z-20 bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
-          {intro}
-        </h2>
+        <SectionHeading
+          eyebrow="Thách thức"
+          title={intro}
+          subtitle="Những rủi ro doanh nghiệp thường gặp khi vận chuyển hàng có giá trị lớn."
+        />
 
-        <div className="mt-8 md:mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 md:mt-14">
           {items.map((item, i) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-gray-200/90 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all group flex flex-col hover:-translate-y-1.5 duration-300"
+              className="group flex flex-col overflow-hidden rounded-xl border border-gray-200/80 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)]"
             >
               {/* Large Feature Image on Top */}
-              <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-gray-100 shrink-0 border-b border-gray-100">
+              <div className="relative h-44 w-full shrink-0 overflow-hidden bg-gray-100 sm:h-48">
                 <Image
                   src={painImages[i] || painImages[0]}
                   alt={item.title}
@@ -43,34 +46,36 @@ export default function PainPoints({
               </div>
 
               {/* Card Content */}
-              <div className="p-5 flex-1 flex flex-col">
-                <div className="flex items-center gap-2.5 mb-2.5">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#fdd800]/20 text-[#b37700] shrink-0">
+              <div className="flex flex-1 flex-col p-5">
+                <div className="mb-3 flex items-center gap-2.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#fdd800]/20 text-[#b37700]">
                     <Icon name={item.icon} className="h-3.5 w-3.5" />
                   </div>
-                  <h3 className="text-[15px] md:text-base font-extrabold text-[#1a1a1a] group-hover:text-[#b37700] transition-colors leading-snug">{item.title}</h3>
+                  <h3 className="text-[15px] font-semibold leading-[1.4] text-[#1a1a1a]">{item.title}</h3>
                 </div>
-                <p className="text-[13px] md:text-sm text-gray-600 leading-relaxed mt-1 flex-1">{item.desc}</p>
+                <p className="flex-1 text-[13.5px] leading-[1.65] text-gray-500">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mx-auto mt-8 md:mt-10 max-w-4xl lg:max-w-5xl rounded-2xl bg-gradient-to-r from-white via-amber-50/20 to-[#fdd800]/15 border-2 border-[#fdd800] p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-sm">
+        <div className="mx-auto mt-12 flex max-w-4xl flex-col items-center justify-between gap-5 rounded-xl border border-[#fdd800]/50 bg-[#fdd800]/[0.07] p-6 sm:flex-row md:mt-14 lg:max-w-5xl">
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-md shadow-[#fdd800]/25">
-              <Icon name="shield" className="h-6 w-6" />
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#fdd800] text-[#1a1a1a]">
+              <Icon name="shield" className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#b37700]">Cam kết dịch vụ</p>
-              <p className="text-base md:text-lg font-extrabold text-[#1a1a1a] mt-0.5 sm:whitespace-nowrap">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#b37700]">
+                Cam kết dịch vụ
+              </p>
+              <p className="mt-1 text-[16px] font-semibold leading-[1.5] text-[#1a1a1a] md:text-[17px]">
                 {bannerNote}
               </p>
             </div>
           </div>
           <a
             href="#quy-trinh"
-            className="shrink-0 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[#222222] bg-[#fdd800] hover:bg-[#ffe340] px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105"
+            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#1a1a1a] px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-[#333333]"
           >
             Xem quy trình 5 bước &rarr;
           </a>
