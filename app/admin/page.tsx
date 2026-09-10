@@ -17,6 +17,7 @@ interface LeadItem {
   cargoType: string;
   source: string;
   submittedAt: string;
+  ip?: string;
 }
 
 interface LeadsResponse {
@@ -134,6 +135,12 @@ export default function AdminDashboard() {
 
   const set = <K extends keyof LandingContent>(key: K, value: LandingContent[K]) =>
     setContent((prev) => (prev ? { ...prev, [key]: value } : prev));
+
+  // Đếm số lead theo từng IP trong trang hiện tại để đánh dấu IP gửi lặp nhiều lần
+  const ipCounts: Record<string, number> = {};
+  for (const lead of leadsData?.leads || []) {
+    if (lead.ip) ipCounts[lead.ip] = (ipCounts[lead.ip] || 0) + 1;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
@@ -388,6 +395,7 @@ export default function AdminDashboard() {
                     <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Công ty</th>
                     <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Loại hàng</th>
                     <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Thời gian</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">IP</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -403,6 +411,23 @@ export default function AdminDashboard() {
                         </span>
                       </td>
                       <td className="px-4 py-3 text-gray-500 text-xs">{formatDate(lead.submittedAt)}</td>
+                      <td className="px-4 py-3 text-xs">
+                        {lead.ip ? (
+                          <span className="inline-flex items-center gap-1.5">
+                            <span className="font-mono text-gray-600">{lead.ip}</span>
+                            {ipCounts[lead.ip] > 1 && (
+                              <span
+                                title={`IP này đã gửi ${ipCounts[lead.ip]} lead trong trang hiện tại`}
+                                className="rounded bg-red-100 px-1.5 py-0.5 font-semibold text-red-700"
+                              >
+                                ×{ipCounts[lead.ip]}
+                              </span>
+                            )}
+                          </span>
+                        ) : (
+                          <span className="text-gray-300">—</span>
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
