@@ -21,7 +21,7 @@ export default function PainPoints({
   return (
     <section className="bg-white py-10 md:py-14 relative z-20 border-b border-gray-100">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-[#222222] md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
+        <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-navy md:text-4xl max-w-5xl mx-auto leading-tight lg:whitespace-nowrap">
           {intro}
         </h2>
 
@@ -29,7 +29,7 @@ export default function PainPoints({
           {items.map((item, i) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-gray-200/90 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-[#fdd800] transition-all group flex flex-col hover:-translate-y-1.5 duration-300"
+              className="rounded-2xl border border-gray-200/90 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-gold transition-all group flex flex-col hover:-translate-y-1.5 duration-300"
             >
               {/* Large Feature Image on Top */}
               <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-gray-100 shrink-0 border-b border-gray-100">
@@ -45,10 +45,10 @@ export default function PainPoints({
               {/* Card Content */}
               <div className="p-5 flex-1 flex flex-col">
                 <div className="flex items-center gap-2.5 mb-2.5">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#fdd800] text-[#222222] shrink-0 shadow-sm">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gold text-navy shrink-0 shadow-sm">
                     <Icon name={item.icon} className="h-3.5 w-3.5" />
                   </div>
-                  <h3 className="text-[15px] md:text-base font-extrabold text-[#222222] leading-snug">{item.title}</h3>
+                  <h3 className="text-[15px] md:text-base font-extrabold text-navy leading-snug">{item.title}</h3>
                 </div>
                 <p className="text-[13px] md:text-sm text-gray-600 leading-relaxed mt-1 flex-1">{item.desc}</p>
               </div>
@@ -56,21 +56,21 @@ export default function PainPoints({
           ))}
         </div>
 
-        <div className="mx-auto mt-8 md:mt-10 max-w-4xl lg:max-w-5xl rounded-2xl bg-gradient-to-r from-white via-[#fdd800]/5 to-[#fdd800]/15 border-2 border-[#fdd800] p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-sm">
+        <div className="mx-auto mt-8 md:mt-10 max-w-4xl lg:max-w-5xl rounded-2xl bg-gradient-to-r from-white via-gold/5 to-gold/15 border-2 border-gold p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-sm">
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#fdd800] text-[#222222] shadow-md shadow-[#fdd800]/25">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold text-navy shadow-md shadow-gold/25">
               <Icon name="shield" className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-xs font-extrabold uppercase tracking-wider text-[#222222]">Cam kết dịch vụ</p>
-              <p className="text-base md:text-lg font-extrabold text-[#222222] mt-0.5 sm:whitespace-nowrap">
+              <p className="text-xs font-extrabold uppercase tracking-wider text-navy">Cam kết dịch vụ</p>
+              <p className="text-base md:text-lg font-extrabold text-navy mt-0.5 sm:whitespace-nowrap">
                 {bannerNote}
               </p>
             </div>
           </div>
           <a
             href="#quy-trinh"
-            className="shrink-0 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-[#222222] bg-[#fdd800] hover:bg-[#ffe340] px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105"
+            className="shrink-0 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-navy bg-gold hover:bg-gold-light px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105"
           >
             Xem quy trình 5 bước &rarr;
           </a>

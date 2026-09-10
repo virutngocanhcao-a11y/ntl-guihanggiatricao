@@ -39,7 +39,7 @@ export default function FormModal() {
         {/* Close button */}
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute -top-3 -right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#222222] shadow-lg hover:bg-gray-100 transition-colors"
+          className="absolute -top-3 -right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white text-navy shadow-lg hover:bg-gray-100 transition-colors"
           aria-label="Đóng"
         >
           <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">

@@ -183,7 +183,7 @@ export default function AdminDashboard() {
             onClick={() => setActiveTab("content")}
             className={`px-5 py-3 text-sm font-semibold border-b-2 transition-colors ${
               activeTab === "content"
-                ? "border-[#fdd800] text-[#222222]"
+                ? "border-gold text-navy"
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -193,7 +193,7 @@ export default function AdminDashboard() {
             onClick={() => setActiveTab("leads")}
             className={`px-5 py-3 text-sm font-semibold border-b-2 transition-colors ${
               activeTab === "leads"
-                ? "border-[#fdd800] text-[#222222]"
+                ? "border-gold text-navy"
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -344,11 +344,11 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="rounded-xl bg-white border border-gray-200 p-5 shadow-sm">
               <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Tổng Lead</p>
-              <p className="mt-1 text-3xl font-bold text-[#222222]">{leadsData?.total ?? "—"}</p>
+              <p className="mt-1 text-3xl font-bold text-navy">{leadsData?.total ?? "—"}</p>
             </div>
             <div className="rounded-xl bg-white border border-gray-200 p-5 shadow-sm">
               <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Lượt truy cập</p>
-              <p className="mt-1 text-3xl font-bold text-[#222222]">{trafficCount !== null ? trafficCount.toLocaleString("vi-VN") : "—"}</p>
+              <p className="mt-1 text-3xl font-bold text-navy">{trafficCount !== null ? trafficCount.toLocaleString("vi-VN") : "—"}</p>
             </div>
           </div>
 
@@ -362,7 +362,7 @@ export default function AdminDashboard() {
                   onClick={() => { setLeadsPerPage(n); setLeadsPage(1); }}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors ${
                     leadsPerPage === n
-                      ? "bg-[#fdd800] border-[#fdd800] text-[#222222]"
+                      ? "bg-gold border-gold text-navy"
                       : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                   }`}
                 >
@@ -402,11 +402,11 @@ export default function AdminDashboard() {
                   {leadsData.leads.map((lead, i) => (
                     <tr key={lead.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                       <td className="px-4 py-3 text-gray-400 font-medium">{(leadsData.page - 1) * leadsData.perPage + i + 1}</td>
-                      <td className="px-4 py-3 font-semibold text-[#222222]">{lead.fullName}</td>
+                      <td className="px-4 py-3 font-semibold text-navy">{lead.fullName}</td>
                       <td className="px-4 py-3 text-gray-700">{lead.phone}</td>
                       <td className="px-4 py-3 text-gray-600">{lead.company || "—"}</td>
                       <td className="px-4 py-3">
-                        <span className="inline-block px-2 py-0.5 rounded-md bg-[#fdd800]/20 text-[#b37700] text-xs font-medium">
+                        <span className="inline-block px-2 py-0.5 rounded-md bg-gold/20 text-gold-text text-xs font-medium">
                           {lead.cargoType || "—"}
                         </span>
                       </td>
@@ -466,7 +466,7 @@ export default function AdminDashboard() {
                       onClick={() => setLeadsPage(pageNum)}
                       className={`w-8 h-8 text-xs font-semibold rounded-lg border transition-colors ${
                         leadsData.page === pageNum
-                          ? "bg-[#fdd800] border-[#fdd800] text-[#222222]"
+                          ? "bg-gold border-gold text-navy"
                           : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
                       }`}
                     >

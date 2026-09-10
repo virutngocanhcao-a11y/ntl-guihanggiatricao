@@ -109,13 +109,13 @@ export default function LeadForm() {
   if (status === "success") {
     return (
       <div className="rounded-2xl bg-white p-7 md:p-8 shadow-2xl text-center">
-        <p className="text-xl font-bold text-[#222222]">Cảm ơn bạn đã đăng ký!</p>
+        <p className="text-xl font-bold text-navy">Cảm ơn bạn đã đăng ký!</p>
         <p className="mt-3 text-[15px] text-gray-600">
           Đội ngũ Nhất Tín Logistics sẽ liên hệ tư vấn trong thời gian sớm nhất.
         </p>
         <button
           onClick={handleReset}
-          className="mt-6 text-sm font-bold text-[#fdd800] hover:text-[#e5c300] transition-colors"
+          className="mt-6 text-sm font-bold text-gold hover:text-gold-deep transition-colors"
         >
           Gửi yêu cầu khác &rarr;
         </button>
@@ -127,7 +127,7 @@ export default function LeadForm() {
 
   return (
     <div className="bg-white rounded-2xl p-7 md:p-8 shadow-2xl">
-      <h3 className="text-[#222222] text-xl md:text-2xl font-bold mb-6 leading-snug">
+      <h3 className="text-navy text-xl md:text-2xl font-bold mb-6 leading-snug">
         Nhận tư vấn giải pháp<br />giao hàng giá trị cao
       </h3>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -141,12 +141,12 @@ export default function LeadForm() {
           name="fullName"
           required
           placeholder="Họ và tên"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-[#222222] placeholder-gray-400 font-medium"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
         />
         <input
           name="company"
           placeholder="Tên công ty / Doanh nghiệp"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-[#222222] placeholder-gray-400 font-medium"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
         />
         <input
           name="phone"
@@ -155,20 +155,20 @@ export default function LeadForm() {
           pattern="^0[0-9]{9}$"
           title="Vui lòng nhập số điện thoại hợp lệ (10 số, bắt đầu bằng 0)"
           placeholder="Số điện thoại liên hệ"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-[#222222] placeholder-gray-400 font-medium"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
         />
         <div className="relative">
           <select
             name="cargoType"
             defaultValue=""
             required
-            className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-[#fdd800] focus:ring-2 focus:ring-[#fdd800]/20 transition-all text-gray-500 font-medium appearance-none"
+            className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-gray-500 font-medium appearance-none"
           >
             <option value="" disabled>
               Chọn loại hàng hóa cần gửi
             </option>
             {cargoTypes.map((type) => (
-              <option key={type} value={type} className="text-[#222222]">
+              <option key={type} value={type} className="text-navy">
                 {type}
               </option>
             ))}
@@ -187,7 +187,7 @@ export default function LeadForm() {
         <button
           type="submit"
           disabled={isDisabled}
-          className="w-full mt-3 bg-[#fdd800] text-[#222222] font-extrabold py-4 rounded-xl hover:bg-[#ffe340] transition-all uppercase tracking-wide shadow-md shadow-[#fdd800]/25 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:hover:translate-y-0"
+          className="w-full mt-3 bg-gold text-navy font-extrabold py-4 rounded-xl hover:bg-gold-light transition-all uppercase tracking-wide shadow-md shadow-gold/25 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:hover:translate-y-0"
         >
           {status === "submitting"
             ? "Đang gửi thông tin..."

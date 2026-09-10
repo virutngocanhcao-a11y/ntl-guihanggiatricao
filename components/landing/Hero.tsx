@@ -4,7 +4,7 @@ import { HeroContent } from "@/lib/content-schema";
 
 export default function Hero({ content }: { content: HeroContent }) {
   return (
-    <section className="relative bg-white text-[#1a1a1a] overflow-hidden min-h-[420px] lg:h-[470px] xl:h-[500px] flex items-center pt-20 lg:pt-0 border-b border-gray-200">
+    <section className="relative bg-white text-ink overflow-hidden min-h-[420px] lg:h-[470px] xl:h-[500px] flex items-center pt-20 lg:pt-0 border-b border-gray-200">
       
       {/* Background Graphic & Visual - Blended smoothly into white background */}
       <div className="absolute inset-0 z-0 flex justify-end pointer-events-none overflow-hidden">
@@ -31,9 +31,9 @@ export default function Hero({ content }: { content: HeroContent }) {
         
         {/* LEFT: TEXT & ACTION */}
         <div className="w-full lg:w-[52%] xl:w-[48%] shrink-0">
-          <h1 className="text-3xl font-extrabold md:text-4xl lg:text-[42px] xl:text-[46px] uppercase text-[#222222] flex flex-col gap-2 sm:gap-2.5">
+          <h1 className="text-3xl font-extrabold md:text-4xl lg:text-[42px] xl:text-[46px] uppercase text-navy flex flex-col gap-2 sm:gap-2.5">
             <span className="block leading-tight">{content.titleLine1}</span>
-            <span className="inline-block self-start bg-[#fdd800] text-[#222222] px-3.5 py-1 rounded-xl leading-tight shadow-sm font-black">
+            <span className="inline-block self-start bg-gold text-navy px-3.5 py-1 rounded-xl leading-tight shadow-sm font-black">
               {content.titleLine2}
             </span>
             <span className="block leading-tight whitespace-nowrap">{content.titleLine3}</span>
@@ -46,8 +46,8 @@ export default function Hero({ content }: { content: HeroContent }) {
           {/* 3 Badges on 1 row */}
           <div className="mt-6 flex flex-wrap sm:flex-nowrap items-center justify-start gap-2.5 max-w-lg">
             {content.badges.map((badge) => (
-              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2.5 rounded-xl border border-gray-200/90 bg-white/90 backdrop-blur-sm px-3.5 py-2 text-[13px] font-bold text-[#222222] shadow-sm hover:border-[#fdd800] transition-all whitespace-nowrap h-11">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#fdd800] text-[#222222] shrink-0">
+              <div key={badge.label} className="flex flex-1 items-center justify-center sm:justify-start gap-2.5 rounded-xl border border-gray-200/90 bg-white/90 backdrop-blur-sm px-3.5 py-2 text-[13px] font-bold text-navy shadow-sm hover:border-gold transition-all whitespace-nowrap h-11">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-navy shrink-0">
                   <Icon name={badge.icon} className="h-3 w-3" />
                 </span>
                 {badge.label}
@@ -59,7 +59,7 @@ export default function Hero({ content }: { content: HeroContent }) {
           <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <a
               href="#dang-ky"
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#fdd800] px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-[#222222] hover:bg-[#ffe340] transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-gold px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-navy hover:bg-gold-light transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
             >
               Nhận tư vấn giải pháp
               <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
