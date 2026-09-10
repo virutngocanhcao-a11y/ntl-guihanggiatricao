@@ -8,6 +8,39 @@ interface LeadPayload {
   cargoType?: string;
   _hp?: string; // honeypot
   _ts?: number; // form load timestamp
+  _turnstile?: string; // Cloudflare Turnstile token
+}
+
+/**
+ * Xác minh token Turnstile với Cloudflare.
+ * Chưa cấu hình TURNSTILE_SECRET_KEY thì bỏ qua bước này để form vẫn chạy.
+ */
+async function verifyTurnstile(token: string | undefined, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true; // chưa bật chống bot
+
+  if (!token) return false;
+
+  try {
+    const form = new URLSearchParams();
+    form.append("secret", secret);
+    form.append("response", token);
+    if (ip && ip !== "unknown") form.append("remoteip", ip);
+
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      { method: "POST", body: form }
+    );
+    const data = (await res.json()) as { success?: boolean; "error-codes"?: string[] };
+    if (!data.success) {
+      console.warn("[api/lead] Turnstile tu choi:", data["error-codes"]);
+    }
+    return data.success === true;
+  } catch (err) {
+    // Cloudflare lỗi mạng: cho qua để không chặn nhầm khách thật
+    console.error("[api/lead] Khong goi duoc Turnstile siteverify:", err);
+    return true;
+  }
 }
 
 // Simple in-memory rate limiter
@@ -90,6 +123,14 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+  }
+
+  // Turnstile — lop chan bot chinh
+  if (!(await verifyTurnstile(body._turnstile, ip))) {
+    return NextResponse.json(
+      { error: "Xác minh bảo mật thất bại. Vui lòng tải lại trang và thử lại." },
+      { status: 403 }
+    );
   }
 
   // Record submission for rate limiting

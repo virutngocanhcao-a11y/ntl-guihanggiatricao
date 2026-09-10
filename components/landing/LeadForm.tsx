@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Turnstile, { turnstileSiteKey } from "./Turnstile";
 
 const cargoTypes = [
   "Điện thoại & thiết bị di động",
@@ -17,6 +18,8 @@ export default function LeadForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const formLoadedAt = useRef(Date.now());
   const [cooldownSeconds, setCooldownSeconds] = useState(0);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileReset, setTurnstileReset] = useState(0);
 
   // Reset form load time when status returns to idle
   useEffect(() => {
@@ -59,6 +62,13 @@ export default function LeadForm() {
       return;
     }
 
+    // Chưa qua được Turnstile thì không cho gửi (chỉ áp dụng khi đã cấu hình key)
+    if (turnstileSiteKey && !turnstileToken) {
+      setErrorMessage("Vui lòng chờ xác minh bảo mật hoàn tất rồi gửi lại.");
+      setStatus("error");
+      return;
+    }
+
     const data = {
       fullName: (form.elements.namedItem("fullName") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
@@ -66,6 +76,7 @@ export default function LeadForm() {
       cargoType: (form.elements.namedItem("cargoType") as HTMLSelectElement).value,
       _hp: honeypot || "",
       _ts: formLoadedAt.current,
+      _turnstile: turnstileToken,
     };
 
     try {
@@ -83,6 +94,10 @@ export default function LeadForm() {
     } catch (err) {
       setStatus("error");
       setErrorMessage(err instanceof Error ? err.message : "Có lỗi xảy ra.");
+    } finally {
+      // Token Turnstile chỉ dùng được một lần, phải xin token mới cho lần gửi sau
+      setTurnstileToken("");
+      setTurnstileReset((n) => n + 1);
     }
   }
 
@@ -162,6 +177,8 @@ export default function LeadForm() {
             <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div>
+
+        <Turnstile onVerify={setTurnstileToken} resetSignal={turnstileReset} />
 
         {status === "error" && (
           <p className="mt-3 text-sm font-medium text-red-600">{errorMessage}</p>
