@@ -77,14 +77,14 @@ export default function Faq({
 
             <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-white via-gold/10 to-white border-2 border-gold shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <p className="text-[15px] font-extrabold text-ink">Bạn có thắc mắc đặc thù cho đơn hàng của mình?</p>
-                <p className="text-xs text-gray-500 mt-1">Chuyên viên logistics sẽ liên hệ giải đáp và tính toán chi phí chi tiết.</p>
+                <p className="text-[15px] font-extrabold text-ink">Doanh nghiệp có nhu cầu vận chuyển đặc thù?</p>
+                <p className="text-xs text-gray-500 mt-1">Đội ngũ Nhất Tín Logistics sẽ tư vấn phương án phù hợp theo loại hàng, sản lượng và tuyến giao.</p>
               </div>
               <a
                 href="#dang-ky"
-                className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-gold px-6 py-3 text-xs font-extrabold uppercase tracking-wide text-navy hover:bg-gold-light shadow-md hover:shadow-lg hover:scale-105 transition-all"
+                className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-gold px-6 py-3 text-xs font-extrabold uppercase tracking-wide text-navy hover:brightness-95 shadow-md hover:shadow-lg hover:scale-105 transition-all"
               >
-                Đăng ký tư vấn ngay &rarr;
+                Đăng ký tư vấn doanh nghiệp &rarr;
               </a>
             </div>
           </div>

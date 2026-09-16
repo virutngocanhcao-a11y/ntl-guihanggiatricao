@@ -50,7 +50,7 @@ export default function SolutionsByCategory({
           {intro || "Giải pháp phù hợp cho từng nhóm hàng"}
         </h2>
         <p className="mt-2.5 text-center text-sm md:text-[15px] text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Năng lực xử lý và vận chuyển an toàn chuyên biệt cho từng đặc thù mặt hàng giá trị cao
+          Phù hợp với nhu cầu vận chuyển của doanh nghiệp trong nhiều ngành hàng khác nhau.
         </p>
 
         <div className="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
@@ -83,7 +83,7 @@ export default function SolutionsByCategory({
         </div>
 
         <div className="mt-8 md:mt-10 text-center">
-          <SectionCta>Nhận giải pháp riêng cho doanh nghiệp &rarr;</SectionCta>
+          <SectionCta>Nhận giải pháp cho doanh nghiệp &rarr;</SectionCta>
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export const defaultContent: LandingContent = {
     titleLine2: "GIÁ TRỊ CAO",
     titleLine3: "CHO DOANH NGHIỆP",
     subtitle:
-      "Giải pháp vận chuyển dành cho điện thoại, thiết bị điện tử, linh kiện, máy móc và các đơn hàng có giá trị cao.",
+      "Giải pháp vận chuyển dành cho doanh nghiệp, nhà phân phối và chuỗi bán lẻ có nhu cầu giao điện thoại, thiết bị điện tử, linh kiện, máy móc và các mặt hàng giá trị cao.",
     badges: [
       { icon: "map-pin", label: "Theo dõi hành trình" },
       { icon: "shield", label: "Bảo hiểm hàng hóa" },
@@ -18,31 +18,31 @@ export const defaultContent: LandingContent = {
     ],
     heroImage: "/images/key-visual.jpg",
   },
-  painPointsIntro: "Một đơn hàng giá trị cao không chỉ là một kiện hàng",
+  painPointsIntro: "Với doanh nghiệp, một đơn hàng giá trị cao không chỉ là một kiện hàng",
   painPoints: [
     {
       icon: "box-alert",
-      title: "Thất lạc hàng hóa",
-      desc: "Nguy cơ thất lạc, hư hỏng, mất mát trong quá trình vận chuyển.",
+      title: "Thất lạc hoặc hư hỏng hàng hóa",
+      desc: "Có thể gây gián đoạn vận hành, phát sinh chi phí và ảnh hưởng kế hoạch kinh doanh.",
     },
     {
       icon: "search",
       title: "Khó kiểm soát hành trình",
-      desc: "Thiếu thông tin minh bạch, khó theo dõi trạng thái đơn hàng theo thời gian thực.",
+      desc: "Thiếu thông tin trạng thái khiến doanh nghiệp khó theo dõi và xử lý đơn hàng.",
     },
     {
       icon: "star",
       title: "Ảnh hưởng trải nghiệm khách hàng",
-      desc: "Giao trễ, hàng lỗi gây mất niềm tin và ảnh hưởng thương hiệu.",
+      desc: "Giao chậm hoặc hàng lỗi có thể ảnh hưởng trực tiếp đến uy tín thương hiệu.",
     },
     {
       icon: "invoice",
       title: "Tăng chi phí xử lý sự cố",
-      desc: "Chi phí bồi hoàn, khiếu nại và xử lý sự cố tốn kém, mất thời gian.",
+      desc: "Phát sinh bồi hoàn, đối soát và khiếu nại làm tăng chi phí vận hành.",
     },
   ],
-  bannerNote: "Hàng giá trị cao cần một quy trình giao nhận chặt chẽ hơn.",
-  productCategoriesIntro: "Những mặt hàng thường cần giải pháp giao hàng giá trị cao",
+  bannerNote: "Hàng giá trị cao cần một quy trình giao nhận phù hợp với yêu cầu vận hành doanh nghiệp.",
+  productCategoriesIntro: "Những nhóm hàng giá trị cao doanh nghiệp thường cần vận chuyển",
   productCategories: [
     { image: "/images/category-phone.jpg", title: "Điện thoại & thiết bị di động" },
     { image: "/images/category-laptop.jpg", title: "Laptop & thiết bị CNTT" },
@@ -52,23 +52,23 @@ export const defaultContent: LandingContent = {
   ],
   processIntro: "Giải pháp giao hàng giá trị cao của Nhất Tín Logistics",
   processSteps: [
-    { number: "01", title: "Tiếp nhận yêu cầu", desc: "Tiếp nhận thông tin, đánh giá loại hàng và nhu cầu doanh nghiệp." },
-    { number: "02", title: "Kiểm soát tại điểm nhận", desc: "Kiểm tra, đóng gói, niêm phong và xác nhận tình trạng hàng hóa." },
-    { number: "03", title: "Vận chuyển & theo dõi", desc: "Vận chuyển an toàn, theo dõi hành trình theo thời gian thực." },
-    { number: "04", title: "Giao nhận & xác nhận", desc: "Giao đúng người nhận, kiểm tra và xác nhận tình trạng khi giao hàng." },
-    { number: "05", title: "Bảo hiểm theo giá trị hàng hóa", desc: "Bảo hiểm toàn phần theo giá trị khai báo, bồi thường minh bạch." },
+    { number: "01", title: "Tiếp nhận yêu cầu", desc: "Tiếp nhận thông tin loại hàng, sản lượng, tuyến giao và nhu cầu vận chuyển của doanh nghiệp." },
+    { number: "02", title: "Kiểm soát tại điểm nhận", desc: "Kiểm tra, đóng gói, niêm phong và xác nhận tình trạng hàng hóa theo yêu cầu." },
+    { number: "03", title: "Vận chuyển & theo dõi", desc: "Tổ chức vận chuyển và cập nhật trạng thái đơn hàng trong suốt hành trình." },
+    { number: "04", title: "Giao nhận & xác nhận", desc: "Giao đúng điểm nhận, xác nhận tình trạng và hoàn tất bàn giao." },
+    { number: "05", title: "Chính sách bảo hiểm hàng hóa", desc: "Áp dụng theo giá trị khai báo và điều kiện dịch vụ phù hợp." },
   ],
   whyChooseUsIntro: "Vì sao doanh nghiệp chọn Nhất Tín Logistics?",
   whyChooseUs: [
-    { icon: "map-vn", title: "Phục vụ toàn quốc", desc: "Mạng lưới rộng khắp, phủ đến 63 tỉnh thành." },
-    { icon: "building", title: "Tối ưu cho khách hàng doanh nghiệp", desc: "Quy trình chuyên biệt, ưu tiên xử lý và hỗ trợ nhanh chóng." },
-    { icon: "monitor", title: "Theo dõi đơn hàng rõ ràng", desc: "Cập nhật trạng thái liên tục, minh bạch mọi lúc, mọi nơi." },
-    { icon: "package", title: "Nhiều lựa chọn dịch vụ", desc: "Đa dạng dịch vụ phù hợp với nhu cầu và ngân sách doanh nghiệp." },
-    { icon: "headset", title: "Đội ngũ tư vấn hỗ trợ", desc: "Chuyên nghiệp, tận tâm, đồng hành cùng doanh nghiệp 24/7." },
-    { icon: "trophy", title: "Kinh nghiệm vận hành hàng giá trị cao", desc: "Hơn 10 năm kinh nghiệm vận hành an toàn, tin cậy cho hàng giá trị cao." },
+    { icon: "map-vn", title: "Phục vụ toàn quốc", desc: "Mạng lưới vận hành rộng, hỗ trợ nhu cầu giao hàng đa điểm." },
+    { icon: "building", title: "Tối ưu cho khách hàng doanh nghiệp", desc: "Tư vấn phương án theo sản lượng, tuyến giao và đặc thù hàng hóa." },
+    { icon: "monitor", title: "Theo dõi đơn hàng rõ ràng", desc: "Cập nhật trạng thái giúp doanh nghiệp chủ động kiểm soát hành trình." },
+    { icon: "package", title: "Nhiều lựa chọn dịch vụ", desc: "Linh hoạt theo yêu cầu về thời gian, loại hàng và ngân sách." },
+    { icon: "headset", title: "Đội ngũ tư vấn hỗ trợ", desc: "Đồng hành trong quá trình triển khai và xử lý nhu cầu vận chuyển." },
+    { icon: "trophy", title: "Kinh nghiệm vận hành hàng giá trị cao", desc: "Phù hợp với các nhóm hàng cần kiểm soát chặt trong giao nhận." },
   ],
   quote: "Giá trị cao. Trách nhiệm cao hơn.",
-  solutionsIntro: "Giải pháp phù hợp cho từng nhóm hàng",
+  solutionsIntro: "Giải pháp theo từng nhóm hàng giá trị cao",
   solutionsByCategory: [
     {
       image: "/images/category-phone.jpg",
@@ -100,24 +100,24 @@ export const defaultContent: LandingContent = {
   faqImage: "/images/faq-illustration.jpg",
   faq: [
     {
-      question: "Hàng giá trị cao là gì?",
+      question: "Doanh nghiệp nào phù hợp với dịch vụ giao hàng giá trị cao?",
       answer:
-        "Là các mặt hàng có giá trị kinh tế lớn hoặc dễ hư hỏng như điện thoại, laptop, linh kiện điện tử, máy móc, hàng hiệu... cần quy trình đóng gói, vận chuyển và bảo hiểm đặc biệt hơn hàng hóa thông thường.",
+        "Dịch vụ phù hợp với doanh nghiệp sản xuất, nhà phân phối, chuỗi bán lẻ và đơn vị thương mại điện tử thường xuyên vận chuyển điện thoại, thiết bị điện tử, linh kiện, máy móc hoặc các mặt hàng giá trị cao cần kiểm soát chặt trong quá trình giao nhận.",
     },
     {
-      question: "Nhất Tín Logistics có nhận giao hàng giá trị cao không?",
+      question: "Nhất Tín Logistics nhận vận chuyển những nhóm hàng giá trị cao nào?",
       answer:
-        "Có. Nhất Tín Logistics cung cấp giải pháp giao hàng giá trị cao dành riêng cho doanh nghiệp với quy trình kiểm soát chặt chẽ từ điểm nhận đến điểm giao.",
+        "Nhất Tín Logistics nhận vận chuyển điện thoại & thiết bị di động, laptop & thiết bị CNTT, linh kiện điện tử & phụ tùng, thiết bị y tế & thiết bị chuyên dụng, máy móc & thiết bị công nghiệp cùng các mặt hàng thương mại giá trị cao khác. Với hàng có yêu cầu đặc thù, đội ngũ tư vấn sẽ đánh giá và đề xuất phương án phù hợp.",
     },
     {
-      question: "Gửi hàng giá trị cao có cần bảo hiểm không?",
+      question: "Doanh nghiệp có thể theo dõi hành trình đơn hàng như thế nào?",
       answer:
-        "Chúng tôi khuyến nghị mua bảo hiểm theo giá trị khai báo để đảm bảo quyền lợi bồi thường minh bạch nếu có sự cố phát sinh trong quá trình vận chuyển.",
+        "Trạng thái đơn hàng được cập nhật trong suốt hành trình, từ khi tiếp nhận đến khi hoàn tất bàn giao, giúp doanh nghiệp chủ động theo dõi và xử lý đơn hàng kịp thời.",
     },
     {
-      question: "Doanh nghiệp gửi số lượng lớn có chính sách riêng không?",
+      question: "Doanh nghiệp có sản lượng lớn có chính sách riêng không?",
       answer:
-        "Có. Đội ngũ tư vấn của chúng tôi sẽ xây dựng giải pháp và chính sách giá riêng phù hợp với khối lượng, tần suất và loại hàng hóa của từng doanh nghiệp.",
+        "Có. Nhất Tín Logistics xây dựng chính sách và phương án vận chuyển riêng theo sản lượng, tần suất, tuyến giao và đặc thù hàng hóa của từng doanh nghiệp.",
     },
   ],
   ctaBanner: {

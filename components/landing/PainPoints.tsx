@@ -70,7 +70,7 @@ export default function PainPoints({
           </div>
           <a
             href="#quy-trinh"
-            className="shrink-0 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-navy bg-gold hover:bg-gold-light px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105"
+            className="shrink-0 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-navy bg-gold hover:brightness-95 px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105"
           >
             Xem quy trình 5 bước &rarr;
           </a>

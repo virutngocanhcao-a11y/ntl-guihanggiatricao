@@ -8,35 +8,21 @@ const config: Config = {
         // Đen thương hiệu. Tên "navy" giữ lại vì trang admin đang dùng.
         navy: {
           DEFAULT: "#222222",
-          dark: "#181818",
-          light: "#333333",
+          // Brand guideline chỉ có một màu đen #222222. Giữ các tên cũ để
+          // code hiện có không vỡ, nhưng tất cả đều trỏ về đúng màu brand.
+          dark: "#222222",
         },
-        // Đen đậm hơn navy, dùng cho chữ tiêu đề trên nền sáng
-        ink: "#1a1a1a",
-        // Vàng thương hiệu
-        gold: {
-          DEFAULT: "#fdd800",
-          light: "#ffe340", // trạng thái hover của nút vàng
-          mid: "#ffe033", // điểm giữa của dải gradient banner CTA
-          deep: "#e5c300", // hover của chữ màu vàng
-          text: "#b37700", // vàng đủ đậm để làm màu chữ trên nền sáng
-        },
+        ink: "#222222",
+        // Vàng thương hiệu #FDD800. Trạng thái hover dùng brightness-95
+        // (tối nhẹ chính màu này) thay vì một tông vàng khác.
+        gold: "#fdd800",
         // Nền xám nhạt xen kẽ giữa các section
         surface: "#f8f9fa",
-        // Màu chủ đạo của trang admin (theo TailAdmin). Landing page không dùng.
-        brand: {
-          25: "#f2f7ff",
-          50: "#ecf3ff",
-          100: "#dde9ff",
-          300: "#9cb9ff",
-          500: "#465fff",
-          600: "#3641f5",
-          950: "#161950",
-        },
       },
       boxShadow: {
-        "theme-xs": "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
-        "theme-lg": "0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03)",
+        // Bóng đổ pha sắc đen brand #222222 (TailAdmin gốc pha xanh xám)
+        "theme-xs": "0px 1px 2px 0px rgba(34, 34, 34, 0.05)",
+        "theme-lg": "0px 12px 16px -4px rgba(34, 34, 34, 0.08), 0px 4px 6px -2px rgba(34, 34, 34, 0.03)",
       },
       maxWidth: {
         content: "1200px",

@@ -39,11 +39,11 @@ function Logo({ compact = false }: { compact?: boolean }) {
 function itemClass(active: boolean, expanded: boolean) {
   return `group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
     expanded ? "" : "lg:justify-center"
-  } ${active ? "bg-brand-50 text-brand-500" : "text-gray-700 hover:bg-gray-100"}`;
+  } ${active ? "bg-gold/20 text-navy" : "text-neutral-700 hover:bg-neutral-100"}`;
 }
 
 function iconClass(active: boolean) {
-  return `h-6 w-6 shrink-0 ${active ? "text-brand-500" : "text-gray-500 group-hover:text-gray-700"}`;
+  return `h-6 w-6 shrink-0 ${active ? "text-navy" : "text-neutral-500 group-hover:text-neutral-700"}`;
 }
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
@@ -90,13 +90,13 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   return (
     <div className="min-h-screen">
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-gray-900/50 lg:hidden" onClick={() => setMobileOpen(false)} />
+        <div className="fixed inset-0 z-40 bg-navy/50 lg:hidden" onClick={() => setMobileOpen(false)} />
       )}
 
       <aside
         onMouseEnter={() => collapsed && setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className={`fixed left-0 top-0 z-50 flex h-screen flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 ease-in-out ${
+        className={`fixed left-0 top-0 z-50 flex h-screen flex-col border-r border-neutral-200 bg-white px-5 transition-all duration-300 ease-in-out ${
           expanded ? "w-[290px]" : "w-[90px]"
         } ${mobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
@@ -104,13 +104,13 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           <Link href="/admin" className="flex items-center gap-2.5">
             <Logo compact={!expanded} />
             {expanded && (
-              <span className="rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">Admin</span>
+              <span className="rounded-md bg-neutral-100 px-2 py-0.5 text-xs font-medium text-neutral-600">Admin</span>
             )}
           </Link>
         </div>
 
         <nav className="flex-1 overflow-y-auto pb-6 pt-4">
-          <p className={`mb-3 text-xs uppercase leading-5 text-gray-400 ${expanded ? "" : "lg:text-center"}`}>
+          <p className={`mb-3 text-xs uppercase leading-5 text-neutral-400 ${expanded ? "" : "lg:text-center"}`}>
             {expanded ? "Menu" : "•••"}
           </p>
           <ul className="flex flex-col gap-1">
@@ -153,7 +153,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
                           href={`/admin/content#${section.id}`}
                           onClick={() => setActiveHash(section.id)}
                           className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                            active ? "bg-brand-50 text-brand-500" : "text-gray-700 hover:bg-gray-100"
+                            active ? "bg-gold/20 text-navy" : "text-neutral-700 hover:bg-neutral-100"
                           }`}
                         >
                           {section.label}
@@ -166,7 +166,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             </li>
           </ul>
 
-          <p className={`mb-3 mt-8 text-xs uppercase leading-5 text-gray-400 ${expanded ? "" : "lg:text-center"}`}>
+          <p className={`mb-3 mt-8 text-xs uppercase leading-5 text-neutral-400 ${expanded ? "" : "lg:text-center"}`}>
             {expanded ? "Khác" : "•••"}
           </p>
           <ul className="flex flex-col gap-1">
@@ -187,13 +187,13 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       </aside>
 
       <div className={`transition-all duration-300 ease-in-out ${collapsed ? "lg:pl-[90px]" : "lg:pl-[290px]"}`}>
-        <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-3 border-b border-gray-200 bg-white px-4 lg:px-6">
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-3 border-b border-neutral-200 bg-white px-4 lg:px-6">
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={toggleSidebar}
               aria-label="Mở hoặc thu gọn menu"
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-500 transition-colors hover:bg-gray-100 lg:h-11 lg:w-11"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 lg:h-11 lg:w-11"
             >
               {mobileOpen ? <IconX /> : <IconMenu />}
             </button>
@@ -207,7 +207,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
               href="/"
               target="_blank"
               rel="noreferrer"
-              className="hidden h-10 items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-700 shadow-theme-xs transition-colors hover:bg-gray-50 sm:inline-flex"
+              className="hidden h-10 items-center gap-2 rounded-lg border border-neutral-300 bg-white px-4 text-sm font-medium text-neutral-700 shadow-theme-xs transition-colors hover:bg-neutral-50 sm:inline-flex"
             >
               <IconExternal className="h-4 w-4" />
               Xem landing page
@@ -217,38 +217,38 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
               <button
                 type="button"
                 onClick={() => setUserMenuOpen((v) => !v)}
-                className="flex items-center gap-2 text-gray-700"
+                className="flex items-center gap-2 text-neutral-700"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-sm font-semibold text-brand-500">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-sm font-semibold text-navy">
                   A
                 </span>
                 <span className="hidden text-sm font-medium sm:block">Admin</span>
                 <IconChevronDown
-                  className={`h-4 w-4 text-gray-500 transition-transform ${userMenuOpen ? "rotate-180" : ""}`}
+                  className={`h-4 w-4 text-neutral-500 transition-transform ${userMenuOpen ? "rotate-180" : ""}`}
                 />
               </button>
 
               {userMenuOpen && (
-                <div className="absolute right-0 mt-3 w-60 rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg">
-                  <div className="border-b border-gray-100 px-3 pb-3">
-                    <p className="text-sm font-medium text-gray-800">Quản trị viên</p>
-                    <p className="mt-0.5 text-xs text-gray-500">Nhất Tín Logistics</p>
+                <div className="absolute right-0 mt-3 w-60 rounded-2xl border border-neutral-200 bg-white p-3 shadow-theme-lg">
+                  <div className="border-b border-neutral-100 px-3 pb-3">
+                    <p className="text-sm font-medium text-navy">Quản trị viên</p>
+                    <p className="mt-0.5 text-xs text-neutral-500">Nhất Tín Logistics</p>
                   </div>
                   <a
                     href="/"
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-2 flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                    className="mt-2 flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100"
                   >
-                    <IconExternal className="h-5 w-5 text-gray-500" />
+                    <IconExternal className="h-5 w-5 text-neutral-500" />
                     Xem landing page
                   </a>
                   <button
                     type="button"
                     onClick={logout}
-                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100"
                   >
-                    <IconLogout className="h-5 w-5 text-gray-500" />
+                    <IconLogout className="h-5 w-5 text-neutral-500" />
                     Đăng xuất
                   </button>
                 </div>

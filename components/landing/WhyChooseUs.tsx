@@ -43,7 +43,7 @@ export default function WhyChooseUs({
         </div>
 
         <div className="mt-8 md:mt-10 text-center">
-          <SectionCta>Trở thành đối tác của Nhất Tín &rarr;</SectionCta>
+          <SectionCta>Trở thành đối tác vận chuyển của Nhất Tín &rarr;</SectionCta>
         </div>
       </div>
     </section>

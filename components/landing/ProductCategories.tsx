@@ -44,7 +44,7 @@ export default function ProductCategories({
         </div>
 
         <div className="mt-8 md:mt-10 text-center">
-          <SectionCta>Đăng ký báo giá theo loại hàng &rarr;</SectionCta>
+          <SectionCta>Nhận tư vấn theo nhóm hàng &rarr;</SectionCta>
         </div>
       </div>
     </section>

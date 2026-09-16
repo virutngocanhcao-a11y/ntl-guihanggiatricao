@@ -44,7 +44,7 @@ export default function ProcessSteps({
                 <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-gold mx-auto mb-3 shadow-md group-hover:scale-110 transition-all duration-300 ring-4 ring-gold/20">
                   <Image src={stepImages[i] || stepImages[0]} alt={step.title} fill className="object-cover" sizes="80px" />
                 </div>
-                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gold text-base font-extrabold text-navy shadow-md group-hover:bg-gold-light group-hover:scale-110 transition-all duration-300 ring-2 ring-white">
+                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gold text-base font-extrabold text-navy shadow-md group-hover:brightness-95 group-hover:scale-110 transition-all duration-300 ring-2 ring-white">
                   {step.number}
                 </div>
                 <h3 className="mt-3 text-base font-extrabold text-navy px-1 leading-snug h-12 flex items-center justify-center">
@@ -58,7 +58,7 @@ export default function ProcessSteps({
           </div>
 
           <div className="mt-8 md:mt-10 text-center">
-            <SectionCta>Tư vấn quy trình cho lô hàng của bạn &rarr;</SectionCta>
+            <SectionCta>Tư vấn quy trình cho doanh nghiệp &rarr;</SectionCta>
           </div>
         </div>
       </div>

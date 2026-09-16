@@ -38,7 +38,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen bg-white">
       <div className="flex w-full flex-col lg:w-1/2">
         <div className="mx-auto w-full max-w-md px-6 pt-10">
-          <a href="/" className="inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-gray-700">
+          <a href="/" className="inline-flex items-center gap-1 text-sm text-neutral-500 transition-colors hover:text-neutral-700">
             <IconChevronLeft className="h-4 w-4" />
             Về landing page
           </a>
@@ -48,8 +48,8 @@ export default function AdminLoginPage() {
           {/* Màn hình nhỏ không có khối thương hiệu bên phải nên hiện logo ở đây */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logo-ntl.png" alt="Nhất Tín Logistics" className="mb-8 h-12 w-auto lg:hidden" />
-          <h1 className="text-3xl font-semibold text-gray-800">Đăng nhập</h1>
-          <p className="mt-2 text-sm text-gray-500">Nhập mật khẩu quản trị để quản lý landing page.</p>
+          <h1 className="text-3xl font-semibold text-navy">Đăng nhập</h1>
+          <p className="mt-2 text-sm text-neutral-500">Nhập mật khẩu quản trị để quản lý landing page.</p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div>
@@ -71,7 +71,7 @@ export default function AdminLoginPage() {
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
                   aria-label={showPassword ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-700"
                 >
                   {showPassword ? <IconEyeOff className="h-5 w-5" /> : <IconEye className="h-5 w-5" />}
                 </button>
@@ -89,7 +89,7 @@ export default function AdminLoginPage() {
         </div>
       </div>
 
-      <div className="relative hidden items-center justify-center overflow-hidden bg-brand-950 lg:flex lg:w-1/2">
+      <div className="relative hidden items-center justify-center overflow-hidden bg-navy lg:flex lg:w-1/2">
         {/* Lưới trang trí giống TailAdmin */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:56px_56px]" />
         <div className="absolute right-0 top-0 h-[168px] w-[168px] bg-white/[0.04]" />
@@ -99,7 +99,7 @@ export default function AdminLoginPage() {
           {/* Bản logo chữ trắng dành cho nền tối */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/logo-ntl-white.png" alt="Nhất Tín Logistics" className="h-20 w-auto" />
-          <p className="mt-4 text-sm leading-relaxed text-gray-400">
+          <p className="mt-4 text-sm leading-relaxed text-neutral-400">
             Quản trị landing page Giao hàng giá trị cao – Nhất Tín Logistics
           </p>
         </div>

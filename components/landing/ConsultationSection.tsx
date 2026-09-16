@@ -20,10 +20,10 @@ export default function ConsultationSection() {
                 Giải pháp B2B Chuyên Biệt
               </div>
               <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-navy md:text-4xl lg:text-[40px] leading-tight">
-                Đăng Ký Nhận Báo Giá &amp; Tư Vấn Giải Pháp
+                ĐĂNG KÝ NHẬN GIẢI PHÁP VẬN CHUYỂN CHO DOANH NGHIỆP
               </h2>
               <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed max-w-xl">
-                Để lại thông tin lô hàng của bạn. Đội ngũ chuyên viên logistics cấp cao của Nhất Tín sẽ trực tiếp liên hệ khảo sát và thiết kế phương án vận chuyển tối ưu nhất.
+                Để lại thông tin nhu cầu vận chuyển. Đội ngũ Nhất Tín Logistics sẽ tư vấn phương án phù hợp theo loại hàng, sản lượng, tuyến giao và yêu cầu vận hành của doanh nghiệp.
               </p>
             </div>
 
@@ -34,8 +34,8 @@ export default function ConsultationSection() {
                   <Icon name="headset" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-navy leading-snug">Phản Hồi Trong 15 Phút</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Tư vấn viên liên hệ hỗ trợ nhanh và chuẩn xác.</p>
+                  <h3 className="text-base font-bold text-navy leading-snug">Tư vấn nhanh</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Hỗ trợ doanh nghiệp xác định phương án phù hợp.</p>
                 </div>
               </div>
 
@@ -44,8 +44,8 @@ export default function ConsultationSection() {
                   <Icon name="shield" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-navy leading-snug">Bảo Mật &amp; Cam Kết</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Bảo mật thông tin đơn hàng và giá trị tài sản 100%.</p>
+                  <h3 className="text-base font-bold text-navy leading-snug">Bảo mật thông tin</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Kiểm soát thông tin hàng hóa và dữ liệu giao nhận.</p>
                 </div>
               </div>
 
@@ -54,8 +54,8 @@ export default function ConsultationSection() {
                   <Icon name="package" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-navy leading-snug">Lộ Trình Ưu Tiên</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Xếp lịch xe và phân luồng an ninh cao nhất.</p>
+                  <h3 className="text-base font-bold text-navy leading-snug">Phương án vận chuyển phù hợp</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Tư vấn theo đặc thù hàng hóa và tuyến giao.</p>
                 </div>
               </div>
 
@@ -64,8 +64,8 @@ export default function ConsultationSection() {
                   <Icon name="trophy" className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-navy leading-snug">Chính Sách Linh Hoạt</h3>
-                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Chiết khấu và hợp đồng linh hoạt cho doanh nghiệp.</p>
+                  <h3 className="text-base font-bold text-navy leading-snug">Chính sách doanh nghiệp</h3>
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">Linh hoạt theo sản lượng và nhu cầu vận chuyển.</p>
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function ConsultationSection() {
               </div>
               <a 
                 href={HOTLINE_TEL_HREF} 
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-navy hover:bg-gold-light transition-all shadow-sm active:scale-95 shrink-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-navy hover:brightness-95 transition-all shadow-sm active:scale-95 shrink-0"
               >
                 Gọi ngay &rarr;
               </a>

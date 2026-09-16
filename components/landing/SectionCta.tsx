@@ -18,7 +18,7 @@ export default function SectionCta({
   return (
     <a
       href={href}
-      className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-8 py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wide text-navy hover:bg-gold-light shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all active:translate-y-0"
+      className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-8 py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wide text-navy hover:brightness-95 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all active:translate-y-0"
     >
       {children}
     </a>

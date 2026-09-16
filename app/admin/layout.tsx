@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 
 // Font SF dùng chung với landing page (khai báo trong globals.css + tailwind font-sans)
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <div className="min-h-screen bg-gray-50 font-sans text-gray-800 antialiased">{children}</div>;
+  return <div className="min-h-screen bg-neutral-50 font-sans text-navy antialiased">{children}</div>;
 }

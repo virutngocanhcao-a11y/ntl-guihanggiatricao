@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import { LandingContent } from "@/lib/content-schema";
 import { defaultContent } from "@/lib/default-content";
+import { applyDefaultCopy } from "@/lib/apply-default-copy";
 import { ComponentCard, ItemGroup, TextAreaField, TextField } from "@/components/admin/Fields";
 import ImageUploader from "@/components/admin/ImageUploader";
 import PageBreadcrumb from "@/components/admin/PageBreadcrumb";
 import { sectionLabel } from "@/components/admin/nav";
-import { buttonPrimaryClass } from "@/components/admin/ui";
+import { buttonOutlineClass, buttonPrimaryClass } from "@/components/admin/ui";
 import { IconCheck } from "@/components/admin/icons";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
@@ -76,8 +77,22 @@ export default function ContentPage() {
     }
   }
 
+  function handleLoadB2bCopy() {
+    const ok = window.confirm(
+      [
+        "Điền nội dung B2B mới vào form?",
+        "Các ô chữ ở Hero (mô tả), Điểm khó khăn, Nhóm mặt hàng (tiêu đề), Quy trình, Vì sao chọn NTL, Giải pháp và FAQ sẽ được thay bằng nội dung mới. Ảnh, icon, logo và footer giữ nguyên.",
+        "Chưa có gì được lưu cho đến khi bạn bấm “Lưu thay đổi”.",
+      ].join("\n\n")
+    );
+    if (!ok) return;
+    setContent((prev) => (prev ? applyDefaultCopy(prev) : prev));
+    setDirty(true);
+    setSaveState("idle");
+  }
+
   if (!content) {
-    return <div className="py-20 text-center text-sm text-gray-500">Đang tải nội dung...</div>;
+    return <div className="py-20 text-center text-sm text-neutral-500">Đang tải nội dung...</div>;
   }
 
   const set = <K extends keyof LandingContent>(key: K, value: LandingContent[K]) => {
@@ -98,7 +113,7 @@ export default function ContentPage() {
 
   return (
     <>
-      <div className="sticky top-16 z-20 -mx-4 -mt-4 mb-6 border-b border-gray-200 bg-gray-50/95 px-4 py-4 backdrop-blur md:-mx-6 md:-mt-6 md:px-6">
+      <div className="sticky top-16 z-20 -mx-4 -mt-4 mb-6 border-b border-neutral-200 bg-neutral-50/95 px-4 py-4 backdrop-blur md:-mx-6 md:-mt-6 md:px-6">
         <PageBreadcrumb title="Nội dung landing page" className="">
           {saveState === "saved" && (
             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600">
@@ -113,6 +128,9 @@ export default function ContentPage() {
               Có thay đổi chưa lưu
             </span>
           )}
+          <button type="button" onClick={handleLoadB2bCopy} className={buttonOutlineClass}>
+            Nạp nội dung B2B mới
+          </button>
           <button type="button" onClick={handleSave} disabled={saveState === "saving"} className={buttonPrimaryClass}>
             {saveState === "saving" ? "Đang lưu..." : "Lưu thay đổi"}
           </button>

@@ -115,7 +115,7 @@ export default function LeadForm() {
         </p>
         <button
           onClick={handleReset}
-          className="mt-6 text-sm font-bold text-gold hover:text-gold-deep transition-colors"
+          className="mt-6 text-sm font-bold text-gold hover:opacity-80 transition-colors"
         >
           Gửi yêu cầu khác &rarr;
         </button>
@@ -128,7 +128,7 @@ export default function LeadForm() {
   return (
     <div className="bg-white rounded-2xl p-7 md:p-8 shadow-2xl">
       <h3 className="text-navy text-xl md:text-2xl font-bold mb-6 leading-snug">
-        Nhận tư vấn giải pháp<br />giao hàng giá trị cao
+        Nhận tư vấn giải pháp<br />giao hàng giá trị cao cho doanh nghiệp
       </h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Honeypot - hidden from real users */}
@@ -187,13 +187,13 @@ export default function LeadForm() {
         <button
           type="submit"
           disabled={isDisabled}
-          className="w-full mt-3 bg-gold text-navy font-extrabold py-4 rounded-xl hover:bg-gold-light transition-all uppercase tracking-wide shadow-md shadow-gold/25 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:hover:translate-y-0"
+          className="w-full mt-3 bg-gold text-navy font-extrabold py-4 rounded-xl hover:brightness-95 transition-all uppercase tracking-wide shadow-md shadow-gold/25 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:hover:translate-y-0"
         >
           {status === "submitting"
             ? "Đang gửi thông tin..."
             : status === "cooldown"
             ? `Vui lòng chờ ${cooldownSeconds}s`
-            : "Nhận tư vấn ngay →"}
+            : "Nhận tư vấn doanh nghiệp →"}
         </button>
       </form>
     </div>

@@ -40,7 +40,7 @@ export default function FloatingCta() {
       {/* Main Floating Form CTA */}
       <a
         href="#dang-ky"
-        className="flex items-center gap-2.5 rounded-full bg-gold px-5 sm:px-6 py-3.5 text-xs sm:text-sm font-black uppercase tracking-wider text-navy shadow-2xl hover:bg-gold-light hover:scale-105 transition-all border-2 border-white ring-4 ring-gold/20"
+        className="flex items-center gap-2.5 rounded-full bg-gold px-5 sm:px-6 py-3.5 text-xs sm:text-sm font-black uppercase tracking-wider text-navy shadow-2xl hover:brightness-95 hover:scale-105 transition-all border-2 border-white ring-4 ring-gold/20"
       >
         <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 10l7-7m0 0l7 7m-7-7v18" />

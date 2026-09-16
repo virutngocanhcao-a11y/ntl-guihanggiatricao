@@ -25,7 +25,7 @@ export default function Hero({ content }: { content: HeroContent }) {
       </div>
       
       {/* Very faint decorative grid on the left */}
-      <div className="absolute inset-y-0 left-0 w-1/3 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_right,white,transparent)]"></div>
+      <div className="absolute inset-y-0 left-0 w-1/3 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#222222_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(to_right,white,transparent)]"></div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-6 py-6 lg:py-0">
         
@@ -59,9 +59,9 @@ export default function Hero({ content }: { content: HeroContent }) {
           <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <a
               href="#dang-ky"
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-gold px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-navy hover:bg-gold-light transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-gold px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-navy hover:brightness-95 transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
             >
-              Nhận tư vấn giải pháp
+              Nhận tư vấn giải pháp doanh nghiệp
               <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>

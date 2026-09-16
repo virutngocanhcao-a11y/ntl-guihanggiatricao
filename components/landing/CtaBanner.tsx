@@ -10,7 +10,7 @@ export default function CtaBanner({ content }: { content: CtaBannerContent }) {
       : "HƠN CẢ MỘT DỊCH VỤ";
 
   return (
-    <section className="bg-gradient-to-r from-gold via-gold-mid to-gold overflow-hidden border-y border-gold shadow-inner py-6 sm:py-8">
+    <section className="bg-gradient-to-r from-gold via-gold to-gold overflow-hidden border-y border-gold shadow-inner py-6 sm:py-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
         
         {/* Truck visual - Framed cleanly */}
@@ -41,7 +41,7 @@ export default function CtaBanner({ content }: { content: CtaBannerContent }) {
         <div className="shrink-0">
           <button
             onClick={() => window.dispatchEvent(new Event("open-lead-form"))}
-            className="whitespace-nowrap rounded-xl bg-navy px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white hover:bg-black shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer ring-4 ring-black/10"
+            className="whitespace-nowrap rounded-xl bg-navy px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white hover:opacity-90 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer ring-4 ring-navy/10"
           >
             Đăng ký tư vấn ngay &rarr;
           </button>

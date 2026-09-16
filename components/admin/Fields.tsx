@@ -68,10 +68,10 @@ export function ComponentCard({
   return (
     <section id={id} className={`${cardClass} scroll-mt-40`}>
       <div className="px-5 py-4 sm:px-6 sm:py-5">
-        <h3 className="text-base font-medium text-gray-800">{title}</h3>
-        {description && <p className="mt-1 text-sm text-gray-500">{description}</p>}
+        <h3 className="text-base font-medium text-navy">{title}</h3>
+        {description && <p className="mt-1 text-sm text-neutral-500">{description}</p>}
       </div>
-      <div className="space-y-5 border-t border-gray-100 p-5 sm:p-6">{children}</div>
+      <div className="space-y-5 border-t border-neutral-100 p-5 sm:p-6">{children}</div>
     </section>
   );
 }
@@ -79,8 +79,8 @@ export function ComponentCard({
 /** Nhóm các trường của một phần tử lặp lại (một bước, một câu hỏi...). */
 export function ItemGroup({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="space-y-4 rounded-xl border border-gray-200 bg-gray-50/70 p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">{label}</p>
+    <div className="space-y-4 rounded-xl border border-neutral-200 bg-neutral-50/70 p-4">
+      <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500">{label}</p>
       {children}
     </div>
   );
