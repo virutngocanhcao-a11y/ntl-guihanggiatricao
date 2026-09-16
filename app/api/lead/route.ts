@@ -1,6 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saveLead } from "@/lib/leads-storage";
 
+const LEAD_CENTER_ENDPOINT = "https://ntl-mkt-leads-center.vercel.app/api/leads";
+
+/**
+ * Forward lead sang Marketing Lead Center (NTL) — nguồn tổng hợp lead
+ * dùng chung cho toàn công ty. Không chặn response nếu lỗi, chỉ log.
+ */
+async function forwardToLeadCenter(
+  leadData: { fullName: string; company: string; phone: string; cargoType: string },
+  pageUrl: string
+) {
+  try {
+    const res = await fetch(LEAD_CENTER_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        source_type: "landing_page",
+        source_name: "LP - Hàng giá trị cao",
+        name: leadData.fullName,
+        phone: leadData.phone,
+        company: leadData.company || undefined,
+        service: "Hàng giá trị cao",
+        need: leadData.cargoType ? `Loại hàng: ${leadData.cargoType}` : undefined,
+        landing_page_url: pageUrl || undefined,
+      }),
+    });
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      console.error("[api/lead] Lead Center forward failed:", res.status, text);
+    }
+  } catch (err) {
+    console.error("[api/lead] Lead Center forward error:", err);
+  }
+}
+
 interface LeadPayload {
   fullName: string;
   company?: string;
@@ -148,6 +182,9 @@ export async function POST(req: NextRequest) {
   await saveLead({ ...leadData, ip }).catch((err) =>
     console.error("[api/lead] Failed to save lead to R2:", err)
   );
+
+  // Forward to Marketing Lead Center (nguồn lead tổng hợp toàn công ty)
+  await forwardToLeadCenter(leadData, req.headers.get("referer") || "");
 
   // Forward to CRM
   const endpoint = process.env.GTG_CRM_ENDPOINT;
