@@ -14,7 +14,10 @@ async function forwardToLeadCenter(
   try {
     const res = await fetch(LEAD_CENTER_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        ...(process.env.LEAD_CENTER_API_KEY ? { "x-api-key": process.env.LEAD_CENTER_API_KEY } : {}),
+      },
       body: JSON.stringify({
         source_type: "landing_page",
         source_name: "LP - Hàng giá trị cao",
