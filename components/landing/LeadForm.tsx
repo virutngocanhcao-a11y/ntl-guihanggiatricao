@@ -21,6 +21,15 @@ export default function LeadForm() {
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileReset, setTurnstileReset] = useState(0);
 
+  // Lưu UTM/gclid ngay khi vào trang phòng khi khách chuyển trang rồi mới điền form
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "gclid"]) {
+      const value = query.get(key);
+      if (value) sessionStorage.setItem(key, value.slice(0, 200));
+    }
+  }, []);
+
   // Reset form load time when status returns to idle
   useEffect(() => {
     if (status === "idle") {
@@ -69,7 +78,16 @@ export default function LeadForm() {
       return;
     }
 
+    // Tham số theo dõi quảng cáo (UTM / gclid) từ URL landing page
+    const query = new URLSearchParams(window.location.search);
+    const tracking: Record<string, string> = {};
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "gclid"]) {
+      const value = query.get(key) || sessionStorage.getItem(key);
+      if (value) tracking[key] = value.slice(0, 200);
+    }
+
     const data = {
+      ...tracking,
       fullName: (form.elements.namedItem("fullName") as HTMLInputElement).value,
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,

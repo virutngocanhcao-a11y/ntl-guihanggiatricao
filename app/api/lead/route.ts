@@ -9,7 +9,8 @@ const LEAD_CENTER_ENDPOINT = "https://ntl-mkt-leads-center.vercel.app/api/leads"
  */
 async function forwardToLeadCenter(
   leadData: { fullName: string; company: string; phone: string; cargoType: string },
-  pageUrl: string
+  pageUrl: string,
+  tracking: Record<string, string>
 ) {
   try {
     const res = await fetch(LEAD_CENTER_ENDPOINT, {
@@ -27,6 +28,7 @@ async function forwardToLeadCenter(
         service: "Hàng giá trị cao",
         need: leadData.cargoType ? `Loại hàng: ${leadData.cargoType}` : undefined,
         landing_page_url: pageUrl || undefined,
+        ...tracking,
       }),
     });
     if (!res.ok) {
@@ -46,6 +48,11 @@ interface LeadPayload {
   _hp?: string; // honeypot
   _ts?: number; // form load timestamp
   _turnstile?: string; // Cloudflare Turnstile token
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  gclid?: string;
 }
 
 /**
@@ -187,7 +194,12 @@ export async function POST(req: NextRequest) {
   );
 
   // Forward to Marketing Lead Center (nguồn lead tổng hợp toàn công ty)
-  await forwardToLeadCenter(leadData, req.headers.get("referer") || "");
+  const tracking: Record<string, string> = {};
+  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "gclid"] as const) {
+    const value = body[key];
+    if (typeof value === "string" && value.trim()) tracking[key] = value.trim().slice(0, 200);
+  }
+  await forwardToLeadCenter(leadData, req.headers.get("referer") || "", tracking);
 
   // Forward to CRM
   const endpoint = process.env.GTG_CRM_ENDPOINT;
