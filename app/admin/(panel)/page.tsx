@@ -7,7 +7,7 @@ import PageBreadcrumb from "@/components/admin/PageBreadcrumb";
 import LeadsTable from "@/components/admin/LeadsTable";
 import { formatDayLabel, formatNumber } from "@/components/admin/format";
 import { buttonOutlineClass, cardClass } from "@/components/admin/ui";
-import { IconEye, IconPercent, IconRefresh, IconShieldAlert, IconUsers } from "@/components/admin/icons";
+import { IconRefresh, IconShieldAlert, IconUsers } from "@/components/admin/icons";
 
 function MetricCard({
   icon,
@@ -94,7 +94,6 @@ function LeadChart({ days }: { days: { date: string; count: number }[] }) {
 
 export default function DashboardPage() {
   const [data, setData] = useState<LeadsResponse | null>(null);
-  const [traffic, setTraffic] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -102,13 +101,9 @@ export default function DashboardPage() {
     setLoading(true);
     setError("");
     try {
-      const [leadsRes, trafficRes] = await Promise.all([
-        fetch("/api/leads?page=1&perPage=6&stats=1"),
-        fetch("/api/traffic"),
-      ]);
+      const leadsRes = await fetch("/api/leads?page=1&perPage=6&stats=1");
       if (!leadsRes.ok) throw new Error("Không tải được dữ liệu lead.");
       setData(await leadsRes.json());
-      if (trafficRes.ok) setTraffic((await trafficRes.json()).count ?? null);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Lỗi tải dữ liệu.");
     } finally {
@@ -121,7 +116,6 @@ export default function DashboardPage() {
   }, [load]);
 
   const stats = data?.stats;
-  const conversion = stats && traffic ? (stats.total / traffic) * 100 : null;
 
   return (
     <>
@@ -136,23 +130,13 @@ export default function DashboardPage() {
         <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
       )}
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-cols-2">
         <MetricCard
           icon={<IconUsers className="h-6 w-6" />}
           label="Tổng lead"
           value={stats ? formatNumber(stats.total) : "—"}
           badge={stats ? `+${stats.today} hôm nay` : undefined}
           badgeTone={stats?.today ? "success" : "neutral"}
-        />
-        <MetricCard
-          icon={<IconEye className="h-6 w-6" />}
-          label="Lượt truy cập"
-          value={traffic !== null ? formatNumber(traffic) : "—"}
-        />
-        <MetricCard
-          icon={<IconPercent className="h-6 w-6" />}
-          label="Tỉ lệ chuyển đổi"
-          value={conversion !== null ? `${conversion.toFixed(1)}%` : "—"}
         />
         <MetricCard
           icon={<IconShieldAlert className="h-6 w-6" />}
