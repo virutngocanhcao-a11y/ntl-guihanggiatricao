@@ -137,6 +137,12 @@ export default function ContentPage() {
         </PageBreadcrumb>
       </div>
 
+      <div className="mb-6 rounded-xl border border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+        <strong>Nội dung giờ được quản lý tại Lead Center.</strong> Trang landing page hiện lấy nội dung từ Lead
+        Center, sửa và lưu ở đây sẽ không còn hiển thị lên trang thật. Vào mục &quot;Nội dung Landing Page&quot;
+        trong Lead Center để chỉnh sửa.
+      </div>
+
       {loadError && (
         <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
           {loadError} Đang hiển thị nội dung mặc định.

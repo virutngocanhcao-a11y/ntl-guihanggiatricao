@@ -1,21 +1,17 @@
 import { LandingContent } from "./content-schema";
 import { defaultContent } from "./default-content";
-import { CONTENT_KEY, isR2Configured, r2PublicUrl } from "./r2-client";
+
+const CONTENT_API_URL = "https://ntl-mkt-leads-center.vercel.app/api/public/content?slug=giatricao";
 
 export async function getContent(): Promise<LandingContent> {
-  if (!isR2Configured()) {
-    return defaultContent;
-  }
-
   try {
-    const res = await fetch(r2PublicUrl(CONTENT_KEY), {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      return defaultContent;
-    }
-    const data = (await res.json()) as Partial<LandingContent>;
-    return { ...defaultContent, ...data };
+    const res = await fetch(CONTENT_API_URL, { cache: "no-store", signal: AbortSignal.timeout(5000) });
+    if (!res.ok) return defaultContent;
+
+    const { content } = (await res.json()) as { content?: Partial<LandingContent> };
+    if (!content) return defaultContent;
+
+    return { ...defaultContent, ...content };
   } catch {
     return defaultContent;
   }
