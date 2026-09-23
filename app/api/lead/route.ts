@@ -201,40 +201,5 @@ export async function POST(req: NextRequest) {
   }
   await forwardToLeadCenter(leadData, req.headers.get("referer") || "", tracking);
 
-  // Forward to CRM
-  const endpoint = process.env.GTG_CRM_ENDPOINT;
-  const apiKey = process.env.GTG_CRM_API_KEY;
-
-  if (!endpoint || !apiKey) {
-    console.warn(
-      "[api/lead] GTG_CRM_ENDPOINT/GTG_CRM_API_KEY chưa được cấu hình. Lead đã lưu vào R2.",
-      leadData
-    );
-    // Still return success since we saved to R2
-    return NextResponse.json({ ok: true });
-  }
-
-  try {
-    const crmRes = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(leadData),
-    });
-
-    if (!crmRes.ok) {
-      const text = await crmRes.text().catch(() => "");
-      console.error("[api/lead] GTG CRM trả lỗi:", crmRes.status, text);
-      // Lead is still saved in R2, so return success
-      return NextResponse.json({ ok: true });
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error("[api/lead] Lỗi khi gọi GTG CRM:", err);
-    // Lead is still saved in R2, so return success
-    return NextResponse.json({ ok: true });
-  }
+  return NextResponse.json({ ok: true });
 }
