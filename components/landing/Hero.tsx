@@ -4,7 +4,7 @@ import { HeroContent } from "@/lib/content-schema";
 
 export default function Hero({ content }: { content: HeroContent }) {
   return (
-    <section className="relative bg-white text-ink overflow-hidden min-h-[420px] lg:h-[470px] xl:h-[500px] flex items-center pt-20 lg:pt-0 border-b border-gray-200">
+    <section className="relative bg-white text-ink overflow-hidden min-h-[420px] lg:h-[566px] xl:h-[596px] flex items-center pt-20 md:pt-24 border-b border-gray-200">
       
       {/* Background Graphic & Visual - Blended smoothly into white background */}
       <div className="absolute inset-0 z-0 flex justify-end pointer-events-none overflow-hidden">

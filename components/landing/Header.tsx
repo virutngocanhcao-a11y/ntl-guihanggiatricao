@@ -8,10 +8,10 @@ export default function Header({ global }: { global?: GlobalSettings }) {
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent text-ink">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5">
-        <a href="/" className="flex items-center">
+      <div className="mx-auto flex h-20 md:h-24 w-full max-w-7xl items-center justify-between px-6">
+        <a href="/" className="flex h-full items-center">
           {global?.logoImage ? (
-            <img src={global.logoImage} alt="Nhất Tín Logistics" className="h-8 md:h-10 w-auto object-contain" />
+            <img src={global.logoImage} alt="Nhất Tín Logistics" className="h-10 md:h-16 w-auto object-contain" />
           ) : (
             <span className="text-[22px] font-extrabold tracking-tight text-navy">
               <span className="bg-gold text-navy px-1.5 py-0.5 rounded-md mr-1">Nhất Tín</span>Logistics
@@ -24,10 +24,10 @@ export default function Header({ global }: { global?: GlobalSettings }) {
           <a href="#faq" className="hover:underline hover:decoration-gold hover:decoration-2 hover:underline-offset-4 transition-colors">FAQ</a>
           <a href="#lien-he" className="hover:underline hover:decoration-gold hover:decoration-2 hover:underline-offset-4 transition-colors">Liên hệ</a>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
           <a
             href="#dang-ky"
-            className="rounded-xl bg-gold px-5 py-2.5 text-[13px] font-extrabold text-navy hover:brightness-95 transition-all uppercase shadow-sm hover:shadow-md hover:scale-[1.02]"
+            className="whitespace-nowrap rounded-xl bg-gold px-3 py-2 text-[11px] md:px-5 md:py-2.5 md:text-[13px] font-extrabold text-navy hover:brightness-95 transition-all uppercase shadow-sm hover:shadow-md hover:scale-[1.02]"
           >
             Đăng ký tư vấn ngay &rarr;
           </a>
