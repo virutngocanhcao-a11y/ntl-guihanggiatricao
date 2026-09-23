@@ -13,6 +13,12 @@ const cargoTypes = [
 
 type Status = "idle" | "submitting" | "success" | "error" | "cooldown";
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -109,6 +115,7 @@ export default function LeadForm() {
       }
       setStatus("success");
       form.reset();
+      window.fbq?.("track", "Lead");
     } catch (err) {
       setStatus("error");
       setErrorMessage(err instanceof Error ? err.message : "Có lỗi xảy ra.");
