@@ -8,7 +8,14 @@ const LEAD_CENTER_ENDPOINT = "https://ntl-mkt-leads-center.vercel.app/api/leads"
  * dùng chung cho toàn công ty. Không chặn response nếu lỗi, chỉ log.
  */
 async function forwardToLeadCenter(
-  leadData: { fullName: string; company: string; phone: string; cargoType: string },
+  leadData: {
+    fullName: string;
+    company: string;
+    phone: string;
+    cargoType: string;
+    origin: string;
+    destination: string;
+  },
   pageUrl: string,
   tracking: Record<string, string>
 ) {
@@ -27,6 +34,9 @@ async function forwardToLeadCenter(
         company: leadData.company || undefined,
         service: "Hàng giá trị cao",
         need: leadData.cargoType ? `Loại hàng: ${leadData.cargoType}` : undefined,
+        goods_type: leadData.cargoType || undefined,
+        origin: leadData.origin || undefined,
+        destination: leadData.destination || undefined,
         landing_page_url: pageUrl || undefined,
         ...tracking,
       }),
@@ -45,6 +55,8 @@ interface LeadPayload {
   company?: string;
   phone: string;
   cargoType?: string;
+  origin?: string;
+  destination?: string;
   _hp?: string; // honeypot
   _ts?: number; // form load timestamp
   _turnstile?: string; // Cloudflare Turnstile token
@@ -120,7 +132,9 @@ setInterval(() => {
 function isValidPayload(body: unknown): body is LeadPayload {
   if (typeof body !== "object" || body === null) return false;
   const b = body as Record<string, unknown>;
-  return typeof b.fullName === "string" && b.fullName.trim().length > 0 &&
+  const filled = (v: unknown) => typeof v === "string" && v.trim().length > 0;
+  return filled(b.fullName) && filled(b.company) && filled(b.cargoType) &&
+    filled(b.origin) && filled(b.destination) &&
     typeof b.phone === "string" && /^[0-9+\s()-]{8,15}$/.test(b.phone.trim());
 }
 
@@ -147,7 +161,7 @@ export async function POST(req: NextRequest) {
 
   if (!isValidPayload(body)) {
     return NextResponse.json(
-      { error: "Vui lòng nhập đầy đủ Họ tên và Số điện thoại hợp lệ." },
+      { error: "Vui lòng nhập đầy đủ tất cả các trường và Số điện thoại hợp lệ." },
       { status: 400 }
     );
   }
@@ -185,6 +199,8 @@ export async function POST(req: NextRequest) {
     company: body.company?.trim() || "",
     phone: body.phone.trim(),
     cargoType: body.cargoType?.trim() || "",
+    origin: body.origin?.trim().slice(0, 200) || "",
+    destination: body.destination?.trim().slice(0, 200) || "",
     source: "Landing Page - Giao Hang Gia Tri Cao",
   };
 

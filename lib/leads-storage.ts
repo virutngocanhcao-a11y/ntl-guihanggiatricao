@@ -7,6 +7,8 @@ export interface StoredLead {
   company: string;
   phone: string;
   cargoType: string;
+  origin?: string;
+  destination?: string;
   source: string;
   submittedAt: string;
   ip?: string;

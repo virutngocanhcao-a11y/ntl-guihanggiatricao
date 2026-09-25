@@ -75,6 +75,11 @@ export default function LeadsTable({
                   ) : (
                     <span className="text-sm text-neutral-300">—</span>
                   )}
+                  {(lead.origin || lead.destination) && (
+                    <p className="mt-1 text-xs text-neutral-500">
+                      {lead.origin || "?"} &rarr; {lead.destination || "?"}
+                    </p>
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-5 py-3 text-sm text-neutral-500 sm:px-6">
                   {formatDateTime(lead.submittedAt)}

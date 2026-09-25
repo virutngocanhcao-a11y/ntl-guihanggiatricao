@@ -77,6 +77,17 @@ export default function LeadForm() {
       return;
     }
 
+    // Bắt buộc điền đủ mọi trường (chặn cả trường chỉ toàn dấu cách)
+    for (const name of ["fullName", "company", "phone", "cargoType", "origin", "destination"]) {
+      const el = form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement;
+      if (!el.value.trim()) {
+        setErrorMessage("Vui lòng điền đầy đủ tất cả các trường trước khi gửi.");
+        setStatus("error");
+        el.focus();
+        return;
+      }
+    }
+
     // Chưa qua được Turnstile thì không cho gửi (chỉ áp dụng khi đã cấu hình key)
     if (turnstileSiteKey && !turnstileToken) {
       setErrorMessage("Vui lòng chờ xác minh bảo mật hoàn tất rồi gửi lại.");
@@ -98,6 +109,8 @@ export default function LeadForm() {
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       cargoType: (form.elements.namedItem("cargoType") as HTMLSelectElement).value,
+      origin: (form.elements.namedItem("origin") as HTMLInputElement).value,
+      destination: (form.elements.namedItem("destination") as HTMLInputElement).value,
       _hp: honeypot || "",
       _ts: formLoadedAt.current,
       _turnstile: turnstileToken,
@@ -170,6 +183,7 @@ export default function LeadForm() {
         />
         <input
           name="company"
+          required
           placeholder="Tên công ty / Doanh nghiệp"
           className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
         />
@@ -202,6 +216,19 @@ export default function LeadForm() {
             <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div>
+
+        <input
+          name="origin"
+          required
+          placeholder="Điểm gửi (tỉnh/thành phố)"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
+        />
+        <input
+          name="destination"
+          required
+          placeholder="Điểm nhận (tỉnh/thành phố)"
+          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
+        />
 
         <Turnstile onVerify={setTurnstileToken} resetSignal={turnstileReset} />
 
