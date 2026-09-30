@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { incrementVisitCount, getVisitCount, pingOnline, getOnlineCount } from "@/lib/traffic";
+import {
+  incrementVisitCount,
+  getVisitCount,
+  getVisitCountInRange,
+  pingOnline,
+  getOnlineCount,
+} from "@/lib/traffic";
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,10 +26,18 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const [count, realtime] = await Promise.all([getVisitCount(), getOnlineCount()]);
-    return NextResponse.json({ count, realtime });
+    const from = new Date(req.nextUrl.searchParams.get("from") ?? "");
+    const to = new Date(req.nextUrl.searchParams.get("to") ?? "");
+    const hasRange = !isNaN(from.getTime()) && !isNaN(to.getTime());
+
+    const [count, realtime, range] = await Promise.all([
+      getVisitCount(),
+      getOnlineCount(),
+      hasRange ? getVisitCountInRange(from, to) : Promise.resolve(undefined),
+    ]);
+    return NextResponse.json({ count, realtime, range });
   } catch (err) {
     console.error("[api/traffic] Error:", err);
     return NextResponse.json({ count: 0, realtime: 0 }, { status: 500 });

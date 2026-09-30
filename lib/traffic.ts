@@ -41,6 +41,21 @@ async function writeJson(key: string, data: unknown): Promise<void> {
   );
 }
 
+// Lượt truy cập theo từng ngày (giờ Việt Nam), dạng { "2026-09-30": 12 }, để lọc theo khoảng thời gian.
+const DAILY_KEY = "traffic-daily.json";
+type DailyMap = Record<string, number>;
+
+function vnDay(d: Date = new Date()): string {
+  return d.toLocaleDateString("en-CA", { timeZone: "Asia/Ho_Chi_Minh" });
+}
+
+async function incrementDaily(): Promise<void> {
+  const daily = await readJson<DailyMap>(DAILY_KEY, {});
+  const key = vnDay();
+  daily[key] = (daily[key] ?? 0) + 1;
+  await writeJson(DAILY_KEY, daily);
+}
+
 export async function incrementVisitCount(): Promise<number> {
   const data = await readJson<TrafficData>(TRAFFIC_KEY, {
     totalVisits: 0,
@@ -48,12 +63,28 @@ export async function incrementVisitCount(): Promise<number> {
   });
   data.totalVisits += 1;
   data.lastUpdated = new Date().toISOString();
-  await writeJson(TRAFFIC_KEY, data).catch((err) => console.error("[traffic] Failed to save:", err));
+  await Promise.all([
+    writeJson(TRAFFIC_KEY, data).catch((err) => console.error("[traffic] Failed to save:", err)),
+    incrementDaily().catch((err) => console.error("[traffic] Failed to save daily:", err)),
+  ]);
   return data.totalVisits;
 }
 
 export async function getVisitCount(): Promise<number> {
   return (await readJson<TrafficData>(TRAFFIC_KEY, { totalVisits: 0, lastUpdated: "" })).totalVisits;
+}
+
+/** Tổng lượt truy cập trong khoảng [from, to] (theo ngày giờ VN), kèm ngày bắt đầu có số liệu theo ngày. */
+export async function getVisitCountInRange(from: Date, to: Date) {
+  const daily = await readJson<DailyMap>(DAILY_KEY, {});
+  const f = vnDay(from);
+  const t = vnDay(to);
+  let count = 0;
+  for (const [day, n] of Object.entries(daily)) {
+    if (day >= f && day <= t) count += n;
+  }
+  const days = Object.keys(daily).sort();
+  return { count, trackedSince: days[0] ?? null };
 }
 
 function pruneOnline(data: OnlineMap): OnlineMap {
