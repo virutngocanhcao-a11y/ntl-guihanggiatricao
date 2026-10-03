@@ -2,13 +2,28 @@
 
 import { useState, useRef, useEffect } from "react";
 import Turnstile, { turnstileSiteKey } from "./Turnstile";
+import ProvinceSelect from "./ProvinceSelect";
+import {
+  CARGO_GROUPS,
+  CUSTOMER_TYPES,
+  FREQUENCIES,
+  LeadInput,
+  OTHER_CARGO_GROUP,
+  validateLead,
+} from "@/lib/lead-form";
 
-const cargoTypes = [
-  "Điện thoại & thiết bị di động",
-  "Laptop & thiết bị CNTT",
-  "Linh kiện điện tử",
-  "Máy móc & thiết bị",
-  "Hàng thương mại giá trị cao khác",
+const inputClass =
+  "w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium";
+
+const chipClass = (on: boolean) =>
+  `px-3.5 py-2 rounded-full border text-sm font-semibold transition-all ${
+    on ? "border-gold bg-gold/15 text-navy" : "border-gray-200 bg-gray-50/50 text-gray-600 hover:border-gold/60"
+  }`;
+
+// Thứ tự trường trên form, để focus vào trường lỗi đầu tiên
+const FIELD_ORDER = [
+  "fullName", "phone", "customerType", "company", "taxCode",
+  "cargoGroup", "cargoItems", "cargoOther", "frequency", "origin", "destination",
 ];
 
 type Status = "idle" | "submitting" | "success" | "error" | "cooldown";
@@ -26,6 +41,11 @@ export default function LeadForm() {
   const [cooldownSeconds, setCooldownSeconds] = useState(0);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileReset, setTurnstileReset] = useState(0);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [customerType, setCustomerType] = useState("");
+  const [cargoGroup, setCargoGroup] = useState("");
+  const [cargoItems, setCargoItems] = useState<string[]>([]);
+  const [frequency, setFrequency] = useState("");
 
   // Lưu UTM/gclid ngay khi vào trang phòng khi khách chuyển trang rồi mới điền form
   useEffect(() => {
@@ -77,15 +97,31 @@ export default function LeadForm() {
       return;
     }
 
-    // Bắt buộc điền đủ mọi trường (chặn cả trường chỉ toàn dấu cách)
-    for (const name of ["fullName", "company", "phone", "cargoType", "origin", "destination"]) {
-      const el = form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement;
-      if (!el.value.trim()) {
-        setErrorMessage("Vui lòng điền đầy đủ tất cả các trường trước khi gửi.");
-        setStatus("error");
-        el.focus();
-        return;
-      }
+    const text = (name: string) =>
+      ((form.elements.namedItem(name) as HTMLInputElement | null)?.value || "").trim();
+    const isIndividual = customerType === "individual";
+    const lead: LeadInput = {
+      fullName: text("fullName"),
+      phone: text("phone").replace(/[\s.-]/g, ""),
+      customerType,
+      company: isIndividual ? "" : text("company"),
+      taxCode: isIndividual ? "" : text("taxCode"),
+      cargoGroup,
+      cargoItems,
+      cargoOther: cargoGroup === OTHER_CARGO_GROUP ? text("cargoOther") : "",
+      frequency,
+      origin: text("origin"),
+      destination: text("destination"),
+    };
+
+    const nextErrors = validateLead(lead);
+    setErrors(nextErrors);
+    const firstInvalid = FIELD_ORDER.find((f) => nextErrors[f]);
+    if (firstInvalid) {
+      setErrorMessage("Vui lòng kiểm tra lại các trường được đánh dấu.");
+      setStatus("error");
+      document.getElementById(`lf-${firstInvalid}`)?.scrollIntoView({ block: "center", behavior: "smooth" });
+      return;
     }
 
     // Chưa qua được Turnstile thì không cho gửi (chỉ áp dụng khi đã cấu hình key)
@@ -105,12 +141,7 @@ export default function LeadForm() {
 
     const data = {
       ...tracking,
-      fullName: (form.elements.namedItem("fullName") as HTMLInputElement).value,
-      company: (form.elements.namedItem("company") as HTMLInputElement).value,
-      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
-      cargoType: (form.elements.namedItem("cargoType") as HTMLSelectElement).value,
-      origin: (form.elements.namedItem("origin") as HTMLInputElement).value,
-      destination: (form.elements.namedItem("destination") as HTMLInputElement).value,
+      ...lead,
       _hp: honeypot || "",
       _ts: formLoadedAt.current,
       _turnstile: turnstileToken,
@@ -128,6 +159,11 @@ export default function LeadForm() {
       }
       setStatus("success");
       form.reset();
+      setErrors({});
+      setCustomerType("");
+      setCargoGroup("");
+      setCargoItems([]);
+      setFrequency("");
       window.fbq?.("track", "Lead");
     } catch (err) {
       setStatus("error");
@@ -175,60 +211,116 @@ export default function LeadForm() {
           <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
         </div>
 
-        <input
-          name="fullName"
-          required
-          placeholder="Họ và tên"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
-        />
-        <input
-          name="company"
-          required
-          placeholder="Tên công ty / Doanh nghiệp"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
-        />
-        <input
-          name="phone"
-          required
-          type="tel"
-          pattern="^0[0-9]{9}$"
-          title="Vui lòng nhập số điện thoại hợp lệ (10 số, bắt đầu bằng 0)"
-          placeholder="Số điện thoại liên hệ"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
-        />
-        <div className="relative">
-          <select
-            name="cargoType"
-            defaultValue=""
-            required
-            className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-gray-500 font-medium appearance-none"
-          >
-            <option value="" disabled>
-              Chọn loại hàng hóa cần gửi
-            </option>
-            {cargoTypes.map((type) => (
-              <option key={type} value={type} className="text-navy">
-                {type}
-              </option>
-            ))}
-          </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
-            <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-          </div>
-        </div>
+        <Block id="fullName" error={errors.fullName}>
+          <input name="fullName" placeholder="Họ và tên" className={inputClass} />
+        </Block>
+        <Block id="phone" error={errors.phone}>
+          <input name="phone" type="tel" inputMode="numeric" placeholder="Số điện thoại liên hệ" className={inputClass} />
+        </Block>
 
-        <input
-          name="origin"
-          required
-          placeholder="Điểm gửi (tỉnh/thành phố)"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
-        />
-        <input
-          name="destination"
-          required
-          placeholder="Điểm nhận (tỉnh/thành phố)"
-          className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-white focus:bg-white focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all text-navy placeholder-gray-400 font-medium"
-        />
+        <Block id="customerType" error={errors.customerType} label="Bạn gửi hàng với tư cách">
+          <div className="flex flex-wrap gap-2">
+            {CUSTOMER_TYPES.map((t) => (
+              <button
+                key={t.value}
+                type="button"
+                aria-pressed={customerType === t.value}
+                onClick={() => setCustomerType(t.value)}
+                className={chipClass(customerType === t.value)}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+        </Block>
+
+        {customerType !== "individual" && (
+          <>
+            <Block id="company" error={errors.company}>
+              <input name="company" placeholder="Tên công ty / Shop" className={inputClass} />
+            </Block>
+            <Block id="taxCode" error={errors.taxCode}>
+              <input name="taxCode" inputMode="numeric" placeholder="Mã số thuế (không bắt buộc)" className={inputClass} />
+            </Block>
+          </>
+        )}
+
+        <Block id="cargoGroup" error={errors.cargoGroup}>
+          <div className="relative">
+            <select
+              value={cargoGroup}
+              onChange={(e) => {
+                setCargoGroup(e.target.value);
+                setCargoItems([]);
+              }}
+              className={`${inputClass} appearance-none ${cargoGroup ? "" : "text-gray-400"}`}
+            >
+              <option value="" disabled>
+                Chọn nhóm hàng cần gửi
+              </option>
+              {CARGO_GROUPS.map((g) => (
+                <option key={g.name} value={g.name} className="text-navy">
+                  {g.name}
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+              <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
+        </Block>
+
+        {cargoGroup === OTHER_CARGO_GROUP ? (
+          <Block id="cargoOther" error={errors.cargoOther}>
+            <input name="cargoOther" placeholder="Ghi rõ mặt hàng cần gửi" className={inputClass} />
+          </Block>
+        ) : (
+          cargoGroup && (
+            <Block id="cargoItems" error={errors.cargoItems} label="Mặt hàng cụ thể (chọn được nhiều)">
+              <div className="flex flex-wrap gap-2">
+                {CARGO_GROUPS.find((g) => g.name === cargoGroup)?.items.map((item) => {
+                  const on = cargoItems.includes(item);
+                  return (
+                    <button
+                      key={item}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() =>
+                        setCargoItems((list) => (on ? list.filter((i) => i !== item) : [...list, item]))
+                      }
+                      className={chipClass(on)}
+                    >
+                      {item}
+                    </button>
+                  );
+                })}
+              </div>
+            </Block>
+          )
+        )}
+
+        <Block id="frequency" error={errors.frequency} label="Tần suất gửi">
+          <div className="flex flex-wrap gap-2">
+            {FREQUENCIES.map((f) => (
+              <button
+                key={f}
+                type="button"
+                aria-pressed={frequency === f}
+                onClick={() => setFrequency(f)}
+                className={chipClass(frequency === f)}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+        </Block>
+
+        <Block id="origin" error={errors.origin}>
+          <ProvinceSelect name="origin" placeholder="Điểm gửi (tỉnh/thành phố)" className={inputClass} />
+        </Block>
+        <Block id="destination" error={errors.destination}>
+          <ProvinceSelect name="destination" placeholder="Điểm nhận (tỉnh/thành phố)" className={inputClass} />
+        </Block>
 
         <Turnstile onVerify={setTurnstileToken} resetSignal={turnstileReset} />
 
@@ -248,6 +340,26 @@ export default function LeadForm() {
             : "Nhận tư vấn doanh nghiệp →"}
         </button>
       </form>
+    </div>
+  );
+}
+
+function Block({
+  id,
+  label,
+  error,
+  children,
+}: {
+  id: string;
+  label?: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div id={`lf-${id}`}>
+      {label && <p className="mb-2 text-sm font-semibold text-navy">{label}</p>}
+      {children}
+      {error && <p className="mt-1.5 text-sm font-medium text-red-600">{error}</p>}
     </div>
   );
 }

@@ -9,6 +9,9 @@ export interface StoredLead {
   cargoType: string;
   origin?: string;
   destination?: string;
+  customerType?: string;
+  taxCode?: string;
+  frequency?: string;
   source: string;
   submittedAt: string;
   ip?: string;

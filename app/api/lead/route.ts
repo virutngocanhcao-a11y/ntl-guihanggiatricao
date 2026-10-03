@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saveLead } from "@/lib/leads-storage";
+import { CUSTOMER_TYPES, LeadInput, describeCargo, validateLead } from "@/lib/lead-form";
 
 const LEAD_CENTER_ENDPOINT = "https://ntl-mkt-leads-center.vercel.app/api/leads";
 
@@ -8,14 +9,7 @@ const LEAD_CENTER_ENDPOINT = "https://ntl-mkt-leads-center.vercel.app/api/leads"
  * dùng chung cho toàn công ty. Không chặn response nếu lỗi, chỉ log.
  */
 async function forwardToLeadCenter(
-  leadData: {
-    fullName: string;
-    company: string;
-    phone: string;
-    cargoType: string;
-    origin: string;
-    destination: string;
-  },
+  leadData: LeadInput & { cargoType: string },
   pageUrl: string,
   tracking: Record<string, string>
 ) {
@@ -32,11 +26,14 @@ async function forwardToLeadCenter(
         name: leadData.fullName,
         phone: leadData.phone,
         company: leadData.company || undefined,
+        customer_type: leadData.customerType,
         service: "Hàng giá trị cao",
-        need: leadData.cargoType ? `Loại hàng: ${leadData.cargoType}` : undefined,
-        goods_type: leadData.cargoType || undefined,
-        origin: leadData.origin || undefined,
-        destination: leadData.destination || undefined,
+        need: `Loại hàng: ${leadData.cargoType}`,
+        goods_type: leadData.cargoType,
+        origin: leadData.origin,
+        destination: leadData.destination,
+        frequency: leadData.frequency,
+        customer_note: leadData.taxCode ? `MST: ${leadData.taxCode}` : undefined,
         landing_page_url: pageUrl || undefined,
         ...tracking,
       }),
@@ -51,12 +48,6 @@ async function forwardToLeadCenter(
 }
 
 interface LeadPayload {
-  fullName: string;
-  company?: string;
-  phone: string;
-  cargoType?: string;
-  origin?: string;
-  destination?: string;
   _hp?: string; // honeypot
   _ts?: number; // form load timestamp
   _turnstile?: string; // Cloudflare Turnstile token
@@ -129,13 +120,24 @@ setInterval(() => {
   }
 }, 30 * 60 * 1000);
 
-function isValidPayload(body: unknown): body is LeadPayload {
-  if (typeof body !== "object" || body === null) return false;
-  const b = body as Record<string, unknown>;
-  const filled = (v: unknown) => typeof v === "string" && v.trim().length > 0;
-  return filled(b.fullName) && filled(b.company) && filled(b.cargoType) &&
-    filled(b.origin) && filled(b.destination) &&
-    typeof b.phone === "string" && /^[0-9+\s()-]{8,15}$/.test(b.phone.trim());
+const str = (v: unknown, max = 200) => (typeof v === "string" ? v.trim().slice(0, max) : "");
+
+function parseLead(b: Record<string, unknown>): LeadInput {
+  const customerType = str(b.customerType);
+  const isIndividual = customerType === "individual";
+  return {
+    fullName: str(b.fullName),
+    phone: str(b.phone).replace(/[\s.-]/g, ""),
+    customerType,
+    company: isIndividual ? "" : str(b.company),
+    taxCode: isIndividual ? "" : str(b.taxCode, 20),
+    cargoGroup: str(b.cargoGroup),
+    cargoItems: Array.isArray(b.cargoItems) ? b.cargoItems.slice(0, 20).map((i) => str(i)) : [],
+    cargoOther: str(b.cargoOther),
+    frequency: str(b.frequency),
+    origin: str(b.origin),
+    destination: str(b.destination),
+  };
 }
 
 export async function POST(req: NextRequest) {
@@ -159,22 +161,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Dữ liệu gửi lên không hợp lệ." }, { status: 400 });
   }
 
-  if (!isValidPayload(body)) {
-    return NextResponse.json(
-      { error: "Vui lòng nhập đầy đủ tất cả các trường và Số điện thoại hợp lệ." },
-      { status: 400 }
-    );
+  if (typeof body !== "object" || body === null) {
+    return NextResponse.json({ error: "Dữ liệu gửi lên không hợp lệ." }, { status: 400 });
+  }
+  const lead = parseLead(body as Record<string, unknown>);
+  const [firstError] = Object.values(validateLead(lead));
+  if (firstError) {
+    return NextResponse.json({ error: firstError }, { status: 400 });
   }
 
   // Honeypot check — if bot filled the hidden field, silently reject
-  if (body._hp) {
+  const meta = body as LeadPayload;
+  if (meta._hp) {
     // Return 200 to not alert the bot
     return NextResponse.json({ ok: true });
   }
 
   // Timing check — form submitted too quickly (< 3 seconds)
-  if (body._ts && typeof body._ts === "number") {
-    const elapsed = Date.now() - body._ts;
+  if (meta._ts && typeof meta._ts === "number") {
+    const elapsed = Date.now() - meta._ts;
     if (elapsed < 3000) {
       return NextResponse.json(
         { error: "Vui lòng kiểm tra lại thông tin trước khi gửi." },
@@ -184,7 +189,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Turnstile — lop chan bot chinh
-  if (!(await verifyTurnstile(body._turnstile, ip))) {
+  if (!(await verifyTurnstile(meta._turnstile, ip))) {
     return NextResponse.json(
       { error: "Xác minh bảo mật thất bại. Vui lòng tải lại trang và thử lại." },
       { status: 403 }
@@ -195,24 +200,32 @@ export async function POST(req: NextRequest) {
   recordSubmission(ip);
 
   const leadData = {
-    fullName: body.fullName.trim(),
-    company: body.company?.trim() || "",
-    phone: body.phone.trim(),
-    cargoType: body.cargoType?.trim() || "",
-    origin: body.origin?.trim().slice(0, 200) || "",
-    destination: body.destination?.trim().slice(0, 200) || "",
-    source: "Landing Page - Giao Hang Gia Tri Cao",
+    ...lead,
+    cargoType: describeCargo(lead),
+    company: lead.company || CUSTOMER_TYPES.find((t) => t.value === lead.customerType)!.label,
   };
 
   // Save lead to R2 (backup storage)
-  await saveLead({ ...leadData, ip }).catch((err) =>
+  await saveLead({
+    fullName: leadData.fullName,
+    company: leadData.company,
+    phone: leadData.phone,
+    cargoType: leadData.cargoType,
+    origin: leadData.origin,
+    destination: leadData.destination,
+    customerType: leadData.customerType,
+    taxCode: leadData.taxCode || undefined,
+    frequency: leadData.frequency,
+    source: "Landing Page - Giao Hang Gia Tri Cao",
+    ip,
+  }).catch((err) =>
     console.error("[api/lead] Failed to save lead to R2:", err)
   );
 
   // Forward to Marketing Lead Center (nguồn lead tổng hợp toàn công ty)
   const tracking: Record<string, string> = {};
   for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "gclid"] as const) {
-    const value = body[key];
+    const value = meta[key];
     if (typeof value === "string" && value.trim()) tracking[key] = value.trim().slice(0, 200);
   }
   await forwardToLeadCenter(leadData, req.headers.get("referer") || "", tracking);
