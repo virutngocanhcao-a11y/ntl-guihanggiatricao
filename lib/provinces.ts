@@ -44,7 +44,6 @@ export function isProvince(value: string): boolean {
   return PROVINCE_NAMES.has(value);
 }
 
-/** Bỏ dấu, chữ thường, bỏ ký tự thừa: "TP. Hồ Chí Minh" -> "tp ho chi minh". */
 /** Khách gõ đúng nguyên một tên (tên mới, tên cũ hoặc tên gọi khác) thì trả về tỉnh tương ứng. */
 export function findProvinceExact(query: string): string | undefined {
   const q = normalizeVi(query);
@@ -52,6 +51,7 @@ export function findProvinceExact(query: string): string | undefined {
   return PROVINCES.find((p) => [p.name, ...p.formerly, ...p.aliases].some((n) => normalizeVi(n) === q))?.name;
 }
 
+/** Bỏ dấu, chữ thường, bỏ ký tự thừa: "TP. Hồ Chí Minh" -> "tp ho chi minh". */
 export function normalizeVi(value: string): string {
   return value
     .normalize("NFD")
