@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 // Cùng nhịp với ô "đang online" của trang Quốc tế — đủ mượt, đỡ tải R2.
 const HEARTBEAT_MS = 150000;
+const MAX_HEARTBEATS = 12;
 
 export default function TrafficTracker() {
   useEffect(() => {
@@ -32,8 +33,28 @@ export default function TrafficTracker() {
     }
 
     ping(!alreadyCountedVisit);
-    const interval = setInterval(() => ping(false), HEARTBEAT_MS);
-    return () => clearInterval(interval);
+
+    // Chỉ giữ "đang online" khi khách đang xem tab, tối đa 30 phút: tab bỏ quên không gọi server mãi.
+    let sent = 0;
+    let timer: ReturnType<typeof setInterval> | undefined;
+    const stop = () => {
+      clearInterval(timer);
+      timer = undefined;
+    };
+    const start = () => {
+      if (timer || sent >= MAX_HEARTBEATS) return;
+      timer = setInterval(() => {
+        if (++sent >= MAX_HEARTBEATS) stop();
+        ping(false);
+      }, HEARTBEAT_MS);
+    };
+    const onVisibility = () => (document.visibilityState === "visible" ? start() : stop());
+    document.addEventListener("visibilitychange", onVisibility);
+    if (document.visibilityState === "visible") start();
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, []);
 
   return null; // This component renders nothing

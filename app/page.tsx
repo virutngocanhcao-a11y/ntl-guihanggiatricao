@@ -13,7 +13,7 @@ import Footer from "@/components/landing/Footer";
 import FormModal from "@/components/landing/FormModal";
 import FloatingCta from "@/components/landing/FloatingCta";
 
-export const revalidate = 0;
+export const revalidate = 300;
 
 export default async function Home() {
   const content = await getContent();
